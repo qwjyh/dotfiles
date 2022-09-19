@@ -17,3 +17,18 @@ if ($PSVersionTable.PSVersion.Major -lt 7) {
   you can install via winget"
   exit 1
 }
+
+# check working directory
+if (!(
+    (Test-Path bin) -and (Test-Path dotfiles)
+  )) {
+  Write-Warning -Message "wrong current path
+  please execute at repo root"
+  exit 1
+}
+
+
+# make symbolic links
+# neovim
+$neovim_directory 
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.vim -Target (Resolve-Path .\dotfiles\neovim\init.vim) -Force
