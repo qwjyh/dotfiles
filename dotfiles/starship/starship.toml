@@ -1,0 +1,87 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[battery]
+full_symbol = " "
+charging_symbol = "🔌 "
+discharging_symbol = "⚡ "
+[[battery.display]]
+threshold = 10
+style = "bold red"
+[[battery.display]]
+threshold = 40
+style = "yellow"
+[[battery.display]]
+threshold = 100
+style = "green"
+
+[c]
+format = "via [$symbol $name $version]($style)"
+symbol = ""
+
+[cmd_duration]
+min_time = 2_000
+show_notifications = true
+min_time_to_notify = 120_000
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = ".../"
+
+[git_branch]
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "bold yellow"
+
+[git_metrics]
+disabled = false
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+windows_starship = '/mnt/c/Users/Owner/scoop/shims/starship.exe'
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[julia]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold blue"
+
+[memory_usage]
+format = "$symbol [${ram}( | ${swap})]($style) "
+symbol = ""
+disabled = false
+
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = ""
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+
+[rlang]
+format = "via [$symbol($version )]($style)"
+symbol = "ﳒ"
+
+[shell]
+powershell_indicator = ">_"
+disabled = false
+
+[sudo]
+disabled = false
+
+[time]
+format = "at [$time]($style) "
+style = "bold yellow bg:gray"
+disabled = false
