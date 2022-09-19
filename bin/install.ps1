@@ -30,5 +30,6 @@ if (!(
 
 # make symbolic links
 # neovim
-$neovim_directory 
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.vim -Target (Resolve-Path .\dotfiles\neovim\init.vim) -Force
+# pwsh
+New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
