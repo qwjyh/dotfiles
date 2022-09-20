@@ -1,4 +1,5 @@
 #!/usr/bin/pwsh
+# dotfiles install script for Windows
 
 # check administration role
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
