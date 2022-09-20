@@ -78,6 +78,12 @@ symbol = "ﳒ"
 powershell_indicator = ">_"
 disabled = false
 
+[status]
+format = "[\\[$symbol$status\\]]($style) "
+symbol = ""
+style = "bg:red"
+disabled = false
+
 [sudo]
 disabled = false
 
