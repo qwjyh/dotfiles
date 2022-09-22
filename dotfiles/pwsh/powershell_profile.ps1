@@ -21,6 +21,12 @@ function Invoke-Starship-PreCommand {
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
 
+# home_util shortcut
+$home_util_path = "~\Documents\macro\ahk"
+function home_util {
+  & (Join-Path -Path $home_util_path -ChildPath "home_util.exe")
+}
+
 # for chezmoi
 $Editor = "C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 
@@ -51,4 +57,14 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
       winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
           [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
       }
+}
+
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
 }
