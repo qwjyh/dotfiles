@@ -28,6 +28,11 @@ if (!(
   exit 1
 }
 
+# install powershell modules
+Install-Module -Name posh-git
+Install-Module -Name Pscx -AllowPrerelease
+Install-Module -Name z
+
 
 # make symbolic links
 # neovim
