@@ -91,12 +91,6 @@ function Reset-EncodingSettings {
 	[console]::OutputEncoding = [System.Text.Encoding]::Default
 }
 
-# for chezmoi
-$Editor = "C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-
-# oh my posh
-# oh-my-posh --init --shell pwsh --config ~/AppData/Local/Programs/oh-my-posh/themes/capr4n.omp.json | Invoke-Expression
-
 # shortcut to enable ssh-agent
 function Enable-SshAgent {
   <#
@@ -118,6 +112,12 @@ function Enable-SshAgent {
 	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
 }
 # execute "ssh-add" to add keys
+
+
+# less options
+$env:LESS = "-M -R -S -W -z-4 -x4"
+
+
 
 # chezmoi completion
 $script = "$HOME\.config\powershell\chezmoi_completion.ps1"
