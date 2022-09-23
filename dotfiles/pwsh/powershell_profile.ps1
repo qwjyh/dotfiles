@@ -27,6 +27,70 @@ function home_util {
   & (Join-Path -Path $home_util_path -ChildPath "home_util.exe")
 }
 
+# change encoding
+# ref: https://qiita.com/e4rfx/items/3772ecb58b6918ed5348
+# 文字エンコードをUTF8に設定する
+function Set-UTF8 {
+  <#
+  .SYNOPSIS
+  Sets powershell encoding to UTF-8.
+  
+  .DESCRIPTION
+  Sets powershell encodings to UTF-8.
+  To remove this settings, use Remove-EncodingSettings.
+  To set to default, use Reset-EncodingSettings.
+  For more details, see https://qiita.com/e4rfx/items/3772ecb58b6918ed5348.
+  #>
+	$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+	$global:OutputEncoding = [System.Text.Encoding]::UTF8
+	[console]::OutputEncoding = [System.Text.Encoding]::UTF8
+}
+# UTF 16 LE
+# pwsh default encoding
+# best for redirecting to more.exe, Out-File
+function Set-UTF16LE {
+  <#
+  .SYNOPSIS
+  Sets powershell encoding to UTF-16 LE.
+  
+  .DESCRIPTION
+  Sets powershell encodings to UTF-16 LE(Little Endian), which is the default of pwsh.
+  This function is especially useful when redirecting to more.exe and less and Out-File and etc.
+  To remove this settings, use Remove-EncodingSettings.
+  To set to default, use Reset-EncodingSettings.
+  For more details, see https://qiita.com/e4rfx/items/3772ecb58b6918ed5348.
+  #>
+	$PSDefaultParameterValues['*:Encoding'] = 'unicode'
+	$global:OutputEncoding = [System.Text.Encoding]::Unicode
+	[console]::OutputEncoding = [System.Text.Encoding]::Unicode
+}
+# デフォルトパラメータの文字エンコード指定を解除する
+function Remove-EncodingSettings {
+  <#
+  .SYNOPSIS
+  Remove custom encoding settings.
+  
+  .DESCRIPTION
+  Remove custom encoding settings.
+  For more details, see https://qiita.com/e4rfx/items/3772ecb58b6918ed5348.
+  #>
+	$PSDefaultParameterValues.Remove('*:Encoding')
+}
+# 文字エンコード設定を初期状態に戻す
+function Reset-EncodingSettings {
+  <#
+  .SYNOPSIS
+  Sets powershell encoding to default.
+  
+  .DESCRIPTION
+  Sets powershell encodings to default(Shift-JIS).
+  For more details, see https://qiita.com/e4rfx/items/3772ecb58b6918ed5348.
+  #>
+	$PSDefaultParameterValues.Remove('*:Encoding')
+	$global:OutputEncoding = [System.Text.Encoding]::ASCII
+	[console]::OutputEncoding = [System.Text.Encoding]::Default
+}
+
 # for chezmoi
 $Editor = "C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 
@@ -35,6 +99,22 @@ $Editor = "C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 
 # shortcut to enable ssh-agent
 function Enable-SshAgent {
+  <#
+  .SYNOPSIS
+    starts ssh-agent
+    execute ssh-add to add ssh keys
+
+  .DESCRIPTION
+    Starts ssh-agent.
+    Execute ssh-add to add ssh keys.
+    You just need to execute this once after start up.
+
+  .INPUTS
+    no inputs
+
+  .OUTPUTS
+    no outputs
+  #>
 	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
 }
 # execute "ssh-add" to add keys
