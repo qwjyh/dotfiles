@@ -2,22 +2,11 @@
 # dotfiles install script for Windows
 
 # check administration role
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-$bool_admin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-if (!$bool_admin) {
-  Write-Warning -Message "require Admin privilage
-  please run as Administrator"
-  exit 1
-}
+#Requires -RunAsAdministrator
 
 # check pwsh version
 # ≧ 7
-if ($PSVersionTable.PSVersion.Major -lt 7) {
-  Write-Warning -Message "pwsh version must be greater than 7
-  please install powershell 7 (Core)
-  you can install via winget"
-  exit 1
-}
+#Requires -Version 7
 
 # check working directory
 if (!(
