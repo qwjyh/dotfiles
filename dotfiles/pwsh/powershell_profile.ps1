@@ -10,6 +10,7 @@ function ~ {  cd ~  }
 function .. { cd .. }
 function epl {explorer.exe .}
 Set-Alias touch New-Item
+Set-Alias whereis where.exe
 
 
 # starship
