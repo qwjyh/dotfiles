@@ -116,7 +116,7 @@ function Enable-SshAgent {
 
 
 # less options
-$env:LESS = "-M -R -S -W -z-4 -x4"
+$env:LESS = "-i -M -R -S -W -z-4 -x4"
 
 
 

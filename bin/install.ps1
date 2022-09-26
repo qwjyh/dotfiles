@@ -1,5 +1,8 @@
 #!/usr/bin/pwsh
 # dotfiles install script for Windows
+# Execute
+#  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# first to run pwsh scripts
 
 # check administration role
 #Requires -RunAsAdministrator
@@ -21,6 +24,17 @@ if (!(
 Install-Module -Name posh-git
 Install-Module -Name Pscx -AllowPrerelease
 Install-Module -Name z
+Install-Module -Name PSFzf -RequiredVersion 2.5.10
+
+# install scoop
+if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
+  Write-Output "Installing scoop..."
+  irm get.scoop.sh | iex
+}
+# install basic scoop apps
+# import from exported json file
+# to update the json file, execute ./bin/scoop_apps/update_scoop_list.ps1
+scoop import .\bin\scoop_apps\scoop_apps.json
 
 
 # make symbolic links

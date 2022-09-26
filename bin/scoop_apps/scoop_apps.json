@@ -1,0 +1,89 @@
+{
+    "apps": [
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "7zip",
+            "Updated": "2022-09-24T06:50:10.362148+09:00",
+            "Version": "22.01"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "bat",
+            "Updated": "2022-09-24T06:45:30.615827+09:00",
+            "Version": "0.22.1"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "ffmpeg",
+            "Updated": "2022-09-26T04:52:36.3416759+09:00",
+            "Version": "5.1.1"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "fzf",
+            "Updated": "2022-09-23T17:54:45.7302151+09:00",
+            "Version": "0.33.0"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "gcc",
+            "Updated": "2022-09-25T00:18:14.5435972+09:00",
+            "Version": "11.2.0"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "grep",
+            "Updated": "2022-09-24T06:50:11.9515886+09:00",
+            "Version": "3.7"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "hexyl",
+            "Updated": "2022-09-24T06:43:31.7789266+09:00",
+            "Version": "0.10.0"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "less",
+            "Updated": "2022-09-23T17:59:11.0595712+09:00",
+            "Version": "608"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "make",
+            "Updated": "2022-09-25T00:17:18.2293504+09:00",
+            "Version": "4.3"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "sudo",
+            "Updated": "2022-09-22T23:40:06.1651065+09:00",
+            "Version": "0.2020.01.26"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "ugrep",
+            "Updated": "2022-09-24T06:53:20.806641+09:00",
+            "Version": "3.9.2"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2022-09-27T05:30:16+09:00",
+            "Manifests": 1086
+        }
+    ]
+}
