@@ -6,6 +6,10 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
 
+# PsFzf Options
+# 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
 function ~ {  cd ~  }
 function .. { cd .. }
 function epl {explorer.exe .}
