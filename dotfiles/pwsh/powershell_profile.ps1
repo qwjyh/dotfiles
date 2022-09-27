@@ -5,6 +5,7 @@ Set-PSReadlineOption -HistoryNoDuplicates
 Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
+Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion }
 
 # PsFzf Options
 # 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
