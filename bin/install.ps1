@@ -29,8 +29,11 @@ if (!(
 }
 
 # install powershell modules
+Write-Output "posh git"
 Install-Module -Name posh-git
+Write-Output "Pscx"
 Install-Module -Name Pscx -AllowPrerelease
+Write-Output "z"
 Install-Module -Name z
 
 
