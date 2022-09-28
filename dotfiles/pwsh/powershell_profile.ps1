@@ -5,11 +5,17 @@ Set-PSReadlineOption -HistoryNoDuplicates
 Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
+Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion }
+
+# PsFzf Options
+# 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 function ~ {  cd ~  }
 function .. { cd .. }
 function epl {explorer.exe .}
 Set-Alias touch New-Item
+Set-Alias whereis where.exe
 
 
 # starship
@@ -115,7 +121,7 @@ function Enable-SshAgent {
 
 
 # less options
-$env:LESS = "-M -R -S -W -z-4 -x4"
+$env:LESS = "-i -M -R -S -W -z-4 -x4"
 
 
 

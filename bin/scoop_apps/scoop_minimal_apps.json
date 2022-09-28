@@ -1,0 +1,74 @@
+{
+  "apps": [
+    {
+      "Updated": "2022-09-24T06:50:10.362148+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "7zip",
+      "Version": "22.01"
+    },
+    {
+      "Updated": "2022-09-24T06:45:30.615827+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "bat",
+      "Version": "0.22.1"
+    },
+    {
+      "Updated": "2022-09-23T17:54:45.7302151+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "fzf",
+      "Version": "0.33.0"
+    },
+    {
+      "Updated": "2022-09-24T06:50:11.9515886+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "grep",
+      "Version": "3.7"
+    },
+    {
+      "Updated": "2022-09-24T06:43:31.7789266+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "hexyl",
+      "Version": "0.10.0"
+    },
+    {
+      "Updated": "2022-09-23T17:59:11.0595712+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "less",
+      "Version": "608"
+    },
+    {
+      "Updated": "2022-09-22T23:40:06.1651065+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "sudo",
+      "Version": "0.2020.01.26"
+    },
+    {
+      "Updated": "2022-09-24T06:53:20.806641+09:00",
+      "Info": "",
+      "Source": "main",
+      "Name": "ugrep",
+      "Version": "3.9.2"
+    }
+  ],
+  "buckets": [
+    {
+      "Name": "extras",
+      "Source": "https://github.com/ScoopInstaller/Extras",
+      "Updated": "2022-09-28T21:31:14+09:00",
+      "Manifests": 1691
+    },
+    {
+      "Name": "main",
+      "Source": "https://github.com/ScoopInstaller/Main",
+      "Updated": "2022-09-28T21:32:26+09:00",
+      "Manifests": 1091
+    }
+  ]
+}
