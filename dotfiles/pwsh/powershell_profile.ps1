@@ -126,6 +126,19 @@ function Enable-SshAgent {
   #>
 	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
 }
+# auto start ssh-agent and do ssh-add
+function Invoke-SshAdd {
+  <#
+  .SYNOPSIS
+    Starts ssh-agent and do ssh-add
+
+  .DESCRIPTION
+    Starts ssh-agent as admin and do ssh-add, to add sshkeys to ssh-agent.
+  #>
+  
+  Enable-SshAgent
+  ssh-add
+}
 # execute "ssh-add" to add keys
 
 
