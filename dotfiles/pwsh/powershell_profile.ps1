@@ -1,4 +1,6 @@
-# auto completion
+# ==============================================================
+#    PSReadLine Settings 
+# ==============================================================
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineOption -HistoryNoDuplicates
@@ -11,12 +13,15 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion 
 # 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
+
+# ==============================================================
+#     alias and functions
+# ==============================================================
 function ~ {  cd ~  }
 function .. { cd .. }
 function epl {explorer.exe .}
 Set-Alias touch New-Item
 Set-Alias whereis where.exe
-
 
 # starship
 # change window name
@@ -33,7 +38,11 @@ function home_util {
   & (Join-Path -Path $home_util_path -ChildPath "home_util.exe")
 }
 
-# change encoding
+
+
+# --------------------------------------------------------------
+#     change encoding
+# --------------------------------------------------------------
 # ref: https://qiita.com/e4rfx/items/3772ecb58b6918ed5348
 # 文字エンコードをUTF8に設定する
 function Set-UTF8 {
@@ -124,6 +133,15 @@ function Enable-SshAgent {
 $env:LESS = "-i -M -R -S -W -z-4 -x4"
 
 
+
+# ==============================================================
+#     auto completions for modules
+# ==============================================================
+
+# scoop
+# enable completion in current shell, use absolute path because PowerShell Core not respect $env:PSModulePath
+Import-Module scoop-completion
+#Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
 
 # chezmoi completion
 $script = "$HOME\.config\powershell\chezmoi_completion.ps1"
