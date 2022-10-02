@@ -7,6 +7,9 @@ if not keychain
 	ssh-add ~/.ssh/id_rsa_eccs
 	ssh-add ~/.ssh/id_ed25519
 end
+# https://wiki.archlinux.jp/index.php/Fish#ssh-agent_.E3.81.AE.E8.A9.95.E4.BE.A1
+eval (ssh-agent -c)
+
 
 # opam configuration
 #source /home/urata/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
