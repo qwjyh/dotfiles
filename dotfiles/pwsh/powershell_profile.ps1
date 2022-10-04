@@ -33,12 +33,6 @@ function Invoke-Starship-PreCommand {
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
 
-# home_util shortcut
-$home_util_path = "~\Documents\macro\ahk"
-function home_util {
-  & (Join-Path -Path $home_util_path -ChildPath "home_util.exe")
-}
-
 
 
 # --------------------------------------------------------------
