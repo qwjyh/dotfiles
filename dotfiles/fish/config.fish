@@ -14,10 +14,11 @@ if status is-interactive
     set -x SHELL fish
     keychain --eval --quiet -Q id_rsa, id_ed25519 | source
     set -x SHELL bash
+
+    # opam
+    # source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
 
-# opam
-# source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # key bindings
 bind \b backward-kill-word
