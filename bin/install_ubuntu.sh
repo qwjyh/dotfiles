@@ -1,3 +1,4 @@
 #!/usr/bin/bash -euo
 
-ln -s $(which fdfind) ~/.local/bin/fd
+ln -sf $(which batcat) ~/.local/bin/bat
+ln -sf $(which fdfind) ~/.local/bin/fd
