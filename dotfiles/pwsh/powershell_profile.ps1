@@ -1,16 +1,28 @@
-# auto completion
+# ==============================================================
+#    PSReadLine Settings 
+# ==============================================================
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineOption -HistoryNoDuplicates
+Set-PSReadLineOption -DingTone 880  # beep frequency
 Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
+Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion }
 
+# PsFzf Options
+# 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+
+# ==============================================================
+#     alias and functions
+# ==============================================================
 function ~ {  cd ~  }
 function .. { cd .. }
 function epl {explorer.exe .}
 Set-Alias touch New-Item
-
+Set-Alias whereis where.exe
 
 # starship
 # change window name
@@ -21,13 +33,11 @@ function Invoke-Starship-PreCommand {
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
 
-# home_util shortcut
-$home_util_path = "~\Documents\macro\ahk"
-function home_util {
-  & (Join-Path -Path $home_util_path -ChildPath "home_util.exe")
-}
 
-# change encoding
+
+# --------------------------------------------------------------
+#     change encoding
+# --------------------------------------------------------------
 # ref: https://qiita.com/e4rfx/items/3772ecb58b6918ed5348
 # 文字エンコードをUTF8に設定する
 function Set-UTF8 {
@@ -111,13 +121,35 @@ function Enable-SshAgent {
   #>
 	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
 }
+# auto start ssh-agent and do ssh-add
+function Invoke-SshAdd {
+  <#
+  .SYNOPSIS
+    Starts ssh-agent and do ssh-add
+
+  .DESCRIPTION
+    Starts ssh-agent as admin and do ssh-add, to add sshkeys to ssh-agent.
+  #>
+  
+  Enable-SshAgent
+  ssh-add
+}
 # execute "ssh-add" to add keys
 
 
 # less options
-$env:LESS = "-M -R -S -W -z-4 -x4"
+$env:LESS = "-i -M -R -S -W -z-4 -x4"
 
 
+
+# ==============================================================
+#     auto completions for modules
+# ==============================================================
+
+# scoop
+# enable completion in current shell, use absolute path because PowerShell Core not respect $env:PSModulePath
+Import-Module scoop-completion
+#Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
 
 # chezmoi completion
 $script = "$HOME\.config\powershell\chezmoi_completion.ps1"
