@@ -2,14 +2,11 @@
 bass source ~/.bashrc
 
 # ssh-agent
-if not keychain
-	source $HOME/.keychain/DESKTOP-6DPNBNH-fish
-	ssh-add ~/.ssh/id_rsa_eccs
-	ssh-add ~/.ssh/id_ed25519
+if status --is-interactive
+	set -x SHELL fish
+	keychain --eval --quiet -Q id_rsa, id_ed25519 | source
+	set -x SHELL bash
 end
-# https://wiki.archlinux.jp/index.php/Fish#ssh-agent_.E3.81.AE.E8.A9.95.E4.BE.A1
-eval (ssh-agent -c)
-
 
 # opam configuration
 #source /home/urata/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
