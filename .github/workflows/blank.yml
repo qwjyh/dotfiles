@@ -31,6 +31,14 @@ jobs:
       
       - name: check $SHELL
         run: echo $SHELL
+        
+      - name: Get Computer Info
+        run: |
+          Get-ComputerInfo
+          Get-LocalUser
+
+      - name: Install Git for Windows via winget
+        run: winget install Git.Git
 
       # Runs a set of commands using the runners shell
       - name: Install scoop
@@ -39,5 +47,3 @@ jobs:
           irm get.scoop.sh | iex
           scoop --version
       
-      - name: Install git
-        run: winget install Git.Git
