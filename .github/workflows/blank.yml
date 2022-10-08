@@ -33,7 +33,11 @@ jobs:
         run: echo $SHELL
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Install scoop
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
+          irm get.scoop.sh | iex
+          scoop --version
+      
+      - name: Install git
+        run: winget install Git.Git
