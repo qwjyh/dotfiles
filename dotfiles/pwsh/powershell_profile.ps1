@@ -1,11 +1,12 @@
 # ==============================================================
 #    PSReadLine Settings 
 # ==============================================================
-Import-Module PSReadLine
-Set-PSReadLineOption -PredictionSource History
+Import-Module PSReadLine	# >= 2.2.2
+Import-Module CompletionPredictor
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin	# require PowerShell ≧ 7.2 and PSReadLine ≧ 2.2.2
 Set-PSReadlineOption -HistoryNoDuplicates
 Set-PSReadLineOption -DingTone 880  # beep frequency
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
+Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function AcceptSuggestion # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
 Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion }
