@@ -1,3 +1,4 @@
+--print("init.lua loaded")
 -----------------------------------------------------------
 -- basic configurations
 vim.o.number = true
