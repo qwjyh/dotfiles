@@ -26,8 +26,15 @@ Install-Module -Name posh-git
 Write-Output "Pscx"
 Install-Module -Name Pscx -AllowPrerelease
 Write-Output "z"
-Install-Module -Name z
+Install-Module -Name ZLocation
+Write-Output "PSFzf"
 Install-Module -Name PSFzf -RequiredVersion 2.5.10
+Write-Output "Latest PSReadLine"
+Install-Module -Name PSReadLine -Force  # Override default version to get the latest one
+Write-Output "CompletionPredictor"
+Install-Module -Name CompletionPredictor
+
+
 
 # install scoop
 if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
