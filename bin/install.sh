@@ -14,9 +14,9 @@ fi
 # =========================================================
 # links
 # =========================================================
-ln -sf (pwd)/dotfiles/fish/config.fish ~/.config/fish/config.fish
-ln -sf (pwd)/dotfiles/starship/starship.toml ~/.config/starship.toml
-ln -sf (pwd)/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -sf $(pwd)/dotfiles/starship/starship.toml ~/.config/starship.toml
+ln -sf $(pwd)/dotfiles/tmux.conf ~/.tmux.conf
 
 
-ln -sf (pwd)/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -sf $(pwd)/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
