@@ -26,7 +26,8 @@ bind \b backward-kill-word
 # save fish log to my custom file
 set -gx my_fish_history "$HOME/my_fish_history.txt"
 function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_fish_history"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid $PWD [$status] $(history -1)" \
+	set -l prev_status $status
+    echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid $PWD [$prev_status] $(history -1)" \
         >> $my_fish_history
 end
 
