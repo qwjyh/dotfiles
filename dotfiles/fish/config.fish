@@ -16,9 +16,17 @@ if status is-interactive
     set -x SHELL bash
 
     # opam
-    # source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+    source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
 
 
 # key bindings
 bind \b backward-kill-word
+
+# save fish log to my custom file
+set -gx my_fish_history "$HOME/my_fish_history.txt"
+function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_fish_history"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid $PWD [$status] $(history -1)" \
+        >> $my_fish_history
+end
+
