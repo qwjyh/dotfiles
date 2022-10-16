@@ -62,3 +62,7 @@ return
 ; HankakuZenkaku to esc
 sc029::
   Send, {Escape}
+
+; ==========================================
+; include extra key remaps
+#Include extra_remaps.ahk
