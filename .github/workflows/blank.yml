@@ -45,5 +45,5 @@ jobs:
       
       - name: run `install.sh`
         run: |
-          chmod +x bin/nstall.sh
+          chmod +x bin/install.sh
           ./bin/install.sh
