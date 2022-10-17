@@ -21,4 +21,6 @@ ln -sf $(pwd)/dotfiles/tmux.conf ~/.tmux.conf
 
 mkdir -p ~/.config/nvim
 ln -sf $(pwd)/dotfiles/neovim/init.lua ~/.config/nvim/init.lua
+mkdir -p ~/.config/nvim/lua
 ln -sf $(pwd)/dotfiles/neovim/lua/plugins.lua ~/.config/nvim/lua/plugins.lua
+
