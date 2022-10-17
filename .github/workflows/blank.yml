@@ -31,6 +31,9 @@ jobs:
       
       - name: check $SHELL
         run: echo $SHELL
+        
+      - name: check $PWD
+        run: pwd
 
       # Runs a set of commands using the runners shell
       #- name: Install scoop
@@ -39,3 +42,13 @@ jobs:
       #    irm get.scoop.sh | iex
       #    scoop --version
       
+  install:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: action/checkout@v3
+      
+      - name: run `install.sh`
+        run: |
+          chmod +x bin\install.sh
+          .\bin\install.sh
