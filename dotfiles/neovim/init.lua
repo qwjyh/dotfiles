@@ -134,6 +134,10 @@ cmp.setup({
 --   },
 -- })
 
+-- satysfi language server
+require('lspconfig')['satysfi-ls'].setup{
+  autostart = true
+}
 
 -----------------------------------------------------------
 -- Ctrl + P to invoke fzf file search

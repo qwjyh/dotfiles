@@ -50,3 +50,9 @@ function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_
         >> $my_fish_history
 end
 
+
+# julia
+# to solve Graphic Card driver problem
+export LD_PRELOAD=/usr/lib64/libstdc++.so.6
+
+
