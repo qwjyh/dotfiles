@@ -32,21 +32,16 @@ jobs:
       - name: check $SHELL
         run: echo $SHELL
         
-      - name: check $PWD
-        run: pwd
+      - name: check $PWD, ls
+        run: |
+          pwd
+          ls -alFh
 
-      # Runs a set of commands using the runners shell
-      #- name: Install scoop
-      #  run: |
-      #    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
-      #    irm get.scoop.sh | iex
-      #    scoop --version
-      
   install:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
       
       - name: run `install.sh`
         run: |
