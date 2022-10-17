@@ -57,6 +57,9 @@ vk1C & d::
 Send,{Blind}{PgDn}
 return
 
+; ==========================================
+; include extra key remaps
+#Include extra_remaps.ahk
 
 ; ==========================================
 ; HankakuZenkaku to esc

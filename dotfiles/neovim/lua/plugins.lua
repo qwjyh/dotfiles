@@ -9,6 +9,12 @@ return require('packer').startup(function(use)
 		--requires = { 'kyazdan142/nvim-web/devicons' } -- not found
 	}
 
+	-- lualine(statusline)
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use "williamboman/mason.nvim"

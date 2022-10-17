@@ -2,6 +2,7 @@
 some notable features
 
 ## Key-Bindings
+- `F2` to toggle InlineView and ListView of predictions
 - tab completion like fish
 - `Ctrl + D` to exit
 - `Ctrl + G` to Invoke-FzfTabCompletion

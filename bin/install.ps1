@@ -26,8 +26,15 @@ Install-Module -Name posh-git
 Write-Output "Pscx"
 Install-Module -Name Pscx -AllowPrerelease
 Write-Output "z"
-Install-Module -Name z
+Install-Module -Name ZLocation
+Write-Output "PSFzf"
 Install-Module -Name PSFzf -RequiredVersion 2.5.10
+Write-Output "Latest PSReadLine"
+Install-Module -Name PSReadLine -Force  # Override default version to get the latest one
+Write-Output "CompletionPredictor"
+Install-Module -Name CompletionPredictor
+
+
 
 # install scoop
 if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
@@ -42,7 +49,9 @@ scoop import .\bin\scoop_apps\scoop_minimal_apps.json
 
 # make symbolic links
 # neovim
-New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.vim -Target (Resolve-Path .\dotfiles\neovim\init.vim) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Resolve-Path .\dotfiles\neovim\init.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\plugins.lua -Target (Resolve-Path .\dotfiles\neovim\lua\plugins.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force

@@ -1,14 +1,19 @@
 # ==============================================================
 #    PSReadLine Settings 
 # ==============================================================
-Import-Module PSReadLine
-Set-PSReadLineOption -PredictionSource History
+Import-Module PSReadLine	# >= 2.2.2
+Import-Module CompletionPredictor
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin	# require PowerShell ≧ 7.2 and PSReadLine ≧ 2.2.2
 Set-PSReadlineOption -HistoryNoDuplicates
 Set-PSReadLineOption -DingTone 880  # beep frequency
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord # like fish
+Set-PSReadLineKeyHandler -Chord "Ctrl+u" -Function BackwardKillInput	# like emacs
+Set-PSReadLineKeyHandler -Chord "Ctrl+p" -Function PreviousHistory		# like emacs
+Set-PSReadLineKeyHandler -Chord "Ctrl+n" -Function NextHistory			# like emacs
+Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function AcceptSuggestion # like fish
 Set-PSReadLineKeyHandler -Chord "Tab" MenuComplete
 Set-PSReadLineKeyHandler -Chord "Ctrl+d" DeleteCharOrExit
-Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion }
+Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { Invoke-FzfTabCompletion } -BriefDescription "Fzf tab completion" -Description "Invoke fzf tab completion. Need some input first."
 
 # PsFzf Options
 # 'Ctrl+t' for provider path, 'Ctrl+r' for reverse history
@@ -26,9 +31,16 @@ Set-Alias whereis where.exe
 
 # starship
 # change window name
+# save my history
+$My_Pwsh_History = "$HOME\my_pwsh_history.txt"
 function Invoke-Starship-PreCommand {
+  # window title
   $ParentFolder = Split-Path $PWD -Leaf
   $host.ui.Write("`e]0; $ParentFolder `a")
+
+  # save log
+  Write-Output "$(Get-Date -UFormat '+%Y-%m-%d %H:%M:%S') $env:COMPUTERNAME`:$PID [$Global:LASTEXITCODE] $(Get-History -Count 1)"
+  | Out-File -FilePath $My_Pwsh_History -Append -Encoding utf8
 }
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
