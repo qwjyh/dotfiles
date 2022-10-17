@@ -3,7 +3,8 @@
 vim.o.number = true
 vim.o.relativenumber = true
 vim.cmd([[
-highlight LineNr cterm=none ctermfg=256 
+highlight LineNr cterm=none ctermfg=243 
+highlight CursorLineNr cterm=none ctermfg=250 
 ]])
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -132,6 +133,10 @@ cmp.setup({
 --   },
 -- })
 
+-- satysfi language server
+require('lspconfig')['satysfi-ls'].setup{
+  autostart = true
+}
 
 -----------------------------------------------------------
 -- Ctrl + P to invoke fzf file search
@@ -141,7 +146,10 @@ vim.api.nvim_set_keymap('n', '<c-P>',
 
 
 -----------------------------------------------------------
--- satysfi language server
-require('lspconfig')['satysfi-ls'].setup{
-  autostart = true
-}
+-- lualine
+require('lualine_setup')
+lualine = require('lualine')
+lualine.setup({
+	options = { theme = 'iceberg_dark' }
+})
+lualine.setup()

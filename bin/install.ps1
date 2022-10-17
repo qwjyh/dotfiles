@@ -1,23 +1,15 @@
 #!/usr/bin/pwsh
 # dotfiles install script for Windows
+# Execute
+#  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# first to run pwsh scripts
 
 # check administration role
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-$bool_admin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-if (!$bool_admin) {
-  Write-Warning -Message "require Admin privilage
-  please run as Administrator"
-  exit 1
-}
+#Requires -RunAsAdministrator
 
 # check pwsh version
 # ≧ 7
-if ($PSVersionTable.PSVersion.Major -lt 7) {
-  Write-Warning -Message "pwsh version must be greater than 7
-  please install powershell 7 (Core)
-  you can install via winget"
-  exit 1
-}
+#Requires -Version 7
 
 # check working directory
 if (!(
@@ -34,12 +26,32 @@ Install-Module -Name posh-git
 Write-Output "Pscx"
 Install-Module -Name Pscx -AllowPrerelease
 Write-Output "z"
-Install-Module -Name z
+Install-Module -Name ZLocation
+Write-Output "PSFzf"
+Install-Module -Name PSFzf -RequiredVersion 2.5.10
+Write-Output "Latest PSReadLine"
+Install-Module -Name PSReadLine -Force  # Override default version to get the latest one
+Write-Output "CompletionPredictor"
+Install-Module -Name CompletionPredictor
+
+
+
+# install scoop
+if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
+  Write-Output "Installing scoop..."
+  irm get.scoop.sh | iex
+}
+# install basic scoop apps
+# import from exported json file
+# to update the json file, execute ./bin/scoop_apps/update_scoop_list.ps1
+scoop import .\bin\scoop_apps\scoop_minimal_apps.json
 
 
 # make symbolic links
 # neovim
-New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.vim -Target (Resolve-Path .\dotfiles\neovim\init.vim) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Resolve-Path .\dotfiles\neovim\init.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\plugins.lua -Target (Resolve-Path .\dotfiles\neovim\lua\plugins.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force
