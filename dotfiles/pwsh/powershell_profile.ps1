@@ -196,3 +196,6 @@ if (Test-Path($ChocolateyProfile)) {
 # rclone
 rclone completion powershell | Out-String | Invoke-Expression
 
+# node
+Import-Module npm-completion
+
