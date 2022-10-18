@@ -16,7 +16,7 @@ if status is-interactive
     set -x SHELL bash
 
     # opam
-    source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+    #source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
 
 # starship
@@ -50,9 +50,7 @@ function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_
         >> $my_fish_history
 end
 
-
-# julia
-# to solve Graphic Card driver problem
-export LD_PRELOAD=/usr/lib64/libstdc++.so.6
+# load local patch
+source ~/.config/fish/local_patch.fish
 
 
