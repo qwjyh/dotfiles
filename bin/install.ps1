@@ -43,8 +43,8 @@ if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
 }
 # install basic scoop apps
 # import from exported json file
-# to update the json file, execute ./bin/scoop_apps/update_scoop_list.ps1
-scoop import .\bin\scoop_apps\scoop_minimal_apps.json
+# to update the json file, execute ./bin/windows/scoop_apps/update_scoop_list.ps1
+scoop import .\bin\windows\scoop_apps\scoop_minimal_apps.json
 
 
 # make symbolic links
