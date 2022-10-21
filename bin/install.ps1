@@ -33,6 +33,8 @@ Write-Output "Latest PSReadLine"
 Install-Module -Name PSReadLine -Force  # Override default version to get the latest one
 Write-Output "CompletionPredictor"
 Install-Module -Name CompletionPredictor
+Write-Output "npm"
+Install-Module -Name npm-completion
 
 
 
@@ -52,6 +54,7 @@ scoop import .\bin\windows\scoop_apps\scoop_minimal_apps.json
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Resolve-Path .\dotfiles\neovim\init.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\plugins.lua -Target (Resolve-Path .\dotfiles\neovim\lua\plugins.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lsp_client_config.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lsp_client_config.lua) -Force
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force
