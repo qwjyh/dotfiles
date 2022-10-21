@@ -28,9 +28,6 @@ my dotfiles
 
 # TODO
 - make install script for Linux
-  - fish setup
-    - fisher
-	- abbr
 - add rc files of Manjaro
 - neovim configs
   - lsp-config

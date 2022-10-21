@@ -42,6 +42,9 @@ bind \b backward-kill-word
 
 # env
 set -x LESS '-i -r -M -R -S -W -z-4 -x4'
+set -x EDITOR "/usr/bin/nvim"
+
+
 # save fish log to my custom file
 set -gx my_fish_history "$HOME/my_fish_history.txt"
 function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_fish_history"
