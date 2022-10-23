@@ -31,9 +31,16 @@ Set-Alias whereis where.exe
 
 # starship
 # change window name
+# save my history
+$My_Pwsh_History = "$HOME\my_pwsh_history.txt"
 function Invoke-Starship-PreCommand {
+  # window title
   $ParentFolder = Split-Path $PWD -Leaf
   $host.ui.Write("`e]0; $ParentFolder `a")
+
+  # save log
+  Write-Output "$(Get-Date -UFormat '+%Y-%m-%d %H:%M:%S') $env:COMPUTERNAME`:$PID [$Global:LASTEXITCODE] $(Get-History -Count 1)"
+  | Out-File -FilePath $My_Pwsh_History -Append -Encoding utf8
 }
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
@@ -185,3 +192,10 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+# rclone
+rclone completion powershell | Out-String | Invoke-Expression
+
+# node
+Import-Module npm-completion
+

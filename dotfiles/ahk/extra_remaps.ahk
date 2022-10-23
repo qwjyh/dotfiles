@@ -2,10 +2,10 @@
 ; mainly for inputting special characters
 
 ; Play/Pause
-sc121::
-	Send {Media_Play_Pause}
-	return
-
+;sc121::
+;	Send {Media_Play_Pause}
+;	return
+;
 
 ; Henkan/Muhenkan + - -> en, em dash
 vk1D & vkBD::
