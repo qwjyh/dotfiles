@@ -52,6 +52,15 @@ function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_
     echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid $PWD [$prev_status] $(history -1)" \
         >> $my_fish_history
 end
+# starting sign
+echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid [START]" \
+    >> $my_fish_history
+# exit sign
+function save_myhistory_exit --on-event fish_exit -d "Add exit sign to $my_fish_history"
+	echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid [EXIT]" \
+        >> $my_fish_history
+end
+
 
 # load local patch
 source ~/.config/fish/local_patch.fish
