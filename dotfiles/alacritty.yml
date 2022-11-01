@@ -45,7 +45,8 @@ schemes:
   iceberg_dark: &iceberg_dark
     # Default colors
     primary:
-      background: '#161821'
+      #background: '#161821'
+      background: '#272822'
       foreground: '#d2d4de'
   
     # Normal colors
