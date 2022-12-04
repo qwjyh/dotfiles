@@ -33,13 +33,17 @@ Set-Alias whereis where.exe
 # change window name
 # save my history
 $My_Pwsh_History = "$HOME\my_pwsh_history.txt"
+# shell starts
+Write-Output "$(Get-Date -UFormat '+%Y-%m-%d %H:%M:%S') $env:COMPUTERNAME`:$PID [START]"
+| Out-File -FilePath $My_Pwsh_History -Append -Encoding utf8
+# save
 function Invoke-Starship-PreCommand {
   # window title
   $ParentFolder = Split-Path $PWD -Leaf
   $host.ui.Write("`e]0; $ParentFolder `a")
 
   # save log
-  Write-Output "$(Get-Date -UFormat '+%Y-%m-%d %H:%M:%S') $env:COMPUTERNAME`:$PID [$Global:LASTEXITCODE] $(Get-History -Count 1)"
+  Write-Output "$(Get-Date -UFormat '+%Y-%m-%d %H:%M:%S') $env:COMPUTERNAME`:$PID $PWD [$Global:LASTEXITCODE] $(Get-History -Count 1)"
   | Out-File -FilePath $My_Pwsh_History -Append -Encoding utf8
 }
 Invoke-Expression (&starship init powershell)
