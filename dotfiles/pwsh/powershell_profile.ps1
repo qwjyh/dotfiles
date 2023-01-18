@@ -28,6 +28,7 @@ function .. { cd .. }
 function epl {explorer.exe .}
 Set-Alias touch New-Item
 Set-Alias whereis where.exe
+Remove-Alias r		# to avoid conflict with r.exe
 
 # starship
 # change window name
