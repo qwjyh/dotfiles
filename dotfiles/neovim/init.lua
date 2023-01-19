@@ -7,6 +7,7 @@ vim.cmd([[
 highlight LineNr cterm=none ctermfg=243 
 highlight CursorLineNr cterm=none ctermfg=250 
 ]])
+vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.autoindent = true
