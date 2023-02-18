@@ -169,10 +169,10 @@ Import-Module scoop-completion
 #Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
 
 # chezmoi completion
-$chezmoi_script = "$HOME\.config\powershell\chezmoi_completion.ps1"
-if (Test-Path $chezmoi_script) {
-  . $chezmoi_script
-}
+#$chezmoi_script = "$HOME\.config\powershell\chezmoi_completion.ps1"
+#if (Test-Path $chezmoi_script) {
+#  . $chezmoi_script
+#}
 
 # git completion
 Import-Module posh-git
@@ -199,15 +199,16 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # rclone
-rclone completion powershell | Out-String | Invoke-Expression
+#rclone completion powershell | Out-String | Invoke-Expression
 
 # node
 Import-Module npm-completion
 
-
 # rustup completion
-$rustup_script = "$HOME\.config\powershell\rustup_completion.ps1"
-if (Test-Path $rustup_script) {
-  . $rustup_script
-}
+#rustup completions powershell | Out-String | Invoke-Expression
+
+# wezterm
+#wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
+
+Get-ChildItem ~\.config\powershell\completions\ | % { & $_ }
 
