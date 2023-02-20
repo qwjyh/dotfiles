@@ -61,3 +61,7 @@ New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\rustup_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\rustup_completion.ps1) -Force
 # starship
 New-Item -ItemType SymbolicLink -Path ~\.config\starship.toml -Target (Resolve-Path .\dotfiles\starship\starship.toml) -Force
+# wezterm
+mkdir ~\.config\wezterm
+New-Item -ItemType SymbolicLink -Path ~\.config\wezterm\wezterm.lua -Target (Resolve-Path .\dotfiles\wezterm\wezterm.lua) -Force
+
