@@ -12,6 +12,7 @@ my dotfiles
   - fish
   - tmux
   - neovim
+  - x11 keyboard config
 
 # Installing
 ## Windows
@@ -32,5 +33,4 @@ my dotfiles
 - neovim configs
   - lsp-config
   - visuals
-- termux dotfiles
 - raspi dotfiles
