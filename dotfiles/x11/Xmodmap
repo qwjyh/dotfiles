@@ -1,0 +1,33 @@
+! remove modifier keys
+!clear mod5
+
+
+! ZenkakuHankaku to Escape
+keycode  49 = Escape NoSymbol Escape
+
+clear mod3
+clear mod4
+clear mod5
+keycode 102 = Mode_switch
+keycode 100 = Hyper_L
+add mod3 = Mode_switch
+add mod4 = Super_L Super_R Super_L
+add mod5 = Hyper_L
+
+! hjkl for scroll keys
+! keycode  43 = h H h H
+! keycode  44 = j J j J
+! keycode  45 = k K k K
+! keycode  46 = l L l L
+keycode  38 = a A Home  NoSymbol
+keycode  39 = s S Prior NoSymbol
+keycode  40 = d D Next  NoSymbol
+keycode  41 = f F End   NoSymbol
+keycode  43 = h H Left  NoSymbol
+keycode  44 = j J Down  NoSymbol
+keycode  45 = k K Up    NoSymbol
+keycode  46 = l L Right NoSymbol
+
+keycode 255 = Muhenkan
+keycode 254 = Henkan
+
