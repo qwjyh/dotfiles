@@ -23,7 +23,5 @@ return require('packer').startup(function(use)
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/vim-vsnip"
 
-    -- Julia
-    use "JuliaEditorSupport/julia-vim"
 
 end)
