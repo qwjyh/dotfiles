@@ -1,4 +1,38 @@
---print("init.lua loaded")
+-----------------------------------------------------------
+-- Installing plugin manager 'lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Installing plugins
+require('lazy').setup({
+    -- fzf
+    { 'ibhagwan/fzf-lua',
+        -- optional icon
+        --requires = { 'kyazdan142/nvim-web/devicons' } -- not found
+    },
+    -- lualine(statusline)
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
+    },
+    'neovim/nvim-lspconfig',
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    },
+})
+
+
 -----------------------------------------------------------
 -- basic configurations
 vim.o.number = true
@@ -41,10 +75,6 @@ if vim.fn.has('win32') == 1 then
 end
 
 
------------------------------------------------------------
--- Plugins
-require 'plugins'
---vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 -----------------------------------------------------------
 -- LSP config
