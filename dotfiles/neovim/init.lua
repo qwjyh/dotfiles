@@ -28,16 +28,16 @@ vim.o.smartcase = true
 -- vim script func returns 1/0, while lua evals false only if gets false or nil
 -- so be sure to compare with 1/0
 if vim.fn.has('win32') == 1 then
-	if vim.fn.executable('pwsh') == 1 then
-		vim.opt.shell = 'pwsh'
-	else
-		vim.opt.shell = 'powershell'
-	end
-	vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
-	vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
-	vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-	vim.opt.shellquote = ''
-	vim.opt.shellxquote = ''
+    if vim.fn.executable('pwsh') == 1 then
+        vim.opt.shell = 'pwsh'
+    else
+        vim.opt.shell = 'powershell'
+    end
+    vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
+    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellquote = ''
+    vim.opt.shellxquote = ''
 end
 
 
@@ -52,18 +52,18 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 -- 1. LSP Sever management
 --require('mason').setup()
 --require('mason-lspconfig').setup_handlers({ function(server)
---	local opt = {
---		-- -- Function executed when the LSP server startup
---		-- on_attach = function(client, bufnr)
---		--   local opts = { noremap=true, silent=true }
---		--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
---		--   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
---		-- end,
---		capabilities = require('cmp_nvim_lsp').update_capabilities(
---			vim.lsp.protocol.make_client_capabilities()
---		)
---	}
---	require('lspconfig')[server].setup(opt)
+--    local opt = {
+--        -- -- Function executed when the LSP server startup
+--        -- on_attach = function(client, bufnr)
+--        --   local opts = { noremap=true, silent=true }
+--        --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+--        --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
+--        -- end,
+--        capabilities = require('cmp_nvim_lsp').update_capabilities(
+--            vim.lsp.protocol.make_client_capabilities()
+--        )
+--    }
+--    require('lspconfig')[server].setup(opt)
 --end })
 --
 ---- 2. build-in LSP function
@@ -82,7 +82,7 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 --vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 ---- LSP handlers
 --vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---	vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+--    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 --)
 ---- Reference highlight
 --vim.cmd [[
@@ -100,26 +100,26 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 ---- 3. completion (hrsh7th/nvim-cmp)
 --local cmp = require("cmp")
 --cmp.setup({
---	snippet = {
---		expand = function(args)
---			vim.fn["vsnip#anonymous"](args.body)
---		end,
---	},
---	sources = {
---		{ name = "nvim_lsp" },
---		-- { name = "buffer" },
---		-- { name = "path" },
---	},
---	mapping = cmp.mapping.preset.insert({
---		["<C-p>"] = cmp.mapping.select_prev_item(),
---		["<C-n>"] = cmp.mapping.select_next_item(),
---		['<C-l>'] = cmp.mapping.complete(),
---		['<C-e>'] = cmp.mapping.abort(),
---		["<CR>"] = cmp.mapping.confirm { select = true },
---	}),
---	experimental = {
---		ghost_text = true,
---	},
+--    snippet = {
+--        expand = function(args)
+--            vim.fn["vsnip#anonymous"](args.body)
+--        end,
+--    },
+--    sources = {
+--        { name = "nvim_lsp" },
+--        -- { name = "buffer" },
+--        -- { name = "path" },
+--    },
+--    mapping = cmp.mapping.preset.insert({
+--        ["<C-p>"] = cmp.mapping.select_prev_item(),
+--        ["<C-n>"] = cmp.mapping.select_next_item(),
+--        ['<C-l>'] = cmp.mapping.complete(),
+--        ['<C-e>'] = cmp.mapping.abort(),
+--        ["<CR>"] = cmp.mapping.confirm { select = true },
+--    }),
+--    experimental = {
+--        ghost_text = true,
+--    },
 --})
 ---- cmp.setup.cmdline('/', {
 ----   mapping = cmp.mapping.preset.cmdline(),
@@ -143,8 +143,8 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 -----------------------------------------------------------
 -- Ctrl + P to invoke fzf file search
 vim.api.nvim_set_keymap('n', '<c-P>',
-	"<cmd>lua require('fzf-lua').files()<CR>",
-	{ noremap = true, silent = true })
+    "<cmd>lua require('fzf-lua').files()<CR>",
+    { noremap = true, silent = true })
 
 
 -----------------------------------------------------------
@@ -152,6 +152,6 @@ vim.api.nvim_set_keymap('n', '<c-P>',
 require('lualine_setup')
 lualine = require('lualine')
 lualine.setup({
-	options = { theme = 'iceberg_dark' }
+    options = { theme = 'iceberg_dark' }
 })
 lualine.setup()
