@@ -75,9 +75,10 @@ if vim.fn.has('win32') == 1 then
 end
 
 
-
 -----------------------------------------------------------
 -- LSP config
+
+local lspconfig = require 'lspconfig'
 
 -- Mapping for language server
 -- See `:help vim.diagnostic.* for documentation on any of the below functions
@@ -91,7 +92,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings
     -- See `:help vim.lsp.*` for documentation on any of the below function
@@ -113,14 +114,15 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local lsp_flags = {
-}
+-- cmp_nvim_lsp supports additional LSP completion capabilities
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 
 
 -- Lua
-require'lspconfig'.lua_ls.setup {
+lspconfig.lua_ls.setup {
     on_attach = on_attach,
-    flags = lsp_flags,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -139,10 +141,55 @@ require'lspconfig'.lua_ls.setup {
     },
 }
 
+-- Julia
+lspconfig.julials.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
+-- nvim-cmp setup
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+luasnip.config.setup {}
 
-
-
+cmp.setup {
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+    }),
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    },
+}
 
 
 -----------------------------------------------------------
