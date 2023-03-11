@@ -8,6 +8,8 @@ window:
 
 # Font
 font:
+  normal:
+    family: FirgeNerd Console
   size: 11.0
 
 # Color schemes
@@ -46,7 +48,8 @@ schemes:
     # Default colors
     primary:
       #background: '#161821'
-      background: '#272822'
+      #background: '#272822'
+      background: '#0c0d0c'
       foreground: '#d2d4de'
   
     # Normal colors
