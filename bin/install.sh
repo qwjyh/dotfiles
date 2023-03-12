@@ -25,4 +25,8 @@ mkdir -p ~/.config/nvim/lua
 ln -sf $(pwd)/dotfiles/neovim/lua/lualine_setup.lua ~/.config/nvim/lua/lualine_setup.lua
 mkdir -p ~/.config/nvim/lua/lspconfig/server_configurations
 ln -sf $(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/satysfi_ls.lua ~/.config/nvim/lua/lspconfig/server_configurations/satysfi_ls.lua
+mkdir -p ~/.config/nvim/after/queries/satysfi
+curl -o ~/.config/nvim/after/queries/satysfi/highlights.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/highlights.scm
+curl -o ~/.config/nvim/after/queries/satysfi/indents.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/indents.scm
+curl -o ~/.config/nvim/after/queries/satysfi/matchup.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/matchup.scm
 

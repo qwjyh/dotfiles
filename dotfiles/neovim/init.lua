@@ -119,7 +119,22 @@ require('lualine_setup')
 -----------------------------------------------------------
 -- Treesitter
 -- manually install parsers with `:TSInstall <language>`
+
+-- satysfi (https://github.com/monaqa/tree-sitter-satysfi)
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.satysfi = {
+    install_info = {
+        url = "https://github.com/monaqa/tree-sitter-satysfi",
+        files = { "src/parser.c", "src/scanner.c" }
+    },
+    filetype = 'satysfi',
+}
+
+-- setup
 require'nvim-treesitter.configs'.setup {
+    ensure_installed = {
+        'satysfi',
+    },
     highlight = {
         enable = true,
     },
