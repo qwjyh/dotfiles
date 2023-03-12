@@ -33,9 +33,13 @@ require('lazy').setup({
         dependencies = {
             'hrsh7th/cmp-nvim-lsp', -- LSP
             'L3MON4D3/LuaSnip', -- snippets
-            'saadparwaiz1/cmp_luasnip',
+            'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for LuaSnip
             'kdheepak/cmp-latex-symbols', -- latex math
         },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
     },
 })
 
@@ -95,6 +99,28 @@ end
 require('lualine_setup')
 
 -----------------------------------------------------------
+-- Treesitter
+-- manually install parsers with `:TSInstall <language>`
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+        },
+    },
+    indent = {
+        enable = true,
+    },
+}
+
+
+-----------------------------------------------------------
 -- LSP config
 
 local lspconfig = require 'lspconfig'
@@ -129,7 +155,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
