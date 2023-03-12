@@ -1,5 +1,13 @@
 local wezterm = require 'wezterm'
 
+-- default Program on each machine OS
+local default_prog = { "bash" }
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+    default_prog = { 'pwsh' }
+elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
+    default_prog = { 'fish' }
+end
+
 -- from manual
 local launch_menu = {}
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
@@ -26,7 +34,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 return {
-    default_prog = { 'pwsh' },
+    default_prog = default_prog,
     launch_menu = launch_menu,
 
 --    keys = {
@@ -44,3 +52,4 @@ return {
 
     window_background_opacity = 0.8,
 }
+
