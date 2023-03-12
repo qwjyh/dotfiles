@@ -28,7 +28,13 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     {
         'hrsh7th/nvim-cmp',
-        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+        event = "InsertEnter",
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp', -- LSP
+            'L3MON4D3/LuaSnip', -- snippets
+            'saadparwaiz1/cmp_luasnip',
+            'kdheepak/cmp-latex-symbols', -- latex math
+        },
     },
 })
 
@@ -74,6 +80,9 @@ if vim.fn.has('win32') == 1 then
     vim.opt.shellxquote = ''
 end
 
+-----------------------------------------------------------
+-- lualine
+require('lualine_setup')
 
 -----------------------------------------------------------
 -- LSP config
@@ -188,6 +197,12 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        {
+            name = 'latex_symbols',
+            option = {
+                strategy = 0, -- mixed (show the comand and insert the symbol)
+            },
+        },
     },
 }
 
@@ -199,7 +214,4 @@ vim.api.nvim_set_keymap('n', '<c-P>',
     { noremap = true, silent = true })
 
 
------------------------------------------------------------
--- lualine
-require('lualine_setup')
 
