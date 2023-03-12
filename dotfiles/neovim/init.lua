@@ -34,7 +34,10 @@ require('lazy').setup({
             'hrsh7th/cmp-nvim-lsp', -- LSP
             'L3MON4D3/LuaSnip', -- snippets
             'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for LuaSnip
+            'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
             'kdheepak/cmp-latex-symbols', -- latex math
+            'hrsh7th/cmp-path', -- nvim-cmp source for filesystem paths
+            'hrsh7th/cmp-cmdline', -- command line
         },
     },
     {
@@ -233,14 +236,40 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'buffer' },
         {
             name = 'latex_symbols',
             option = {
                 strategy = 0, -- mixed (show the comand and insert the symbol)
             },
         },
+        { name = 'path' },
     },
 }
+-- cmdline completions
+-- `/` cmdline setup.
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+-- ':'
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        {
+            name = 'cmdline',
+            option = {
+                ignore_cmds = { 'Man', '!' }
+            }
+        }
+    })
+})
+
+
 
 
 -----------------------------------------------------------
