@@ -52,9 +52,8 @@ scoop import .\bin\windows\scoop_apps\scoop_minimal_apps.json
 # make symbolic links
 # neovim
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Resolve-Path .\dotfiles\neovim\init.lua) -Force
-New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\plugins.lua -Target (Resolve-Path .\dotfiles\neovim\lua\plugins.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
-New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lsp_client_config.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lsp_client_config.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_configurations\satysfi_ls.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lspconfig\server_configurations\satysfi_ls.lua) -Force
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force

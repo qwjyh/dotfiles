@@ -22,6 +22,7 @@ ln -sf $(pwd)/dotfiles/tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/nvim
 ln -sf $(pwd)/dotfiles/neovim/init.lua ~/.config/nvim/init.lua
 mkdir -p ~/.config/nvim/lua
-ln -sf $(pwd)/dotfiles/neovim/lua/plugins.lua ~/.config/nvim/lua/plugins.lua
 ln -sf $(pwd)/dotfiles/neovim/lua/lualine_setup.lua ~/.config/nvim/lua/lualine_setup.lua
+mkdir -p ~/.config/nvim/lua/lspconfig/server_configurations
+ln -sf $(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/satysfi_ls.lua ~/.config/nvim/lua/lspconfig/server_configurations/satysfi_ls.lua
 

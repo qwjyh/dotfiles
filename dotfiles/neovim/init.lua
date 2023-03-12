@@ -49,6 +49,18 @@ require('lazy').setup({
     },
 })
 
+-----------------------------------------------------------
+-- Adding filetype 'satysfi'
+vim.filetype.add {
+    extension = {
+        saty = 'satysfi',
+        satyh = 'satysfi',
+        satyg = 'satysfi',
+    },
+    pattern = {
+        ['.*%.satyh%-%a+'] = 'satysfi',
+    },
+}
 
 -----------------------------------------------------------
 -- basic configurations
@@ -239,6 +251,13 @@ lspconfig.lua_ls.setup {
 lspconfig.julials.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+-- SATySFi
+lspconfig.satysfi_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    autostart = true,
 }
 
 -- nvim-cmp setup
