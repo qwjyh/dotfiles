@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Installing plugins
 require('lazy').setup({
+    { "catppuccin/nvim", name = "catppuccin" },
     -- fzf
     { 'ibhagwan/fzf-lua',
         -- optional icon
@@ -59,8 +60,17 @@ highlight cursorcolumn ctermbg=235
 ]])
 vim.o.mouse = 'a'
 vim.o.signcolumn = 'yes'
-vim.o.ignorecase = true
+vim.o.ignorecase = true -- keep signcolumn on
 vim.o.smartcase = true
+vim.opt.undofile = true -- Save undo history
+vim.o.completeopt = 'menuone,noselect' -- for better completion experience
+vim.o.termguicolors = true
+
+-- color scheme
+require('catppuccin').setup({
+    transparent_background = true,
+})
+vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
 -- to use PowerShell on Windows
