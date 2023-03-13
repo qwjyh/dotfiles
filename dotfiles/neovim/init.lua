@@ -22,6 +22,15 @@ require('lazy').setup({
             require('Comment').setup()
         end,
     },
+    { -- auto pair
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup {
+                check_ts = true, -- use treesitter
+            }
+        end,
+        event = "InsertEnter",
+    },
     { -- lualine(statusline)
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
@@ -309,13 +318,11 @@ lspconfig.lua_ls.setup {
         },
     },
 }
-
 -- Julia
 lspconfig.julials.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
-
 -- SATySFi
 lspconfig.satysfi_ls.setup {
     on_attach = on_attach,
