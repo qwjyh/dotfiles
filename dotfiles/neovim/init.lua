@@ -16,6 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Installing plugins
 require('lazy').setup({
     { "catppuccin/nvim", name = "catppuccin" },
+    {
+        'numToStr/Comment.nvim',
+        config = function ()
+            require('Comment').setup()
+        end,
+    },
     -- fzf
     { 'ibhagwan/fzf-lua',
         -- optional icon
@@ -112,6 +118,11 @@ if vim.fn.has('win32') == 1 then
     vim.opt.shellquote = ''
     vim.opt.shellxquote = ''
 end
+
+-----------------------------------------------------------
+-- comment setting for satysfi
+local ft = require('Comment.ft')
+ft.set('satysfi', '%%s')
 
 -----------------------------------------------------------
 -- lualine
