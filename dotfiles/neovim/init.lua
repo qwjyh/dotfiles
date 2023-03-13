@@ -15,18 +15,18 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Installing plugins
 require('lazy').setup({
-    { "catppuccin/nvim", name = "catppuccin" },
-    {
+    { "catppuccin/nvim", name = "catppuccin" }, -- Color scheme
+    { -- comment
         'numToStr/Comment.nvim',
         config = function ()
             require('Comment').setup()
         end,
     },
-    -- lualine(statusline)
-    {
+    { -- lualine(statusline)
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
     },
+    { 'lewis6991/gitsigns.nvim', },
     'neovim/nvim-lspconfig',
     {
         'hrsh7th/nvim-cmp',
@@ -124,6 +124,37 @@ end
 -- comment setting for satysfi
 local ft = require('Comment.ft')
 ft.set('satysfi', '%%s')
+
+-----------------------------------------------------------
+-- gitsigns
+require('gitsigns').setup {
+    on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+
+        ---custom mapping func
+        ---@param mode string|string[]
+        ---@param l string
+        ---@param r any
+        ---@param opts table?
+        local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+        end, {expr=true})
+        map('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+        end, {expr=true})
+    end
+}
 
 -----------------------------------------------------------
 -- lualine
