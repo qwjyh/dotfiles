@@ -324,6 +324,12 @@ lspconfig.satysfi_ls.setup {
 }
 -- bash
 lspconfig.bashls.setup {}
+-- python
+lspconfig.pyright.setup {}
+-- rust
+lspconfig.rust_analyzer.setup {}
+-- tex
+lspconfig.texlab.setup {}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
