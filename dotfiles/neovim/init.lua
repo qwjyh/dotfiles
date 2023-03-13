@@ -35,6 +35,10 @@ require('lazy').setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
     },
+    {
+        'lervag/vimtex',
+        ft = { 'tex', 'latex' },
+    },
     { 'lewis6991/gitsigns.nvim', },
     'neovim/nvim-lspconfig',
     {
@@ -45,9 +49,13 @@ require('lazy').setup({
             'L3MON4D3/LuaSnip', -- snippets
             'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for LuaSnip
             'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
-            'kdheepak/cmp-latex-symbols', -- latex math
+            {
+                'kdheepak/cmp-latex-symbols', -- latex math
+                ft = { 'julia', },
+            },
             'hrsh7th/cmp-path', -- nvim-cmp source for filesystem paths
             'hrsh7th/cmp-cmdline', -- command line
+            'hrsh7th/cmp-omni', -- source for omnifunc
             'hrsh7th/cmp-nvim-lua', -- nvim lua
         },
     },
@@ -133,6 +141,10 @@ end
 -- comment setting for satysfi
 local ft = require('Comment.ft')
 ft.set('satysfi', '%%s')
+
+-----------------------------------------------------------
+-- vimtex
+vim.g.vimtex_view_method = 'general' -- which is installed on both win and linux
 
 -----------------------------------------------------------
 -- gitsigns
@@ -392,7 +404,7 @@ cmp.setup {
 }
 -- cmdline completions
 -- `/` cmdline setup.
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
