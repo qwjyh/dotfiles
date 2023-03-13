@@ -22,11 +22,6 @@ require('lazy').setup({
             require('Comment').setup()
         end,
     },
-    -- fzf
-    { 'ibhagwan/fzf-lua',
-        -- optional icon
-        --requires = { 'kyazdan142/nvim-web/devicons' } -- not found
-    },
     -- lualine(statusline)
     {
         'nvim-lualine/lualine.nvim',
@@ -52,6 +47,12 @@ require('lazy').setup({
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+    },
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim'
         },
     },
 })
@@ -127,6 +128,10 @@ ft.set('satysfi', '%%s')
 -----------------------------------------------------------
 -- lualine
 require('lualine_setup')
+
+-----------------------------------------------------------
+-- telescope
+vim.keymap.set('n', '<c-P>', function() require('telescope.builtin').find_files { sort_lastused = true } end) -- fd?
 
 -----------------------------------------------------------
 -- Treesitter
@@ -363,15 +368,4 @@ cmp.setup.cmdline(':', {
         }
     })
 })
-
-
-
-
------------------------------------------------------------
--- Ctrl + P to invoke fzf file search
-vim.api.nvim_set_keymap('n', '<c-P>',
-    "<cmd>lua require('fzf-lua').files()<CR>",
-    { noremap = true, silent = true })
-
-
 
