@@ -275,6 +275,8 @@ lspconfig.satysfi_ls.setup {
     capabilities = capabilities,
     autostart = true,
 }
+-- bash
+lspconfig.bashls.setup {}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
