@@ -38,6 +38,7 @@ require('lazy').setup({
             'kdheepak/cmp-latex-symbols', -- latex math
             'hrsh7th/cmp-path', -- nvim-cmp source for filesystem paths
             'hrsh7th/cmp-cmdline', -- command line
+            'hrsh7th/cmp-nvim-lua', -- nvim lua
         },
     },
     {
@@ -324,6 +325,7 @@ cmp.setup {
             },
         },
         { name = 'path' },
+        { name = 'nvim_lua' },
     },
 }
 -- cmdline completions
