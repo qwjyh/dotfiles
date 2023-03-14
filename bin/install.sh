@@ -25,6 +25,7 @@ mkdir -p ~/.config/nvim/lua
 ln -sf $(pwd)/dotfiles/neovim/lua/lualine_setup.lua ~/.config/nvim/lua/lualine_setup.lua
 mkdir -p ~/.config/nvim/lua/lspconfig/server_configurations
 ln -sf $(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/satysfi_ls.lua ~/.config/nvim/lua/lspconfig/server_configurations/satysfi_ls.lua
+ln -sf $(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/jetls.lua ~/.config/nvim/lua/lspconfig/server_configurations/jetls.lua
 mkdir -p ~/.config/nvim/after/ftplugin
 ln -sf $(pwd)/dotfiles/neovim/after/ftplugin/satysfi.lua ~/.config/nvim/after/ftplugin/satysfi.lua
 ln -sf $(pwd)/dotfiles/neovim/after/ftplugin/tex.lua ~/.config/nvim/after/ftplugin/tex.lua
