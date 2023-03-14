@@ -72,6 +72,10 @@ require('lazy').setup({
         build = [[mkdir -p ~/.julia/environments/nvim-null-ls && julia --startup-file=no --project=~/.julia/environments/nvim-null-ls -e 'using Pkg; Pkg.add("JET")']],
         -- ft = { 'julia', },
     },
+    {
+        'hkupty/iron.nvim',
+        ft = { 'julia', 'python', 'ruby', },
+    },
     { 'lewis6991/gitsigns.nvim', },
     'neovim/nvim-lspconfig',
     {
@@ -82,15 +86,15 @@ require('lazy').setup({
             'L3MON4D3/LuaSnip', -- snippets
             'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for LuaSnip
             'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
-            {
-                'kdheepak/cmp-latex-symbols', -- latex math
-                ft = { 'julia', },
-            },
             'hrsh7th/cmp-path', -- nvim-cmp source for filesystem paths
             'hrsh7th/cmp-cmdline', -- command line
             'hrsh7th/cmp-omni', -- source for omnifunc
             'hrsh7th/cmp-nvim-lua', -- nvim lua
         },
+    },
+    {
+        'kdheepak/cmp-latex-symbols', -- latex math
+        ft = { 'julia', },
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -184,6 +188,43 @@ ft.set('satysfi', '%%s')
 -----------------------------------------------------------
 -- vimtex
 vim.g.vimtex_view_method = 'general' -- which is installed on both win and linux
+
+-----------------------------------------------------------
+-- iron (repl)
+local iron = require('iron.core')
+iron.setup {
+    config = {
+        scratch_repl = true, -- repl should be discarded
+        repl_definition = {
+            fish = {
+                command = { 'fish' },
+            },
+            julia = {
+                command = { 'julia', },
+            },
+            shell = {
+                command = { 'sh', },
+            },
+        },
+        repl_open_cmd = require('iron.view').split.botright('30%'), -- repl view config
+    },
+    keymaps = {
+        send_motion = "<space>sc",
+        visual_send = "<space>sc",
+        send_file = "<space>sf",
+        send_line = "<space>sl",
+        send_mark = "<space>sm",
+        mark_motion = "<space>mc",
+        mark_visual = "<space>mc",
+        remove_mark = "<space>md",
+        cr = "<space>s<cr>",
+        interrupt = "<space>s<space>",
+        exit = "<space>sq",
+        clear = "<space>cl",
+    },
+}
+-- keymap for iron repl
+vim.keymap.set('n', '<C-@>', '<cmd>IronRepl<cr>')
 
 -----------------------------------------------------------
 -- gitsigns
