@@ -163,6 +163,13 @@ require('catppuccin').setup({
 vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
+-- some terminalmode settings
+vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h', { noremap = true, desc = "Exit terminal-mode and move to left window."})
+vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j', { noremap = true, desc = "Exit terminal-mode and move to down window."})
+vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k', { noremap = true, desc = "Exit terminal-mode and move to up window."})
+vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l', { noremap = true, desc = "Exit terminal-mode and move to right window."})
+
+-----------------------------------------------------------
 -- to use PowerShell on Windows
 -- original code from :h powershell
 -- vim script func returns 1/0, while lua evals false only if gets false or nil
