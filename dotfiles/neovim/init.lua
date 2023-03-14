@@ -16,6 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 -- Installing plugins
 require('lazy').setup({
     { "catppuccin/nvim", name = "catppuccin" }, -- Color scheme
+    {
+        'folke/which-key.nvim',
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require('which-key').setup {
+
+            }
+        end,
+    },
+    { 'RRethy/vim-illuminate', }, -- highlight keywords under cursor
     { -- comment
         'numToStr/Comment.nvim',
         config = function ()
@@ -71,6 +82,10 @@ require('lazy').setup({
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
+    },
+    {
+        'folke/trouble.nvim',
+        -- config = function
     },
 })
 
@@ -344,13 +359,25 @@ lspconfig.satysfi_ls.setup {
     autostart = true,
 }
 -- bash
-lspconfig.bashls.setup {}
+lspconfig.bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 -- python
-lspconfig.pyright.setup {}
+lspconfig.pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 -- rust
-lspconfig.rust_analyzer.setup {}
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 -- tex
-lspconfig.texlab.setup {}
+lspconfig.texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
