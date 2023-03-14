@@ -5,6 +5,7 @@ my dotfiles
 - Windows 11
   - pwsh
   - AHK macro
+  - wezterm
   - etc
 - Ubuntu 20.04 on WSL
   - fish
@@ -13,6 +14,11 @@ my dotfiles
   - tmux
   - neovim
   - x11 keyboard config
+  - alacritty
+  - wezterm
+
+## extra
+- okular
 
 # Installing
 ## Windows
@@ -30,7 +36,5 @@ my dotfiles
 # TODO
 - make install script for Linux
 - add rc files of Manjaro
-- neovim configs
-  - lsp-config
-  - visuals
 - raspi dotfiles
+
