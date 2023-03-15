@@ -433,6 +433,10 @@ lspconfig.bashls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+-- pwsh
+lspconfig.powershell_es.setup {
+    bundle_path = '~/scoop/apps/powershell-editorservice/current/PowerShellEditorServices'
+}
 -- python
 lspconfig.pyright.setup {
     on_attach = on_attach,

@@ -34,6 +34,10 @@ my dotfiles
 2. run install.fish
 
 # TODO
+- Iron.nvim doesn't work for julia on Windows
+- JET.nvim doesn't work on windows
+- tree-sitter of lua doesn't work on windows
+  - checkhealth errors
 - make install script for Linux
 - add rc files of Manjaro
 - raspi dotfiles
