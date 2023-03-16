@@ -14,3 +14,6 @@ rustup completions powershell > (Join-Path $script_location "rustup_completion.p
 wezterm shell-completion --shell power-shell > (Join-Path $script_location "wezterm_completion.ps1")
 chezmoi completion powershell > (Join-Path $script_location "chezmoi_completion.ps1")
 
+# alias
+Set-Location $PSScriptRoot
+Get-ChildItem "../../extra_configs/completions" -File | Copy-Item -Destination $script_location
