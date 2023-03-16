@@ -5,18 +5,22 @@
 # first to run pwsh scripts
 
 # check administration role
-# to make symlink
 #Requires -RunAsAdministrator
 
 # check pwsh version
 # ≧ 7
 #Requires -Version 7
 
-# change working directory to git root
-Set-Location (Join-Path $PSScriptRoot "..")
+# check working directory
+if (!(
+    (Test-Path bin) -and (Test-Path dotfiles)
+  )) {
+  Write-Warning -Message "wrong current path
+  please execute at repo root"
+  exit 1
+}
 
 # install powershell modules
-Write-Output "====Installing PSModules"
 Write-Output "posh git"
 Install-Module -Name posh-git
 Write-Output "Pscx"
@@ -36,17 +40,16 @@ Install-Module -Name npm-completion
 
 # install scoop
 if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
-  Write-Output "====Installing scoop..."
+  Write-Output "Installing scoop..."
   irm get.scoop.sh | iex
-  # install basic scoop apps
-  # import from exported json file
-  # to update the json file, execute ./bin/windows/scoop_apps/update_scoop_list.ps1
-  scoop import .\bin\windows\scoop_apps\scoop_minimal_apps.json
 }
+# install basic scoop apps
+# import from exported json file
+# to update the json file, execute ./bin/windows/scoop_apps/update_scoop_list.ps1
+scoop import .\bin\windows\scoop_apps\scoop_minimal_apps.json
 
 
 # make symbolic links
-Write-Output "====Making Symbolic Links"
 # neovim
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Resolve-Path .\dotfiles\neovim\init.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
