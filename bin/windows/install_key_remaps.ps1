@@ -2,14 +2,8 @@
 # Be sure to install AutoHotKey first
 
 
-# check working directory
-if (!(
-    (Test-Path bin) -and (Test-Path dotfiles)
-  )) {
-  Write-Warning -Message "wrong current path
-  please execute at repo root"
-  exit 1
-}
+# change working directory to git root
+Set-Location (Join-Path $PSScriptRoot "..")
 
 # set Ahk2Exe.exe path
 # example "C:\Program Files\AutoHotKey\Compiler\Ahk2Exe.exe"

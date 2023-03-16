@@ -6,11 +6,8 @@ if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
   exit 1
 }
 
-# execution location
-if(!((Test-Path bin) -and (Test-Path dotfiles))) {
-  Write-Warning "This script need to be executed in dotfiles root"
-  exit 2
-}
+# change working directory to git root
+Set-Location (Join-Path $PSScriptRoot "..")
 
 
 # export to JSON
