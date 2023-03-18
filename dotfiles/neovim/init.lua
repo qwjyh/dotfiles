@@ -74,7 +74,7 @@ require('lazy').setup({
     },
     {
         'hkupty/iron.nvim',
-        ft = { 'julia', 'python', 'ruby', },
+        ft = { 'julia', 'python', 'ruby', 'lua', },
     },
     { 'lewis6991/gitsigns.nvim', },
     'neovim/nvim-lspconfig',
@@ -454,6 +454,11 @@ lspconfig.texlab.setup {
 }
 -- -- jetls
 -- lspconfig.jetls.setup {}
+-- ccls
+lspconfig.ccls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
