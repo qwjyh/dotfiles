@@ -16,4 +16,4 @@ chezmoi completion powershell > (Join-Path $script_location "chezmoi_completion.
 
 # alias
 Set-Location $PSScriptRoot
-Get-ChildItem "../../extra_configs/completions" -File | Copy-Item -Destination $script_location
+Get-ChildItem "../../extra_configs/completions" -File *.ps1 | Copy-Item -Destination $script_location
