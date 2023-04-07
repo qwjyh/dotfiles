@@ -3,6 +3,7 @@
 # ==============================================================
 Import-Module PSReadLine	# >= 2.2.2
 Import-Module CompletionPredictor
+Import-Module DirectoryPredictor
 Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin	# require PowerShell ≧ 7.2 and PSReadLine ≧ 2.2.2
 Set-PSReadlineOption -HistoryNoDuplicates
@@ -153,6 +154,7 @@ function Invoke-SshAdd {
 }
 # execute "ssh-add" to add keys
 
+Import-Module PSDates
 
 # less options
 $env:LESS = "-i -M -R -S -W -z-4 -x4"
@@ -209,6 +211,9 @@ Import-Module npm-completion
 
 # wezterm
 #wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
+
+# wsl.exe
+Import-Module WSLTabCompletion
 
 Get-ChildItem ~\.config\powershell\completions\ | % { & $_ }
 
