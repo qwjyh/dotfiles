@@ -71,4 +71,7 @@ New-Item -ItemType SymbolicLink -Path ~\.config\starship.toml -Target (Resolve-P
 # wezterm
 mkdir ~\.config\wezterm
 New-Item -ItemType SymbolicLink -Path ~\.config\wezterm\wezterm.lua -Target (Resolve-Path .\dotfiles\wezterm\wezterm.lua) -Force
+# julia
+mkdir ~\.config\julia\config
+New-Item -ItemType SymbolicLink -Path ~\.julia\config\startup.jl -Target (Resolve-Path .\dotfiles\startup_windows.jl) -Force
 
