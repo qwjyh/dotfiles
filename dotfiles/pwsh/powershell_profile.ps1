@@ -190,6 +190,15 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
       }
 }
 
+# PowerShell parameter completion shim for the dotnet CLI
+# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#powershell
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+     param($commandName, $wordToComplete, $cursorPosition)
+         dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+         }
+ }
+
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
 # Be aware that if you are missing these lines from your profile, tab completion
@@ -215,5 +224,5 @@ Import-Module npm-completion
 # wsl.exe
 Import-Module WSLTabCompletion
 
-Get-ChildItem ~\.config\powershell\completions\ | % { & $_ }
+Get-ChildItem ~\.config\powershell\completions\ | % { . $_ }
 
