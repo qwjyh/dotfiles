@@ -437,33 +437,17 @@ lspconfig.bashls.setup {
 lspconfig.powershell_es.setup {
     bundle_path = '~/scoop/apps/powershell-editorservice/current/PowerShellEditorServices'
 }
--- python
-lspconfig.pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- rust
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- tex
-lspconfig.texlab.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
 -- -- jetls
 -- lspconfig.jetls.setup {}
 -- ccls
-lspconfig.ccls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- tsserver
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+
+local lss = {"pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",}
+for _, ls in pairs(lss) do
+    lspconfig[ls].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+end
 
 -- nvim-cmp setup
 local cmp = require 'cmp'

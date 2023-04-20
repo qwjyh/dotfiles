@@ -51,5 +51,7 @@ return {
     tab_bar_at_bottom = true,
 
     window_background_opacity = 0.8,
+
+    font = wezterm.font 'FirgeNerd Console'
 }
 
