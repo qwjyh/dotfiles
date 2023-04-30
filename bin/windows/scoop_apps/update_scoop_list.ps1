@@ -7,15 +7,16 @@ if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
 }
 
 # change working directory to git root
-Set-Location (Join-Path $PSScriptRoot "..")
+Set-Location (Join-Path $PSScriptRoot "../../..")
 
+Write-Output (pwd).Path
 
 # export to JSON
-scoop export | Out-File .\bin\scoop_apps\scoop_apps.json -Encoding utf8
+scoop export | Out-File .\bin\windows\scoop_apps\scoop_apps.json -Encoding utf8
 
 # create minimal JSON
-$minimal_list = @("7zip", "bat", "fzf", "grep", "hexyl", "less", "sudo", "ugrep")
-$parsed_json = Get-Content -Path .\bin\scoop_apps\scoop_apps.json | ConvertFrom-Json
+$minimal_list = @("7zip", "aria2", "bat", "fzf", "grep", "hexyl", "less", "python", "rclone", "rga", "scoop-completion", "shasum", "sudo", "tree-sitter", "ugrep")
+$parsed_json = Get-Content -Path .\bin\windows\scoop_apps\scoop_apps.json | ConvertFrom-Json
 $buckets = ($parsed_json | Select-Object buckets).buckets
 $apps = ($parsed_json | Select-Object apps).apps
 $selected_apps = $apps | Where-Object Name -In $minimal_list
@@ -23,4 +24,4 @@ $new_json = [PSCustomObject]@{
   "apps" = $selected_apps
   "buckets" = $buckets
 }
-ConvertTo-Json -InputObject $new_json | Out-File .\bin\scoop_apps\scoop_minimal_apps.json -Encoding utf8
+ConvertTo-Json -InputObject $new_json | Out-File .\bin\windows\scoop_apps\scoop_minimal_apps.json -Encoding utf8
