@@ -12,7 +12,7 @@ if ! type fisher &>/dev/null
 	echo "==Automatic install=="
 	echo "You can run `curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher` right here"
 	echo "be sure to check install command on the fisher project homepage."
-	read -p "echo Install\?(default Y / N):\ " ans
+	read -p "echo Install with the script above\?(default Y / N):\ " ans
 	if [ $ans = 'N' ]
 		return 1
 	end
@@ -24,6 +24,6 @@ fisher update
 
 # installing packages
 fisher install edc/bass
-#fisher install jethrokuan/z
+fisher install jethrokuan/z
 fisher install patrickf1/fzf.fish
 
