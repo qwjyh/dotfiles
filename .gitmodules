@@ -1,0 +1,3 @@
+[submodule "julia-sysimages"]
+	path = julia-sysimages
+	url = git@github.com:qwjyh/julia-my-sysimages.git
