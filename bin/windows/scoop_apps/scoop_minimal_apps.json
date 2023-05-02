@@ -1,74 +1,141 @@
 {
   "apps": [
     {
+      "Source": "main",
+      "Version": "22.01",
+      "Info": "",
       "Updated": "2022-09-24T06:50:10.362148+09:00",
-      "Info": "",
-      "Source": "main",
-      "Name": "7zip",
-      "Version": "22.01"
+      "Name": "7zip"
     },
     {
-      "Updated": "2022-09-24T06:45:30.615827+09:00",
-      "Info": "",
       "Source": "main",
-      "Name": "bat",
-      "Version": "0.22.1"
+      "Version": "1.36.0-1",
+      "Info": "",
+      "Updated": "2023-04-09T02:55:15.2743335+09:00",
+      "Name": "aria2"
     },
     {
-      "Updated": "2022-09-23T17:54:45.7302151+09:00",
-      "Info": "",
       "Source": "main",
-      "Name": "fzf",
-      "Version": "0.33.0"
+      "Version": "0.23.0",
+      "Info": "",
+      "Updated": "2023-03-26T18:39:04.208662+09:00",
+      "Name": "bat"
     },
     {
+      "Source": "main",
+      "Version": "0.39.0",
+      "Info": "",
+      "Updated": "2023-04-05T08:47:47.296666+09:00",
+      "Name": "fzf"
+    },
+    {
+      "Source": "main",
+      "Version": "3.7",
+      "Info": "",
       "Updated": "2022-09-24T06:50:11.9515886+09:00",
-      "Info": "",
-      "Source": "main",
-      "Name": "grep",
-      "Version": "3.7"
+      "Name": "grep"
     },
     {
-      "Updated": "2022-09-24T06:43:31.7789266+09:00",
-      "Info": "",
       "Source": "main",
-      "Name": "hexyl",
-      "Version": "0.10.0"
+      "Version": "0.12.0",
+      "Info": "",
+      "Updated": "2022-12-08T17:23:48.8883596+09:00",
+      "Name": "hexyl"
     },
     {
+      "Source": "main",
+      "Version": "608",
+      "Info": "",
       "Updated": "2022-09-23T17:59:11.0595712+09:00",
-      "Info": "",
-      "Source": "main",
-      "Name": "less",
-      "Version": "608"
+      "Name": "less"
     },
     {
+      "Source": "main",
+      "Version": "3.11.3",
+      "Info": "",
+      "Updated": "2023-04-06T12:06:41.1763977+09:00",
+      "Name": "python"
+    },
+    {
+      "Source": "main",
+      "Version": "1.62.2",
+      "Info": "",
+      "Updated": "2023-03-23T13:54:55.8666374+09:00",
+      "Name": "rclone"
+    },
+    {
+      "Source": "main",
+      "Version": "0.9.6",
+      "Info": "",
+      "Updated": "2022-10-08T23:14:27.9876049+09:00",
+      "Name": "rga"
+    },
+    {
+      "Source": "extras",
+      "Version": "0.2.4",
+      "Info": "",
+      "Updated": "2022-10-28T07:59:17.3048878+09:00",
+      "Name": "scoop-completion"
+    },
+    {
+      "Source": "main",
+      "Version": "0.2020.02.27",
+      "Info": "",
+      "Updated": "2022-09-30T17:43:48.986598+09:00",
+      "Name": "shasum"
+    },
+    {
+      "Source": "main",
+      "Version": "0.2020.01.26",
+      "Info": "",
       "Updated": "2022-09-22T23:40:06.1651065+09:00",
-      "Info": "",
-      "Source": "main",
-      "Name": "sudo",
-      "Version": "0.2020.01.26"
+      "Name": "sudo"
     },
     {
-      "Updated": "2022-09-24T06:53:20.806641+09:00",
-      "Info": "",
       "Source": "main",
-      "Name": "ugrep",
-      "Version": "3.9.2"
+      "Version": "0.20.8",
+      "Info": "",
+      "Updated": "2023-04-05T08:49:04.7238976+09:00",
+      "Name": "tree-sitter"
+    },
+    {
+      "Source": "main",
+      "Version": "3.11.2",
+      "Info": "",
+      "Updated": "2023-04-09T00:09:13.2749821+09:00",
+      "Name": "ugrep"
     }
   ],
   "buckets": [
     {
       "Name": "extras",
       "Source": "https://github.com/ScoopInstaller/Extras",
-      "Updated": "2022-09-28T21:31:14+09:00",
-      "Manifests": 1691
+      "Updated": "2023-04-30T23:13:19+09:00",
+      "Manifests": 1862
+    },
+    {
+      "Name": "games",
+      "Source": "https://github.com/Calinou/scoop-games",
+      "Updated": "2023-04-30T21:31:23+09:00",
+      "Manifests": 270
     },
     {
       "Name": "main",
       "Source": "https://github.com/ScoopInstaller/Main",
-      "Updated": "2022-09-28T21:32:26+09:00",
-      "Manifests": 1091
+      "Updated": "2023-04-30T21:31:42+09:00",
+      "Manifests": 1196
+    },
+    {
+      "Name": "my-bucket",
+      "Source": "https://github.com/qwjyh/scoop_bucket.git",
+      "Updated": "2023-04-06T19:37:51+09:00",
+      "Manifests": 5
+    },
+    {
+      "Name": "sysinternals",
+      "Source": "https://github.com/niheaven/scoop-sysinternals",
+      "Updated": "2023-04-18T21:02:21+09:00",
+      "Manifests": 75
     }
   ]
 }

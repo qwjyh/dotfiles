@@ -17,7 +17,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     })
 
     for _, vsvers in
-        ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)'))
+    ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)'))
     do
         local year = vsvers:gsub('Microsoft Visual Studio/', '')
         table.insert(launch_menu, {
@@ -26,8 +26,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
                 'cmd.exe',
                 '/k',
                 'C:/Program Files (x86)/'
-                    .. vsvers
-                    .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
+                .. vsvers
+                .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
             },
         })
     end
@@ -36,22 +36,27 @@ end
 return {
     default_prog = default_prog,
     launch_menu = launch_menu,
-
---    keys = {
---        {
---            key = 'P',
---            mods = 'CTRL',
---            action = wezterm.action.ActivateCommandPalette,
---        }
---    },
+    --    keys = {
+    --        {
+    --            key = 'P',
+    --            mods = 'CTRL',
+    --            action = wezterm.action.ActivateCommandPalette,
+    --        }
+    --    },
 
     color_scheme = "iceberg-dark",
-
     use_fancy_tab_bar = false,
     tab_bar_at_bottom = true,
-
-    window_background_opacity = 0.8,
-
-    font = wezterm.font 'FirgeNerd Console'
+    window_background_opacity = 0.85,
+    -- font = wezterm.font 'FirgeNerd Console'
+    font = wezterm.font_with_fallback {
+        {
+            family = 'JuliaMono',
+            harfbuzz_features = {
+                'calt=0', -- disables ligature
+            },
+        },
+        'FirgeNerd Console', -- for japanese
+        'UniFont Regular',
+    },
 }
-
