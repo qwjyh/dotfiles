@@ -104,6 +104,17 @@ require('lazy').setup({
         },
     },
     {
+        "andymass/vim-matchup",
+        config = function ()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+            require'nvim-treesitter.configs'.setup {
+                matchup = {
+                    enable = true,
+                }
+            }
+        end,
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim'
@@ -289,6 +300,7 @@ parser_config.satysfi = {
 -- setup
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
+        'julia',
         'satysfi',
     },
     highlight = {
@@ -304,6 +316,9 @@ require'nvim-treesitter.configs'.setup {
         },
     },
     indent = {
+        enable = true,
+    },
+    matchup = {
         enable = true,
     },
     textobjects = {
