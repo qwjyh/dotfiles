@@ -23,7 +23,7 @@ end
 starship init fish | source
 
 function set_win_title
-  echo -ne "\033]0; (basename "$PWD") \007"
+    echo -ne "\033]0; (basename "$PWD") \007"
 end
 set starship_precmd_uesr_func "set_win_title"
 
@@ -48,7 +48,7 @@ set -x EDITOR "/usr/bin/nvim"
 # save fish log to my custom file
 set -gx my_fish_history "$HOME/my_fish_history.txt"
 function save_myhistory --on-event fish_prompt -d "Save custom shell log to $my_fish_history"
-	set -l prev_status $status
+    set -l prev_status $status
     echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid $PWD [$prev_status] $(history -1)" \
         >> $my_fish_history
 end
@@ -57,7 +57,7 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid [START]" \
     >> $my_fish_history
 # exit sign
 function save_myhistory_exit --on-event fish_exit -d "Add exit sign to $my_fish_history"
-	echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid [EXIT]" \
+    echo "$(date '+%Y-%m-%d %H:%M:%S') $hostname:$fish_pid [EXIT]" \
         >> $my_fish_history
 end
 
