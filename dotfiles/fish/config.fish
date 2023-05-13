@@ -43,6 +43,10 @@ bind \b backward-kill-word
 # env
 set -x LESS '-i -r -M -R -S -W -z-4 -x4'
 set -x EDITOR "/usr/bin/nvim"
+# julia sysimage
+set -x JL_SYSIMG_PATH "$HOME/dotfiles/julia-sysimages"
+set -x JL_SYSIMG_PLT "$HOME/dotfiles/julia-sysimages/sys-plotsmakie.so"
+set -x JL_SYSIMG_ETC "$HOME/dotfiles/julia-sysimages/sys-etc.so"
 
 
 # save fish log to my custom file
