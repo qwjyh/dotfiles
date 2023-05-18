@@ -1,129 +1,136 @@
 {
   "apps": [
     {
+      "Version": "23.00",
       "Source": "main",
-      "Version": "22.01",
+      "Name": "7zip",
       "Info": "",
-      "Updated": "2022-09-24T06:50:10.362148+09:00",
-      "Name": "7zip"
+      "Updated": "2023-05-15T09:50:35.23148+09:00"
     },
     {
-      "Source": "main",
       "Version": "1.36.0-1",
+      "Source": "main",
+      "Name": "aria2",
       "Info": "",
-      "Updated": "2023-04-09T02:55:15.2743335+09:00",
-      "Name": "aria2"
+      "Updated": "2023-04-09T02:55:15.2743335+09:00"
     },
     {
-      "Source": "main",
       "Version": "0.23.0",
+      "Source": "main",
+      "Name": "bat",
       "Info": "",
-      "Updated": "2023-03-26T18:39:04.208662+09:00",
-      "Name": "bat"
+      "Updated": "2023-03-26T18:39:04.208662+09:00"
     },
     {
+      "Version": "0.40.0",
       "Source": "main",
-      "Version": "0.39.0",
+      "Name": "fzf",
       "Info": "",
-      "Updated": "2023-04-05T08:47:47.296666+09:00",
-      "Name": "fzf"
+      "Updated": "2023-05-02T21:56:32.4785695+09:00"
     },
     {
-      "Source": "main",
       "Version": "3.7",
+      "Source": "main",
+      "Name": "grep",
       "Info": "",
-      "Updated": "2022-09-24T06:50:11.9515886+09:00",
-      "Name": "grep"
+      "Updated": "2022-09-24T06:50:11.9515886+09:00"
     },
     {
+      "Version": "0.13.0",
       "Source": "main",
-      "Version": "0.12.0",
+      "Name": "hexyl",
       "Info": "",
-      "Updated": "2022-12-08T17:23:48.8883596+09:00",
-      "Name": "hexyl"
+      "Updated": "2023-05-12T01:22:13.4871592+09:00"
     },
     {
+      "Version": "633",
       "Source": "main",
-      "Version": "608",
+      "Name": "less",
       "Info": "",
-      "Updated": "2022-09-23T17:59:11.0595712+09:00",
-      "Name": "less"
+      "Updated": "2023-05-07T17:19:07.3225186+09:00"
     },
     {
-      "Source": "main",
       "Version": "3.11.3",
+      "Source": "main",
+      "Name": "python",
       "Info": "",
-      "Updated": "2023-04-06T12:06:41.1763977+09:00",
-      "Name": "python"
+      "Updated": "2023-04-06T12:06:41.1763977+09:00"
     },
     {
-      "Source": "main",
       "Version": "1.62.2",
+      "Source": "main",
+      "Name": "rclone",
       "Info": "",
-      "Updated": "2023-03-23T13:54:55.8666374+09:00",
-      "Name": "rclone"
+      "Updated": "2023-03-23T13:54:55.8666374+09:00"
     },
     {
+      "Version": "2.0.0",
       "Source": "main",
+      "Name": "recycle-bin",
+      "Info": "",
+      "Updated": "2023-05-11T01:58:29.0772851+09:00"
+    },
+    {
       "Version": "0.9.6",
+      "Source": "main",
+      "Name": "rga",
       "Info": "",
-      "Updated": "2022-10-08T23:14:27.9876049+09:00",
-      "Name": "rga"
+      "Updated": "2022-10-08T23:14:27.9876049+09:00"
     },
     {
-      "Source": "extras",
       "Version": "0.2.4",
+      "Source": "extras",
+      "Name": "scoop-completion",
       "Info": "",
-      "Updated": "2022-10-28T07:59:17.3048878+09:00",
-      "Name": "scoop-completion"
+      "Updated": "2022-10-28T07:59:17.3048878+09:00"
     },
     {
-      "Source": "main",
       "Version": "0.2020.02.27",
+      "Source": "main",
+      "Name": "shasum",
       "Info": "",
-      "Updated": "2022-09-30T17:43:48.986598+09:00",
-      "Name": "shasum"
+      "Updated": "2022-09-30T17:43:48.986598+09:00"
     },
     {
-      "Source": "main",
       "Version": "0.2020.01.26",
+      "Source": "main",
+      "Name": "sudo",
       "Info": "",
-      "Updated": "2022-09-22T23:40:06.1651065+09:00",
-      "Name": "sudo"
+      "Updated": "2022-09-22T23:40:06.1651065+09:00"
     },
     {
-      "Source": "main",
       "Version": "0.20.8",
+      "Source": "main",
+      "Name": "tree-sitter",
       "Info": "",
-      "Updated": "2023-04-05T08:49:04.7238976+09:00",
-      "Name": "tree-sitter"
+      "Updated": "2023-04-05T08:49:04.7238976+09:00"
     },
     {
-      "Source": "main",
       "Version": "3.11.2",
+      "Source": "main",
+      "Name": "ugrep",
       "Info": "",
-      "Updated": "2023-04-09T00:09:13.2749821+09:00",
-      "Name": "ugrep"
+      "Updated": "2023-04-09T00:09:13.2749821+09:00"
     }
   ],
   "buckets": [
     {
       "Name": "extras",
       "Source": "https://github.com/ScoopInstaller/Extras",
-      "Updated": "2023-04-30T23:13:19+09:00",
-      "Manifests": 1862
+      "Updated": "2023-05-15T09:34:30+09:00",
+      "Manifests": 1866
     },
     {
       "Name": "games",
       "Source": "https://github.com/Calinou/scoop-games",
-      "Updated": "2023-04-30T21:31:23+09:00",
-      "Manifests": 270
+      "Updated": "2023-05-15T08:26:22+09:00",
+      "Manifests": 276
     },
     {
       "Name": "main",
       "Source": "https://github.com/ScoopInstaller/Main",
-      "Updated": "2023-04-30T21:31:42+09:00",
-      "Manifests": 1196
+      "Updated": "2023-05-15T09:35:03+09:00",
+      "Manifests": 1197
     },
     {
       "Name": "my-bucket",
