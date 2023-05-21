@@ -15,6 +15,10 @@ if status is-interactive
     keychain --eval --quiet -Q id_rsa, id_ed25519 | source
     set -x SHELL bash
 
+    # abbr (from 3.6, --universal is removed)
+    abbr -a -- l less
+    abbr -a -- ll 'exa -la --icons --git'
+
     # opam
     #source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
