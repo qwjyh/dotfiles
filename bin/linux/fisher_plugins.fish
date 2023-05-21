@@ -24,6 +24,5 @@ fisher update
 
 # installing packages
 fisher install edc/bass
-fisher install jethrokuan/z
 fisher install patrickf1/fzf.fish
 

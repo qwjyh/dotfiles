@@ -19,6 +19,8 @@ if status is-interactive
     abbr -a -- l less
     abbr -a -- ll 'exa -la --icons --git'
 
+    zoxide init fish | source
+
     # opam
     #source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
