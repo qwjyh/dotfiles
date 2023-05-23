@@ -57,6 +57,7 @@ return {
             },
         },
         'FirgeNerd Console', -- for japanese
+        'Twemoji',
         'UniFont Regular',
     },
 }
