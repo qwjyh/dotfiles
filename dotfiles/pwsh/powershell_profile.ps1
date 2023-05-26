@@ -51,6 +51,8 @@ function Invoke-Starship-PreCommand {
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
 
+# z
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 
 # --------------------------------------------------------------
