@@ -57,6 +57,7 @@ return {
             },
         },
         'FirgeNerd Console', -- for japanese
+        { family = 'FirgeNerd Console', assume_emoji_presentation = true }, -- for japanese
         'UniFont Regular',
     },
 }
