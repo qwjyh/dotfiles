@@ -38,3 +38,5 @@ ln -sf $(pwd)/dotfiles/neovim/luasnippets/all.lua ~/.config/nvim/luasnippets/all
 mkdir -p ~/.config/nvim/luasnippets/satysfi
 ln -sf $(pwd)/dotfiles/neovim/luasnippets/satysfi/math.lua ~/.config/nvim/luasnippets/satysfi/math.lua
 
+mkdir -p ~/.julia/config
+ln -sf $(pwd)/dotfiles/startup_linux.jl ~/.julia/config/startup.jl
