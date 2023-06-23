@@ -1,3 +1,13 @@
+-- [[
+-- snippet for greek alphabet and common math-commands
+--
+-- all snippets have prefix `;`
+-- note:
+--  `@` doesn't work well with satysfi-language-server
+--
+-- all snippets work only in math (not in inline_text)
+-- ]]
+
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
