@@ -90,6 +90,7 @@ require('lazy').setup({
             'hrsh7th/cmp-cmdline', -- command line
             'hrsh7th/cmp-omni', -- source for omnifunc
             'hrsh7th/cmp-nvim-lua', -- nvim lua
+            'hrsh7th/cmp-nvim-lsp-signature-help',
         },
     },
     {
@@ -489,7 +490,11 @@ end
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-luasnip.config.setup {}
+luasnip.config.setup {
+    enable_autosnippets = true,
+    store_selection_key = "<Tab>",
+}
+require 'luasnip.loaders.from_lua'.load({paths = './luasnippets'})
 
 cmp.setup {
     snippet = {
@@ -524,9 +529,13 @@ cmp.setup {
             end
         end, { 'i', 's' }),
     }),
+    sorting = {
+        priority_weight = 10,
+    },
     sources = {
+        { name = 'luasnip', max_item_count = 10 },
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },
         {
             name = 'latex_symbols',
@@ -536,6 +545,7 @@ cmp.setup {
         },
         { name = 'path' },
         { name = 'nvim_lua' },
+        { name = 'luasnip' },
     },
 }
 -- cmdline completions
