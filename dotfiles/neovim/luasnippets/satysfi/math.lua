@@ -323,6 +323,10 @@ return {
         t("\\partial")
     ),
     s(
+        {trig = ";;", show_condition = isinmath},
+        {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
+    ),
+    s(
         {trig = ";%", show_condition = isinmath},
         {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
     ),
