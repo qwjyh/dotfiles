@@ -1,0 +1,27 @@
+virtual_modifiers:
+  - Email
+modmap:
+  # - name: CapsLock
+  #   remap:
+  #     Capslock:
+  #       held: Capslock
+  #       alone: backslash
+  - name: Muhenkan
+    remap:
+      KEY_MUHENKAN:
+        held: KEY_Email
+        alone: KEY_MUHENKAN
+keymap:
+  - name: ZenkakuHankaku to Esc
+    remap:
+      KEY_GRAVE: Esc
+  - name: Muhenkan plus
+    remap:
+      Email-h: Left
+      Email-j: Down
+      Email-k: Up
+      Email-l: Right
+      Email-a: Home
+      Email-s: PageUp
+      Email-d: PageDown
+      Email-f: End
