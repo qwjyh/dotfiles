@@ -9,12 +9,11 @@ my dotfiles
   - etc
 - Ubuntu 20.04 on WSL
   - fish
-- Manjaro
+- Arch/Manjaro
   - fish
   - tmux
   - neovim
-  - x11 keyboard config
-  - alacritty
+  - keyboard config(xremap)
   - wezterm
 
 ## extra
@@ -29,16 +28,16 @@ my dotfiles
 5. install [scoop](https://scoop.sh/) (see scoop website)
 6. run `bin/install.ps1`
 
+### note
+* manual install lean
+
 ## Linux
 1. install fish
-2. run install.fish
+2. run install.sh
 
 # TODO
 - Iron.nvim doesn't work for julia on Windows
 - JET.nvim doesn't work on windows
-- tree-sitter of lua doesn't work on windows
-  - checkhealth errors
-- make install script for Linux
 - add rc files of Manjaro
 - raspi dotfiles
 
