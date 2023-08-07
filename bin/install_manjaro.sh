@@ -2,6 +2,7 @@
 set -eu
 
 # alacritty config
+mkdir -p ~/.config/alacritty
 ln -sf $(pwd)/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 mkdir -p ~/.config/wezterm
