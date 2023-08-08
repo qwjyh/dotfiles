@@ -3,7 +3,7 @@
 
 
 # change working directory to git root
-Set-Location (Join-Path $PSScriptRoot "..")
+Set-Location (Join-Path $PSScriptRoot "..\..")
 
 # set Ahk2Exe.exe path
 # example "C:\Program Files\AutoHotKey\Compiler\Ahk2Exe.exe"

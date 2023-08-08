@@ -38,7 +38,7 @@ Send,{Blind}{Right}
 return
 
 ; Home,End,PgUp,PgDnの設定
-; a    s    d    f
+; a    p    n    f
 ; Home PgUp PgDn End
 vk1D & a::
 vk1C & a::
@@ -48,14 +48,48 @@ vk1D & f::
 vk1C & f::
 Send,{Blind}{End}
 return
-vk1D & s::
-vk1C & s::
+vk1D & p::
+vk1C & p::
 Send,{Blind}{PgUp}
+return
+vk1D & n::
+vk1C & n::
+Send,{Blind}{PgDn}
+return
+
+; Multi-Line Up/Down
+; (experimental)
+vk1D & u::
+vk1C & u::
+Send,{Blind}{Up 5}
 return
 vk1D & d::
 vk1C & d::
-Send,{Blind}{PgDn}
+Send,{Blind}{Down 5}
 return
+; vk1D & v::
+; vk1C & v::
+; Send,{Blind}{Down}
+; Sleep, 1
+; Send,{Blind}{Down}
+; Sleep, 1
+; Send,{Blind}{Down}
+; Sleep, 1
+; Send,{Blind}{Down}
+; Sleep, 1
+; Send,{Blind}{Down}
+; Sleep, 1
+; return
+; vk1D & b::
+; vk1C & b::
+; Send,{Blind}{Down down}
+; Send,{Blind}{Down down}
+; Send,{Blind}{Down down}
+; Send,{Blind}{Down down}
+; Send,{Blind}{Down down}
+; Send,{Blind}{Down up}
+; return
+
 
 ; ==========================================
 ; include extra key remaps
