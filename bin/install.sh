@@ -4,12 +4,13 @@ set -eu
 # =========================================================
 # check executing location
 # =========================================================
-if [ ! -d "bin" -a ! -d "dotfiles" ]; then
-	echo "Wrong execution location"
-	echo "Please run this script on dotfiles root folder."
-	exit 1
-fi
-
+# if [ ! -d "bin" -a ! -d "dotfiles" ]; then
+# 	echo "Wrong execution location"
+# 	echo "Please run this script on dotfiles root folder."
+# 	exit 1
+# fi
+# TODO: check git in path
+cd $(git rev-parse --show-toplevel)
 
 # =========================================================
 # links
