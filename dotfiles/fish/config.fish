@@ -17,7 +17,7 @@ if status is-interactive
 
     # abbr (from 3.6, --universal is removed)
     abbr -a -- l less
-    abbr -a -- ll 'exa -la --icons --git'
+    abbr -a -- ll 'eza -la --icons --git'
 
     zoxide init fish | source
 
