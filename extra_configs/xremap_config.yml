@@ -11,6 +11,11 @@ modmap:
       KEY_MUHENKAN:
         held: KEY_Email
         alone: KEY_MUHENKAN
+  - name: Super xcape
+    remap:
+      Win_L:
+        held: Win_L
+        alone: Key_Chat
 keymap:
   - name: ZenkakuHankaku to Esc
     remap:
