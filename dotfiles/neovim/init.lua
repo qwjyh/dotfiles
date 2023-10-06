@@ -461,11 +461,20 @@ lspconfig.lua_ls.setup {
     },
 }
 -- Julia
+-- use sysimage only if it exists
+local julials_so = os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/sys-ls.so"
+local julials_so_option = { "", ""}
+if io.open(julials_so) then
+    julials_so_option = {
+        "-J", julials_so
+    }
+end
+-- main
 lspconfig.julials.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { "julia", "--startup-file=no", "--history-file=no", "-J",
-        os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/sys-ls.so",
+    cmd = { "julia", "--startup-file=no", "--history-file=no",
+        julials_so_option[1], julials_so_option[2],
         -- use below 2 lines to collect script to be included in sysimage
         '--trace-compile',
         os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
