@@ -6,16 +6,16 @@ if not vim.loop.fs_stat(lazypath) then
         "git",
         "clone",
         "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Installing plugins
 require('lazy').setup({
-    { "catppuccin/nvim", name = "catppuccin" }, -- Color scheme
+    { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
     {
         'folke/which-key.nvim',
         config = function()
@@ -27,9 +27,9 @@ require('lazy').setup({
         end,
     },
     { 'RRethy/vim-illuminate', }, -- highlight keywords under cursor
-    { -- comment
+    {                             -- comment
         'numToStr/Comment.nvim',
-        config = function ()
+        config = function()
             require('Comment').setup()
         end,
     },
@@ -69,7 +69,8 @@ require('lazy').setup({
             }
         end,
         -- build process(make environments and add JET.jl)
-        build = [[mkdir -p ~/.julia/environments/nvim-null-ls && julia --startup-file=no --project=~/.julia/environments/nvim-null-ls -e 'using Pkg; Pkg.add("JET")']],
+        build =
+        [[mkdir -p ~/.julia/environments/nvim-null-ls && julia --startup-file=no --project=~/.julia/environments/nvim-null-ls -e 'using Pkg; Pkg.add("JET")']],
         -- ft = { 'julia', },
     },
     {
@@ -82,14 +83,14 @@ require('lazy').setup({
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
         dependencies = {
-            'hrsh7th/cmp-nvim-lsp', -- LSP
-            'L3MON4D3/LuaSnip', -- snippets
+            'hrsh7th/cmp-nvim-lsp',     -- LSP
+            'L3MON4D3/LuaSnip',         -- snippets
             'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for LuaSnip
-            'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
-            'hrsh7th/cmp-path', -- nvim-cmp source for filesystem paths
-            'hrsh7th/cmp-cmdline', -- command line
-            'hrsh7th/cmp-omni', -- source for omnifunc
-            'hrsh7th/cmp-nvim-lua', -- nvim lua
+            'hrsh7th/cmp-buffer',       -- nvim-cmp source for buffer words
+            'hrsh7th/cmp-path',         -- nvim-cmp source for filesystem paths
+            'hrsh7th/cmp-cmdline',      -- command line
+            'hrsh7th/cmp-omni',         -- source for omnifunc
+            'hrsh7th/cmp-nvim-lua',     -- nvim lua
             'hrsh7th/cmp-nvim-lsp-signature-help',
         },
     },
@@ -110,9 +111,9 @@ require('lazy').setup({
     },
     {
         "andymass/vim-matchup",
-        config = function ()
+        config = function()
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
-            require'nvim-treesitter.configs'.setup {
+            require 'nvim-treesitter.configs'.setup {
                 matchup = {
                     enable = true,
                 }
@@ -149,8 +150,8 @@ vim.filetype.add {
 vim.o.number = true
 vim.o.relativenumber = true
 vim.cmd([[
-highlight LineNr cterm=none ctermfg=243 
-highlight CursorLineNr cterm=none ctermfg=250 
+highlight LineNr cterm=none ctermfg=243
+highlight CursorLineNr cterm=none ctermfg=250
 ]])
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -168,7 +169,7 @@ vim.o.ignorecase = true -- keep signcolumn on
 vim.o.smartcase = true
 vim.o.errorbells = true
 -- vim.o.visualbell = false -- this is default
-vim.opt.undofile = true -- Save undo history
+vim.opt.undofile = true                -- Save undo history
 vim.o.completeopt = 'menuone,noselect' -- for better completion experience
 vim.o.termguicolors = true
 
@@ -180,10 +181,13 @@ vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
 -- some terminalmode settings
-vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h', { noremap = true, desc = "Exit terminal-mode and move to left window."})
-vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j', { noremap = true, desc = "Exit terminal-mode and move to down window."})
-vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k', { noremap = true, desc = "Exit terminal-mode and move to up window."})
-vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l', { noremap = true, desc = "Exit terminal-mode and move to right window."})
+vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
+    { noremap = true, desc = "Exit terminal-mode and move to left window." })
+vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j',
+    { noremap = true, desc = "Exit terminal-mode and move to down window." })
+vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k', { noremap = true, desc = "Exit terminal-mode and move to up window." })
+vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
+    { noremap = true, desc = "Exit terminal-mode and move to right window." })
 
 -----------------------------------------------------------
 -- to use PowerShell on Windows
@@ -196,7 +200,8 @@ if vim.fn.has('win32') == 1 then
     else
         vim.opt.shell = 'powershell'
     end
-    vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.opt.shellcmdflag =
+    '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
     vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
     vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
     vim.opt.shellquote = ''
@@ -271,12 +276,12 @@ require('gitsigns').setup {
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
         map('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
     end
 }
 
@@ -303,7 +308,7 @@ parser_config.satysfi = {
 }
 
 -- setup
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'julia',
         'satysfi',
@@ -444,7 +449,7 @@ lspconfig.lua_ls.setup {
                 version = 'LuaJIT',
             },
             diagnostics = {
-                globals = {'vim'},
+                globals = { 'vim' },
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
@@ -479,7 +484,7 @@ lspconfig.powershell_es.setup {
 -- lspconfig.jetls.setup {}
 -- ccls
 
-local lss = {"pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",}
+local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake", }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
@@ -494,7 +499,7 @@ luasnip.config.setup {
     enable_autosnippets = true,
     store_selection_key = "<Tab>",
 }
-require 'luasnip.loaders.from_lua'.load({paths = './luasnippets'})
+require 'luasnip.loaders.from_lua'.load({ paths = './luasnippets' })
 
 cmp.setup {
     snippet = {
@@ -504,7 +509,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
@@ -533,7 +538,7 @@ cmp.setup {
         priority_weight = 10,
     },
     sources = {
-        { name = 'luasnip', max_item_count = 10 },
+        { name = 'luasnip',                max_item_count = 10 },
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },
@@ -551,10 +556,10 @@ cmp.setup {
 -- cmdline completions
 -- `/` cmdline setup.
 cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
 })
 -- ':'
 cmp.setup.cmdline(':', {
