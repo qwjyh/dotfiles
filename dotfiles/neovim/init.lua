@@ -463,7 +463,7 @@ lspconfig.lua_ls.setup {
 -- Julia
 -- use sysimage only if it exists
 local julials_so = os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/sys-ls.so"
-local julials_so_option = { "", ""}
+local julials_so_option = { "", "" }
 if io.open(julials_so) then
     julials_so_option = {
         "-J", julials_so
