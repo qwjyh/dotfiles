@@ -534,7 +534,7 @@ lspconfig.powershell_es.setup {
 -- lspconfig.jetls.setup {}
 -- ccls
 
-local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake", }
+local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake", "html", }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
