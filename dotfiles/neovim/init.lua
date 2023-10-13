@@ -52,9 +52,9 @@ require('lazy').setup({
     },
     {
         -- 'kdheepak/JET.nvim',
-        'qwjyh/JET.nvim',
+        -- 'qwjyh/JET.nvim',
         dir = '~/work/julia/JET.nvim',
-        dev = false, -- set true to use dir
+        -- dev = false, -- set true to use dir
         lazy = true,
         dependencies = {
             'jose-elias-alvarez/null-ls.nvim',
@@ -227,9 +227,9 @@ iron.setup {
             fish = {
                 command = { 'fish' },
             },
-            julia = {
-                command = { 'julia', },
-            },
+            -- julia = {
+            --     command = { 'julia', },
+            -- },
             shell = {
                 command = { 'sh', },
             },
@@ -462,7 +462,7 @@ lspconfig.lua_ls.setup {
 }
 -- Julia
 -- use sysimage only if it exists
-local julials_so = os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/sys-ls.so"
+local julials_so = vim.env.HOME .. "/.julia/environments/nvim-lspconfig/sys-ls.so"
 local julials_so_option = { "", "" }
 local julials_so_file = io.open(julials_so)
 if julials_so_file then -- if sysimage doesn't exist, julials_so_file == nil
@@ -479,7 +479,7 @@ lspconfig.julials.setup {
         julials_so_option[1], julials_so_option[2],
         -- use below 2 lines to collect script to be included in sysimage
         '--trace-compile',
-        os.getenv("HOME") .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
+        vim.env.HOME .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
         "-e",
         [[
             # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
