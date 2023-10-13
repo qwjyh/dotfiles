@@ -227,9 +227,9 @@ iron.setup {
             fish = {
                 command = { 'fish' },
             },
-            -- julia = {
-            --     command = { 'julia', },
-            -- },
+            julia = {
+                command = { 'julia', },
+            },
             shell = {
                 command = { 'sh', },
             },
