@@ -533,8 +533,13 @@ lspconfig.powershell_es.setup {
 -- -- jetls
 -- lspconfig.jetls.setup {}
 -- ccls
+-- -- csharp
+-- lspconfig.omnisharp.setup {
+--     cmd = {'omnisharp'},
+-- }
 
-local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake", "html", }
+local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
+    "csharp_ls", "html", }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
