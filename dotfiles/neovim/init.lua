@@ -539,7 +539,7 @@ lspconfig.powershell_es.setup {
 -- }
 
 local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", }
+    "csharp_ls", "html", "r_language_server", }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
