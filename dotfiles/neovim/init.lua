@@ -206,6 +206,7 @@ require('catppuccin').setup({
 vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
+vim.g.mapleader = ' '
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
