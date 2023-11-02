@@ -18,9 +18,9 @@ end
 # catch e
 #     @warn "Failed to load InteractiveCodeSearch"
 # end
-try
-    using AbbreviatedStackTraces
-catch e
-    @warn "Failed to load AbbreviatedStackTraces"
-end
+# try
+#     using AbbreviatedStackTraces
+# catch e
+#     @warn "Failed to load AbbreviatedStackTraces"
+# end
 
