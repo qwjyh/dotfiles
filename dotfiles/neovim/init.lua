@@ -130,6 +130,31 @@ require('lazy').setup({
         'folke/trouble.nvim',
         -- config = function
     },
+    {
+        'Julian/lean.nvim',
+        event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'nvim-lua/plenary.nvim',
+            'hrsh7th/nvim-cmp',
+        },
+
+        -- see Julian/lean.nvim readme
+        opts = {
+            lsp = {
+                on_attach = on_attach,
+            },
+            mappings = true,
+        },
+
+        -- this currently disables all default settings in lean.nvim
+        -- default lean.nvim config overwrites lspconfig
+        -- TODO: migrate default settings from lean.nvim
+        config = function ()
+            vim.g.maplocalleader = ' '
+        end,
+    },
 })
 
 -----------------------------------------------------------
@@ -540,7 +565,7 @@ lspconfig.powershell_es.setup {
 -- }
 
 local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", "r_language_server", }
+    "csharp_ls", "html", "r_language_server", "leanls" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
