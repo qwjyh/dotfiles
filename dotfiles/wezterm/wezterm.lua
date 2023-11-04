@@ -51,9 +51,13 @@ return {
     -- font = wezterm.font 'FirgeNerd Console'
     font = wezterm.font_with_fallback {
         {
-            family = 'JuliaMono',
+            family = 'JuiseeHW Nerd Font',
+            weight = 'Bold',
             harfbuzz_features = {
                 'calt=0', -- disables ligature
+                'zero=1',
+                'ss08=0',
+                'ss20=0',
             },
         },
         { family = 'FirgeNerd Console', assume_emoji_presentation = true }, -- for japanese
