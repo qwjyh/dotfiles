@@ -15,6 +15,7 @@ elan completions powershell > (Join-Path $script_location "elan_completion.ps1")
 wezterm shell-completion --shell power-shell > (Join-Path $script_location "wezterm_completion.ps1")
 chezmoi completion powershell > (Join-Path $script_location "chezmoi_completion.ps1")
 pip completion --powershell > (Join-Path $script_location "pip_completion.ps1")
+rye self completion -s powershell > (Join-Path $script_location "rye_completion.ps1")
 
 # alias
 Set-Location $PSScriptRoot
