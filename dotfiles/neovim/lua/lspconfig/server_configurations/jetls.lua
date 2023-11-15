@@ -36,10 +36,12 @@
 --     JETLS.runserver(stdin, stdout)
 --   ]],
 -- }
+local project_path = vim.fs.normalize('~/.julia/environments/JETLS.jl')
 local cmd = {
     'julia',
     '--startup-file=no',
     '--history-file=no',
+    '--project=' .. project_path,
     '-e',
     [[
         println("===STARTING JETLS===")
