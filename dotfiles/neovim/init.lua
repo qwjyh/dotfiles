@@ -529,7 +529,8 @@ lspconfig.bashls.setup {
 }
 -- pwsh
 lspconfig.powershell_es.setup {
-    bundle_path = '~/scoop/apps/powershell-editorservice/current/PowerShellEditorServices'
+    bundle_path = '~/scoop/apps/powershell-editorservice/current',
+    capabilities = capabilities,
 }
 -- -- jetls
 -- lspconfig.jetls.setup {}
