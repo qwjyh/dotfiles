@@ -13,9 +13,10 @@ success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set
 disabled = true
 
 [battery]
-full_symbol = " "
-charging_symbol = "🔌 "
+# full_symbol = "󰁹 "
+charging_symbol = " "
 discharging_symbol = "⚡ "
+empty_symbol = " "
 [[battery.display]]
 threshold = 10
 style = "bold red"
@@ -72,7 +73,7 @@ python_binary = ["./venv/bin/python", "python", "python3", "python2"]
 
 [rlang]
 format = "via [$symbol($version )]($style)"
-symbol = "ﳒ"
+symbol = "󰟔"
 
 [shell]
 powershell_indicator = ">_"

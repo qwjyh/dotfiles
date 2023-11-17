@@ -222,11 +222,12 @@ vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
 -- vim script func returns 1/0, while lua evals false only if gets false or nil
 -- so be sure to compare with 1/0
 if vim.fn.has('win32') == 1 then
-    if vim.fn.executable('pwsh') == 1 then
+    -- this evaluation is so slow that I removed windows powershell support
+    -- if vim.fn.executable('pwsh') == 1 then
         vim.opt.shell = 'pwsh'
-    else
-        vim.opt.shell = 'powershell'
-    end
+    -- else
+    --     vim.opt.shell = 'powershell'
+    -- end
     vim.opt.shellcmdflag =
     '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
     vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
@@ -555,7 +556,8 @@ lspconfig.bashls.setup {
 }
 -- pwsh
 lspconfig.powershell_es.setup {
-    bundle_path = '~/scoop/apps/powershell-editorservice/current/PowerShellEditorServices'
+    bundle_path = '~/scoop/apps/powershell-editorservice/current',
+    capabilities = capabilities,
 }
 -- -- jetls
 -- lspconfig.jetls.setup {}

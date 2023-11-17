@@ -1,3 +1,12 @@
+-- https://qiita.com/uhooi/items/99aeff822d4870a8e269
+local lsp_names = function ()
+    local clients = {}
+    for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0})) do
+        table.insert(clients, client.name)
+    end
+    return ' ' .. table.concat(clients, ', ')
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -21,7 +30,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
-    lualine_x = {'filetype'},
+    lualine_x = {lsp_names, 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
