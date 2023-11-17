@@ -92,6 +92,7 @@ require('lazy').setup({
             'hrsh7th/cmp-omni',         -- source for omnifunc
             'hrsh7th/cmp-nvim-lua',     -- nvim lua
             'hrsh7th/cmp-nvim-lsp-signature-help',
+            'nvim-orgmode/orgmode',
         },
     },
     {
@@ -135,7 +136,7 @@ require('lazy').setup({
         dependencies = {
             { 'nvim-treesitter/nvim-treesitter', lazy = true },
         },
-        event = 'VeryLazy',
+        -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
         config = function()
             -- Load treesitter grammer for orgmode
             require('orgmode').setup_ts_grammar()
@@ -338,11 +339,14 @@ parser_config.satysfi = {
 -- setup
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        'julia',
-        'satysfi',
+        'c', 'cpp', 'lua', 'julia', 'satysfi',
     },
+    sync_install = false,
+    auto_install = true, -- requires tree-sitter cli in local
+    ignore_install = {},
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = { 'org' },
     },
     incremental_selection = {
         enable = true,
