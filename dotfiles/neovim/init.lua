@@ -92,6 +92,7 @@ require('lazy').setup({
             'hrsh7th/cmp-omni',         -- source for omnifunc
             'hrsh7th/cmp-nvim-lua',     -- nvim lua
             'hrsh7th/cmp-nvim-lsp-signature-help',
+            'nvim-orgmode/orgmode',
         },
     },
     {
@@ -129,6 +130,32 @@ require('lazy').setup({
     {
         'folke/trouble.nvim',
         -- config = function
+    },
+    {
+        'nvim-orgmode/orgmode',
+        dependencies = {
+            { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        },
+        -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
+        config = function()
+            -- Load treesitter grammer for orgmode
+            require('orgmode').setup_ts_grammar()
+
+            -- Setup treesitter
+            require('nvim-treesitter.configs').setup({
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = { 'org' },
+                },
+                ensure_installed = { 'org' },
+            })
+
+            -- Setup orgmode
+            require('orgmode').setup({
+                org_agenda_files = '~/orgfiles/**/*',
+                org_default_notes_file = '~/orgfiles/refile.org',
+            })
+        end,
     },
 })
 
@@ -180,6 +207,7 @@ require('catppuccin').setup({
 vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
+vim.g.mapleader = ' '
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
@@ -311,11 +339,14 @@ parser_config.satysfi = {
 -- setup
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        'julia',
-        'satysfi',
+        'c', 'cpp', 'lua', 'julia', 'satysfi',
     },
+    sync_install = false,
+    auto_install = true, -- requires tree-sitter cli in local
+    ignore_install = {},
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = { 'org' },
     },
     incremental_selection = {
         enable = true,
@@ -608,6 +639,7 @@ cmp.setup {
         { name = 'path' },
         { name = 'nvim_lua' },
         { name = 'luasnip' },
+        { name = 'orgmode' },
     },
 }
 -- cmdline completions
