@@ -326,14 +326,24 @@ vim.keymap.set('n', '<c-P>', function() require('telescope.builtin').find_files 
 -- Treesitter
 -- manually install parsers with `:TSInstall <language>`
 
--- satysfi (https://github.com/monaqa/tree-sitter-satysfi)
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- satysfi (https://github.com/monaqa/tree-sitter-satysfi)
 parser_config.satysfi = {
     install_info = {
         url = "https://github.com/monaqa/tree-sitter-satysfi",
         files = { "src/parser.c", "src/scanner.c" }
     },
     filetype = 'satysfi',
+}
+-- asciidoc (https://github.com/cathaysia/tree-sitter-asciidoc)
+parser_config.asciidoc = {
+    install_info = {
+        url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+        files = { "src/parser.c", "src/scanner.c" },
+        -- generate_requires_npm = false,
+        -- requires_generate_from_grammar = false,
+    },
+    filetype = 'asciidoc',
 }
 
 -- setup

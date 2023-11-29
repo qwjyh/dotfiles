@@ -34,6 +34,11 @@ mkdir -p ~/.config/nvim/after/queries/satysfi
 curl -o ~/.config/nvim/after/queries/satysfi/highlights.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/highlights.scm
 curl -o ~/.config/nvim/after/queries/satysfi/indents.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/indents.scm
 curl -o ~/.config/nvim/after/queries/satysfi/matchup.scm https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/matchup.scm
+mkdir -p ~/.config/nvim/after/queries/asciidoc
+curl -o ~/.config/nvim/after/queries/asciidoc/aerial.scm https://raw.githubusercontent.com/cathaysia/tree-sitter-asciidoc/master/queries/aerial.scm
+curl -o ~/.config/nvim/after/queries/asciidoc/highlights.scm https://raw.githubusercontent.com/cathaysia/tree-sitter-asciidoc/master/queries/highlights.scm
+curl -o ~/.config/nvim/after/queries/asciidoc/highlights.scm https://raw.githubusercontent.com/cathaysia/tree-sitter-asciidoc/master/queries/highlights.scm
+
 mkdir -p ~/.config/nvim/luasnippets
 ln -sf $(pwd)/dotfiles/neovim/luasnippets/all.lua ~/.config/nvim/luasnippets/all.lua
 mkdir -p ~/.config/nvim/luasnippets/satysfi
