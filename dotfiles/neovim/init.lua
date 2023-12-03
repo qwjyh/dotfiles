@@ -322,16 +322,16 @@ require('lualine_setup')
 -- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-P>', function() builtin.find_files { sort_lastused = true } end) -- fd?
-vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end)
-vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols)
-vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols)
-vim.keymap.set('n', '<leader>fb', builtin.buffers)
-vim.keymap.set('n', '<leader>fg', builtin.live_grep)
-vim.keymap.set('n', '<leader>fh', builtin.help_tags)
-vim.keymap.set('n', '<leader>fc', builtin.git_commits)
-vim.keymap.set('n', '<leader>fgc', builtin.git_commits)
-vim.keymap.set('n', '<leader>fs', builtin.git_status)
-vim.keymap.set('n', '<leader>fgs', builtin.git_status)
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files"})
+vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "lsp workspace symbols" })
+vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = "lsp document symbols" })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
+vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = "git commit" })
+vim.keymap.set('n', '<leader>fgc', builtin.git_commits, { desc = "git commit" })
+vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = "git status" })
+vim.keymap.set('n', '<leader>fgs', builtin.git_status, { desc = "git status" })
 
 -----------------------------------------------------------
 -- Treesitter
