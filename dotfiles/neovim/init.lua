@@ -92,6 +92,7 @@ require('lazy').setup({
             'hrsh7th/cmp-omni',         -- source for omnifunc
             'hrsh7th/cmp-nvim-lua',     -- nvim lua
             'hrsh7th/cmp-nvim-lsp-signature-help',
+            'nvim-orgmode/orgmode',
         },
     },
     {
@@ -155,6 +156,32 @@ require('lazy').setup({
             vim.g.maplocalleader = ' '
         end,
     },
+    {
+        'nvim-orgmode/orgmode',
+        dependencies = {
+            { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        },
+        -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
+        config = function()
+            -- Load treesitter grammer for orgmode
+            require('orgmode').setup_ts_grammar()
+
+            -- Setup treesitter
+            require('nvim-treesitter.configs').setup({
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = { 'org' },
+                },
+                ensure_installed = { 'org' },
+            })
+
+            -- Setup orgmode
+            require('orgmode').setup({
+                org_agenda_files = '~/orgfiles/**/*',
+                org_default_notes_file = '~/orgfiles/refile.org',
+            })
+        end,
+    },
 })
 
 -----------------------------------------------------------
@@ -205,6 +232,7 @@ require('catppuccin').setup({
 vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
+vim.g.mapleader = ' '
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
@@ -317,7 +345,18 @@ require('lualine_setup')
 
 -----------------------------------------------------------
 -- telescope
-vim.keymap.set('n', '<c-P>', function() require('telescope.builtin').find_files { sort_lastused = true } end) -- fd?
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<c-P>', function() builtin.find_files { sort_lastused = true } end) -- fd?
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files"})
+vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "lsp workspace symbols" })
+vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = "lsp document symbols" })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
+vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = "git commit" })
+vim.keymap.set('n', '<leader>fgc', builtin.git_commits, { desc = "git commit" })
+vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = "git status" })
+vim.keymap.set('n', '<leader>fgs', builtin.git_status, { desc = "git status" })
 
 -----------------------------------------------------------
 -- Treesitter
@@ -336,11 +375,14 @@ parser_config.satysfi = {
 -- setup
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        'julia',
-        'satysfi',
+        'c', 'cpp', 'lua', 'julia', 'satysfi',
     },
+    sync_install = false,
+    auto_install = true, -- requires tree-sitter cli in local
+    ignore_install = {},
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = { 'org' },
     },
     incremental_selection = {
         enable = true,
@@ -554,7 +596,8 @@ lspconfig.bashls.setup {
 }
 -- pwsh
 lspconfig.powershell_es.setup {
-    bundle_path = '~/scoop/apps/powershell-editorservice/current/PowerShellEditorServices'
+    bundle_path = '~/scoop/apps/powershell-editorservice/current',
+    capabilities = capabilities,
 }
 -- -- jetls
 -- lspconfig.jetls.setup {}
@@ -632,6 +675,7 @@ cmp.setup {
         { name = 'path' },
         { name = 'nvim_lua' },
         { name = 'luasnip' },
+        { name = 'orgmode' },
     },
 }
 -- cmdline completions
