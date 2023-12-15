@@ -144,7 +144,29 @@ require('lazy').setup({
         -- see Julian/lean.nvim readme
         opts = {
             lsp = {
-                on_attach = on_attach,
+                on_attach = function(client, bufnr)
+                    -- Enable completion triggered by <c-x><c-o>
+                    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+                    -- Mappings
+                    -- See `:help vim.lsp.*` for documentation on any of the below function
+                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+                    vim.keymap.set('n', 'g1', vim.lsp.buf.implementation, bufopts)
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+                    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+                    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+                    vim.keymap.set('n', '<space>wl', function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, bufopts)
+                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+                    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+                    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
+                    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+                end,
             },
             mappings = true,
         },
@@ -152,9 +174,6 @@ require('lazy').setup({
         -- this currently disables all default settings in lean.nvim
         -- default lean.nvim config overwrites lspconfig
         -- TODO: migrate default settings from lean.nvim
-        config = function ()
-            vim.g.maplocalleader = ' '
-        end,
     },
     {
         'nvim-orgmode/orgmode',
@@ -233,6 +252,7 @@ vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
@@ -250,7 +270,7 @@ vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
 if vim.fn.has('win32') == 1 then
     -- this evaluation is so slow that I removed windows powershell support
     -- if vim.fn.executable('pwsh') == 1 then
-        vim.opt.shell = 'pwsh'
+    vim.opt.shell = 'pwsh'
     -- else
     --     vim.opt.shell = 'powershell'
     -- end
@@ -347,7 +367,7 @@ require('lualine_setup')
 -- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-P>', function() builtin.find_files { sort_lastused = true } end) -- fd?
-vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files"})
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files" })
 vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "lsp workspace symbols" })
 vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = "lsp document symbols" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
