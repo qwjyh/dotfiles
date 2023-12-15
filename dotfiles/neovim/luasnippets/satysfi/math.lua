@@ -326,12 +326,16 @@ return {
         {trig = ";;", show_condition = isinmath},
         {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
     ),
-    s(
+    s( -- doesn't work
         {trig = ";%", show_condition = isinmath},
         {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
     ),
-    s(
+    s( -- doesn't work
         {trig = ";/", show_condition = isinmath},
+        {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
+    ),
+    s(
+        {trig = ";ff", show_condition = isinmath},
         {t("\\frac{"), i(1), t("}{"), i(2), t("}")}
     ),
     s(
@@ -345,6 +349,14 @@ return {
     s(
         {trig = ";.", show_condition = isinmath},
         t("\\cdot")
+    ),
+    s(
+        {trig = ";l.", show_condition = isinmath},
+        t("\\ldots")
+    ),
+    s(
+        {trig = ";v.", show_condition = isinmath},
+        t("\\vdots")
     ),
     s(
         {trig = ";8", show_condition = isinmath},
