@@ -200,6 +200,9 @@ vim.opt.undofile = true                -- Save undo history
 vim.o.completeopt = 'menuone,noselect' -- for better completion experience
 vim.o.termguicolors = true
 
+vim.keymap.set('n', 'H', '<cmd>tabp<cr>', { desc = 'tab previous' })
+vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
+
 -- color scheme
 require('catppuccin').setup({
     transparent_background = true,
@@ -225,7 +228,7 @@ vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
 if vim.fn.has('win32') == 1 then
     -- this evaluation is so slow that I removed windows powershell support
     -- if vim.fn.executable('pwsh') == 1 then
-        vim.opt.shell = 'pwsh'
+    vim.opt.shell = 'pwsh'
     -- else
     --     vim.opt.shell = 'powershell'
     -- end
@@ -322,7 +325,7 @@ require('lualine_setup')
 -- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-P>', function() builtin.find_files { sort_lastused = true } end) -- fd?
-vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files"})
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files" })
 vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "lsp workspace symbols" })
 vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = "lsp document symbols" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
