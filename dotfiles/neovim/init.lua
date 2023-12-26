@@ -97,7 +97,7 @@ require('lazy').setup({
     },
     {
         'kdheepak/cmp-latex-symbols', -- latex math
-        ft = { 'julia', },
+        ft = { 'julia', 'typst', },
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -166,6 +166,7 @@ vim.filetype.add {
         saty = 'satysfi',
         satyh = 'satysfi',
         satyg = 'satysfi',
+        typ = 'typst',
     },
     pattern = {
         ['.*%.satyh%-%a+'] = 'satysfi',
@@ -584,6 +585,12 @@ lspconfig.powershell_es.setup {
 -- lspconfig.omnisharp.setup {
 --     cmd = {'omnisharp'},
 -- }
+
+lspconfig.typst_lsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    single_file_support = true,
+}
 
 local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
     "csharp_ls", "html", "r_language_server", }
