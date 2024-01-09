@@ -14,18 +14,8 @@ end
 # catch e
 #     @warn "Failed to load InteractiveCodeSearch"
 # end
-try
-    using AbbreviatedStackTraces
-catch e
-    @warn "Failed to load AbbreviatedStackTraces"
-end
 
 #=
  TerminalPager
 =#
-# using JuliaSyntax
-#
-# if v"1.9" ≤ VERSION < v"1.10"
-#     JuliaSyntax.enable_in_core!()
-# end
 
