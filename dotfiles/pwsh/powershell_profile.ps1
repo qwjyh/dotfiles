@@ -231,3 +231,7 @@ Import-Module WSLTabCompletion
 
 Get-ChildItem ~\.config\powershell\completions\ | % { . $_ }
 
+# Automatically appended by pdm scoop package
+Get-ChildItem "$PROFILE\..\Completions\" | ForEach-Object {
+    . $_.FullName
+}
