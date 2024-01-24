@@ -132,6 +132,50 @@ require('lazy').setup({
         -- config = function
     },
     {
+        'Julian/lean.nvim',
+        event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'nvim-lua/plenary.nvim',
+            'hrsh7th/nvim-cmp',
+        },
+
+        -- see Julian/lean.nvim readme
+        opts = {
+            lsp = {
+                on_attach = function(client, bufnr)
+                    -- Enable completion triggered by <c-x><c-o>
+                    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+                    -- Mappings
+                    -- See `:help vim.lsp.*` for documentation on any of the below function
+                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+                    vim.keymap.set('n', 'g1', vim.lsp.buf.implementation, bufopts)
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+                    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+                    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+                    vim.keymap.set('n', '<space>wl', function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, bufopts)
+                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+                    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+                    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
+                    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+                end,
+            },
+            mappings = true,
+        },
+
+        -- this currently disables all default settings in lean.nvim
+        -- default lean.nvim config overwrites lspconfig
+        -- TODO: migrate default settings from lean.nvim
+    },
+    {
         'nvim-orgmode/orgmode',
         dependencies = {
             { 'nvim-treesitter/nvim-treesitter', lazy = true },
@@ -211,6 +255,7 @@ vim.cmd.colorscheme "catppuccin"
 
 -----------------------------------------------------------
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
@@ -586,7 +631,7 @@ lspconfig.powershell_es.setup {
 -- }
 
 local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", "r_language_server", }
+    "csharp_ls", "html", "r_language_server" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
