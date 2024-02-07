@@ -1,5 +1,6 @@
 try
     using OhMyREPL
+    enable_autocomplete_brackets(false)
 catch e
     @warn "Failed to load OhMyREPL"
 end
