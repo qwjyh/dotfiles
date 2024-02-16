@@ -13,7 +13,7 @@ foreach(Pkg.add, pkg_ls_deps)
 
 # add extra dependencies
 # these packages are manually collected
-pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates"]
+pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates", "Downloads"]
 foreach(Pkg.add, pkg_extra)
 @info "dependency added"
 
