@@ -17,6 +17,15 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
     {
+        dir = "./lua/term_powershell.lua",
+        event = "CmdlineEnter",
+        config = function()
+            require("term_powershell").setup {
+                pwsh = true
+            }
+        end
+    },
+    {
         'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
@@ -265,26 +274,6 @@ vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j',
 vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k', { noremap = true, desc = "Exit terminal-mode and move to up window." })
 vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
     { noremap = true, desc = "Exit terminal-mode and move to right window." })
-
------------------------------------------------------------
--- to use PowerShell on Windows
--- original code from :h powershell
--- vim script func returns 1/0, while lua evals false only if gets false or nil
--- so be sure to compare with 1/0
-if vim.fn.has('win32') == 1 then
-    -- this evaluation is so slow that I removed windows powershell support
-    -- if vim.fn.executable('pwsh') == 1 then
-    vim.opt.shell = 'pwsh'
-    -- else
-    --     vim.opt.shell = 'powershell'
-    -- end
-    vim.opt.shellcmdflag =
-    '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
-    vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
-    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-    vim.opt.shellquote = ''
-    vim.opt.shellxquote = ''
-end
 
 -----------------------------------------------------------
 -- comment setting for satysfi
