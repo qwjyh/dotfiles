@@ -558,8 +558,8 @@ lspconfig.julials.setup {
     cmd = { "julia", "--startup-file=no", "--history-file=no",
         julials_so_option[1], julials_so_option[2],
         -- use below 2 lines to collect script to be included in sysimage
-        '--trace-compile',
-        vim.env.HOME .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
+        -- '--trace-compile',
+        -- vim.env.HOME .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
         "-e",
         [[
             # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
