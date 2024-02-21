@@ -10,10 +10,10 @@ if status is-interactive
     end
     set starship_precmd_uesr_func "set_win_title"
 
-    # keychain
-    set -x SHELL fish
-    keychain --eval --quiet -Q id_rsa, id_ed25519 | source
-    set -x SHELL bash
+    # # keychain
+    # set -x SHELL fish
+    # keychain --eval --quiet -Q id_rsa, id_ed25519 | source
+    # set -x SHELL bash
 
     # abbr (from 3.6, --universal is removed)
     abbr -a -- l less
@@ -33,10 +33,6 @@ function set_win_title
 end
 set starship_precmd_uesr_func "set_win_title"
 
-# keychain
-set -x SHELL fish
-keychain --eval --quiet -Q id_rsa, id_ed25519 | source
-set -x SHELL bash
 
 # opam
 # source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
