@@ -57,7 +57,7 @@ return {
                 'calt=0', -- disables ligature
                 'zero=1',
                 'ss08=0',
-                'ss20=0',
+                ''
             },
         },
         { family = 'FirgeNerd Console', assume_emoji_presentation = true }, -- for japanese
