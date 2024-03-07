@@ -102,6 +102,10 @@ require('lazy').setup({
             'hrsh7th/cmp-nvim-lua',     -- nvim lua
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'nvim-orgmode/orgmode',
+            {
+                "mtoohey31/cmp-fish",
+                ft = 'fish',
+            },
         },
     },
     {
