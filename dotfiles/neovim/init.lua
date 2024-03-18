@@ -18,6 +18,9 @@ require('lazy').setup({
     { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
     {
         dir = "./lua/term_powershell.lua",
+        cond = function()
+            return vim.fn.has('win32') == 1
+        end,
         event = "CmdlineEnter",
         config = function()
             require("term_powershell").setup {
