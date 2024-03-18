@@ -105,6 +105,9 @@ require('lazy').setup({
             {
                 "mtoohey31/cmp-fish",
                 ft = 'fish',
+                cond = function()
+                    return vim.fn.has('win32') == 0
+                end
             },
         },
     },
