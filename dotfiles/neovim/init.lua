@@ -632,7 +632,19 @@ lspconfig.typst_lsp.setup {
     single_file_support = true,
 }
 
-local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            check = {
+                command = "clippy",
+            }
+        }
+    }
+}
+
+local lss = { "pyright", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
     "csharp_ls", "html", "r_language_server", "ruff_lsp", "cssls" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
