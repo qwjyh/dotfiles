@@ -63,29 +63,6 @@ require('lazy').setup({
         ft = { 'tex', 'latex' },
     },
     {
-        -- 'kdheepak/JET.nvim',
-        -- 'qwjyh/JET.nvim',
-        dir = '~/work/julia/JET.nvim',
-        -- dev = false, -- set true to use dir
-        lazy = true,
-        dependencies = {
-            'jose-elias-alvarez/null-ls.nvim',
-        },
-        config = function()
-            require("jet").setup {
-                timeout = 15000,
-                -- disable setup since null-ls doesn't support lspconfig
-                -- https://github.com/jose-elias-alvarez/null-ls.nvim/commit/656e5cb554fed1eb2f398f325511601fab988ce0
-                setup_lspconfig = false,
-                debug = true,
-            }
-        end,
-        -- build process(make environments and add JET.jl)
-        build =
-        [[mkdir -p ~/.julia/environments/nvim-null-ls && julia --startup-file=no --project=~/.julia/environments/nvim-null-ls -e 'using Pkg; Pkg.add("JET")']],
-        -- ft = { 'julia', },
-    },
-    {
         'hkupty/iron.nvim',
         ft = { 'julia', 'python', 'ruby', 'lua', },
     },
@@ -621,8 +598,6 @@ lspconfig.powershell_es.setup {
     bundle_path = '~/scoop/apps/powershell-editorservice/current',
     capabilities = capabilities,
 }
--- -- jetls
--- lspconfig.jetls.setup {}
 -- ccls
 -- -- csharp
 -- lspconfig.omnisharp.setup {
