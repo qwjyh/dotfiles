@@ -184,9 +184,6 @@ require('lazy').setup({
         },
         -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
         config = function()
-            -- Load treesitter grammer for orgmode
-            require('orgmode').setup_ts_grammar()
-
             -- Setup treesitter
             require('nvim-treesitter.configs').setup({
                 highlight = {
