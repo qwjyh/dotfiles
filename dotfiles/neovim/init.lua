@@ -29,6 +29,9 @@ require('lazy').setup({
     }, -- Color scheme
     {
         dir = "./lua/term_powershell.lua",
+        cond = function()
+            return vim.fn.has('win32') == 1
+        end,
         event = "CmdlineEnter",
         config = function()
             require("term_powershell").setup {
@@ -71,29 +74,6 @@ require('lazy').setup({
         ft = { 'tex', 'latex' },
     },
     {
-        -- 'kdheepak/JET.nvim',
-        -- 'qwjyh/JET.nvim',
-        dir = '~/work/julia/JET.nvim',
-        -- dev = false, -- set true to use dir
-        lazy = true,
-        dependencies = {
-            'jose-elias-alvarez/null-ls.nvim',
-        },
-        config = function()
-            require("jet").setup {
-                timeout = 15000,
-                -- disable setup since null-ls doesn't support lspconfig
-                -- https://github.com/jose-elias-alvarez/null-ls.nvim/commit/656e5cb554fed1eb2f398f325511601fab988ce0
-                setup_lspconfig = false,
-                debug = true,
-            }
-        end,
-        -- build process(make environments and add JET.jl)
-        build =
-        [[mkdir -p ~/.julia/environments/nvim-null-ls && julia --startup-file=no --project=~/.julia/environments/nvim-null-ls -e 'using Pkg; Pkg.add("JET")']],
-        -- ft = { 'julia', },
-    },
-    {
         'hkupty/iron.nvim',
         ft = { 'julia', 'python', 'ruby', 'lua', },
     },
@@ -116,6 +96,9 @@ require('lazy').setup({
             {
                 "mtoohey31/cmp-fish",
                 ft = 'fish',
+                cond = function()
+                    return vim.fn.has('win32') == 0
+                end
             },
         },
     },
@@ -149,6 +132,12 @@ require('lazy').setup({
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim'
+        },
+    },
+    {
+        'nvimtools/none-ls.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
         },
     },
     {
@@ -218,9 +207,6 @@ require('lazy').setup({
         },
         -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
         config = function()
-            -- Load treesitter grammer for orgmode
-            require('orgmode').setup_ts_grammar()
-
             -- Setup treesitter
             require('nvim-treesitter.configs').setup({
                 highlight = {
@@ -643,8 +629,6 @@ lspconfig.powershell_es.setup {
     bundle_path = '~/scoop/apps/powershell-editorservice/current',
     capabilities = capabilities,
 }
--- -- jetls
--- lspconfig.jetls.setup {}
 -- ccls
 -- -- csharp
 -- lspconfig.omnisharp.setup {
@@ -657,7 +641,19 @@ lspconfig.typst_lsp.setup {
     single_file_support = true,
 }
 
-local lss = { "pyright", "rust_analyzer", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            check = {
+                command = "clippy",
+            }
+        }
+    }
+}
+
+local lss = { "pyright", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
     "csharp_ls", "html", "r_language_server", "ruff_lsp", "cssls" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
@@ -665,6 +661,14 @@ for _, ls in pairs(lss) do
         capabilities = capabilities,
     }
 end
+
+-- none-ls
+local null_ls = require('null-ls')
+null_ls.setup {
+    sources = {
+        null_ls.builtins.diagnostics.fish,
+    }
+}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -686,8 +690,8 @@ cmp.setup {
         ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = false,
         },
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then

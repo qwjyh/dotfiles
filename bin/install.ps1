@@ -55,7 +55,6 @@ New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Res
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\term_powershell.lua -Target (Resolve-Path .\dotfiles\neovim\lua\term_powershell.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_configurations\satysfi_ls.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lspconfig\server_configurations\satysfi_ls.lua) -Force
-New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_configurations\jetls.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lspconfig\server_configurations\jetls.lua) -Force
 mkdir $env:LOCALAPPDATA\nvim\after\ftplugin
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\satysfi.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\satysfi.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\tex.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\tex.lua)
