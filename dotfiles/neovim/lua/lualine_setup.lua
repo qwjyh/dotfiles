@@ -7,6 +7,8 @@ local lsp_names = function ()
     return ' ' .. table.concat(clients, ', ')
 end
 
+local navic = require('nvim-navic')
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -43,7 +45,15 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
+  winbar = {
+      lualine_c = {
+          {
+              "navic",
+              color_correction = nil,
+              navic_opts = nil,
+          },
+      },
+  },
   inactive_winbar = {},
   extensions = {}
 }
