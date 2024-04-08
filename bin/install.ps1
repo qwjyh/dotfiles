@@ -62,6 +62,8 @@ mkdir $env:LOCALAPPDATA\nvim\after\queries\satysfi
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/highlights.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\highlights.scm
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/indents.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\indents.scm
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/matchup.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\matchup.scm
+mkdir $env:LOCALAPPDATA\nvim\after\queries\julia
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\queries\julia\injections.scm -Target (Resolve-Path .\dotfiles\neovim\after\queries\julia\injections.scm)
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force
