@@ -29,6 +29,16 @@ require('lazy').setup({
         end
     },
     {
+        dir = "./lua/pluto_nvim.lua",
+        config = function()
+            -- temp global for dev
+            pluto_nvim = require("pluto_nvim")
+            require("pluto_nvim").setup {}
+        end,
+        lazy = true,
+        ft = { 'julia' },
+    },
+    {
         'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
@@ -626,7 +636,7 @@ lspconfig.rust_analyzer.setup {
 }
 
 local lss = { "pyright", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", "r_language_server", "ruff_lsp", "cssls", "jsonls" }
+    "csharp_ls", "html", "r_language_server", "ruff_lsp", "cssls", "jsonls", "sqls" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
