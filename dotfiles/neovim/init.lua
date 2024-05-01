@@ -597,8 +597,10 @@ lspconfig.bashls.setup {
     capabilities = capabilities,
 }
 -- pwsh
+local win_pwsh_es_path = '~/scoop/apps/powershell-editorservice/current'
+local arch_pwsh_es_path = "/opt/powershell-editor-services/"
 lspconfig.powershell_es.setup {
-    bundle_path = '~/scoop/apps/powershell-editorservice/current',
+    bundle_path = vim.fn.has('win32') == 1 and win_pwsh_es_path or arch_pwsh_es_path,
     capabilities = capabilities,
 }
 -- ccls
