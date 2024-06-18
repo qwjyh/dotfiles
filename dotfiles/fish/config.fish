@@ -18,6 +18,7 @@ if status is-interactive
     # abbr (from 3.6, --universal is removed)
     abbr -a -- l less
     abbr -a -- ll 'eza -la --icons --git'
+    abbr -a -- qpv 'qpdfview --unique'
 
     zoxide init fish | source
 
