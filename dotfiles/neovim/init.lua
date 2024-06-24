@@ -230,6 +230,32 @@ require('lazy').setup({
             require('orgmode').setup({
                 org_agenda_files = '~/orgfiles/**/*',
                 org_default_notes_file = '~/orgfiles/refile.org',
+                org_todo_keywords = {
+                    "TODO(t)",
+                    "PLAN(p)",
+                    "NEXT(n)",
+                    "|",
+                    "DONE(d)",
+                    "CANCELED(c)",
+                },
+                org_todo_keyword_faces = {
+                    -- TODO = ":foreground red",
+                    PLAN = ":foreground #F0BB61",
+                    NEXT = ":background #663333 :foreground #E0A0A0",
+                    CANCELED = ":foreground #99AA99",
+                },
+                org_archive_location = '~/orgfiles/archives/%s_archive::',
+                org_capture_templates = {
+                    t = {
+                        description = "Task",
+                        template = '* TODO %?\n  %u'
+                    },
+                    l = {
+                        description = "Log",
+                        template = '* %?\n  %U'
+                    }
+                },
+                org_id_link_to_org_use_id = true,
             })
         end,
     },
