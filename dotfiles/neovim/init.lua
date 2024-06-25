@@ -245,17 +245,23 @@ require('lazy').setup({
                     CANCELED = ":foreground #99AA99",
                 },
                 org_archive_location = '~/orgfiles/archives/%s_archive::',
+                org_adapt_indentation = false,
+                org_id_link_to_org_use_id = true,
                 org_capture_templates = {
                     t = {
                         description = "Task",
-                        template = '* TODO %?\n  %u'
+                        template = '* TODO %?\n%u'
                     },
                     l = {
                         description = "Log",
-                        template = '* %?\n  %U'
-                    }
+                        template = '* %?\n%U'
+                    },
+                    j = {
+                        description = "Journal",
+                        template = '* %?\n%U',
+                        target = '~/orgfiles/journal.org',
+                    },
                 },
-                org_id_link_to_org_use_id = true,
             })
         end,
     },
