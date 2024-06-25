@@ -4,6 +4,7 @@ if !ispath(project_path)
     try
         mkdir(project_path)
         @info "Created $(project_path)"
+        touch(joinpath(project_path, "tracecompile.jl"))
     catch e
         @error e
         @error dump(e)
