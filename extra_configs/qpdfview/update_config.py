@@ -65,6 +65,7 @@ shortcut_config.read(QPDFVIEW_CONFIG_SHORTCUTS)
 shortcut_config["General"]["continuousMode"] = "Ctrl+7, C"
 shortcut_config["General"]["findNext"] = "Ctrl+G, Return"
 shortcut_config["General"]["findPrevious"] = "Ctrl+Shift+G, Shift+Return"
+shortcut_config["General"]["jumpToPage"] = "Ctrl+J, G"
 shortcut_config["General"]["nextPage"] = "Space, N"
 shortcut_config["General"]["previousPage"] = "Backspace, P"
 
