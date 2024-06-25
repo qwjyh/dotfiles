@@ -10,10 +10,19 @@ import shutil
 # =======================================================================================
 
 QPDFVIEW_CONFIGDIR = os.path.expanduser("~/.config/qpdfview/")
+if not os.path.exists(QPDFVIEW_CONFIGDIR):
+    print("qpdfview config directory not found.")
+    print("Install qpdfview first and rerun this script.")
+    print("Exiting...")
+    exit(1)
+
+# =======================================================================================
+
 QPDFVIEW_CONFIG_CONFIG = QPDFVIEW_CONFIGDIR + "qpdfview.conf"
 print(f"{QPDFVIEW_CONFIG_CONFIG=}")
 
-shutil.copyfile(QPDFVIEW_CONFIG_CONFIG, QPDFVIEW_CONFIG_CONFIG + ".orig")
+if os.path.exists(QPDFVIEW_CONFIG_CONFIG):
+    shutil.copyfile(QPDFVIEW_CONFIG_CONFIG, QPDFVIEW_CONFIG_CONFIG + ".orig")
 
 config = configparser.RawConfigParser()
 config.optionxform = lambda optionstr: optionstr
@@ -42,7 +51,8 @@ with open(QPDFVIEW_CONFIG_CONFIG, "w") as file:
 
 QPDFVIEW_CONFIG_SHORTCUTS = QPDFVIEW_CONFIGDIR + "shortcuts.conf"
 
-shutil.copyfile(QPDFVIEW_CONFIG_SHORTCUTS, QPDFVIEW_CONFIG_SHORTCUTS + ".orig")
+if os.path.exists(QPDFVIEW_CONFIG_SHORTCUTS):
+    shutil.copyfile(QPDFVIEW_CONFIG_SHORTCUTS, QPDFVIEW_CONFIG_SHORTCUTS + ".orig")
 
 config = configparser.RawConfigParser()
 config.optionxform = lambda optionstr: optionstr
