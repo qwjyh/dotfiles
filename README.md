@@ -7,16 +7,18 @@ my dotfiles
   - AHK macro
   - wezterm
   - etc
-- Ubuntu 20.04 on WSL
-  - fish
-- Arch/Manjaro
+- Arch
   - fish
   - tmux
   - neovim
   - keyboard config(xremap)
   - wezterm
+- Ubuntu 22.04 on WSL
+  - fish
+- Termux
 
 ## extra
+- qpdfview
 - okular
 
 # Installing
@@ -29,11 +31,20 @@ my dotfiles
 6. run `bin/install.ps1`
 
 ### note
-* manual install lean
+* manually install lean
 
 ## Linux
-1. install fish
-2. run install.sh
+1. run install.sh
+
+# Neovim
+
+## Julia
+### Initial setup
+- `./bin/neovim/setup_julials.jl` to set up environment with LanguageServer.jl
+<!-- - Edit `init.lua` not to use sysimage and edit some julia code -->
+- `./bin/neovim/update_julials.jl` to generate sysimage for faster startup time
+
+Edit `init.lua` to change arguments for julials.
 
 # TODO
 - Iron.nvim doesn't work for julia on Windows
