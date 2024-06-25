@@ -70,4 +70,4 @@ shortcut_config["General"]["nextPage"] = "Space, N"
 shortcut_config["General"]["previousPage"] = "Backspace, P"
 
 with open(QPDFVIEW_CONFIG_SHORTCUTS, "w") as file:
-    config.write(file, space_around_delimiters=False)
+    shortcut_config.write(file, space_around_delimiters=False)
