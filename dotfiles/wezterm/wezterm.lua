@@ -51,7 +51,7 @@ return {
     -- font = wezterm.font 'FirgeNerd Console'
     font = wezterm.font_with_fallback {
         {
-            family = 'JuiseeHW Nerd Font',
+            family = 'Juisee HWNF',
             weight = 'Bold',
             harfbuzz_features = {
                 'calt=0', -- disables ligature
