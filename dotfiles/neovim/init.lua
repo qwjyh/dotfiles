@@ -629,6 +629,7 @@ lspconfig.julials.setup {
         -- use below 2 lines to collect script to be included in sysimage
         -- '--trace-compile',
         -- vim.env.HOME .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
+        "-t4",
         "-e",
         [[
             # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
