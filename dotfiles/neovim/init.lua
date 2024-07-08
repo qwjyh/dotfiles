@@ -56,7 +56,21 @@ require('lazy').setup({
     },
     { -- lualine(statusline)
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
+        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+    },
+    {
+        'shellRaining/hlchunk.nvim',
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require('hlchunk').setup {
+                chunk = {
+                    enable = true,
+                },
+                line_num = {
+                    enable = true,
+                },
+            }
+        end
     },
     {
         'lervag/vimtex',
