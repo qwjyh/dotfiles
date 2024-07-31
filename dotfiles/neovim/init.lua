@@ -714,7 +714,7 @@ lspconfig.rust_analyzer.setup {
 }
 
 local lss = { "pyright", "texlab", "ccls", "clangd", "tsserver", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", "r_language_server", "ruff_lsp", "cssls", "jsonls", "sqls" }
+    "csharp_ls", "html", "r_language_server", "cssls", "jsonls", "sqls", "vhdl_ls", "ruff" }
 for _, ls in pairs(lss) do
     lspconfig[ls].setup {
         on_attach = on_attach,
