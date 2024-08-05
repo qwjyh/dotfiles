@@ -1,0 +1,15 @@
+keymap:
+  - name: Wheel Tilt
+    remap:
+      # Side forward
+      Btn_Side: Left
+      # Side back
+      Btn_Extra: Right
+      XRIGHTSCROLL:
+        remap:
+          XHIRES_RIGHTSCROLL: Ctrl-Tab
+      XLEFTSCROLL:
+        remap:
+          XHIRES_LEFTSCROLL: Ctrl-Shift-Tab
+    device:
+      only: 'Logi M750 Mouse'
