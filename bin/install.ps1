@@ -58,6 +58,7 @@ New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_
 mkdir $env:LOCALAPPDATA\nvim\after\ftplugin
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\satysfi.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\satysfi.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\tex.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\tex.lua)
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\typst.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\typst.lua)
 mkdir $env:LOCALAPPDATA\nvim\after\queries\satysfi
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/highlights.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\highlights.scm
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/indents.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\indents.scm
