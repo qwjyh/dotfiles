@@ -666,6 +666,7 @@ lspconfig.julials.setup {
         ]] }
 }
 -- SATySFi
+require 'lspconfig.server_configurations.satysfi_ls'
 lspconfig.satysfi_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
