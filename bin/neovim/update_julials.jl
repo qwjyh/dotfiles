@@ -5,7 +5,7 @@ cd(project_path)
 run(`julia --project=. -e 'using Pkg; Pkg.update()'`)
 compile_traces = Iterators.filter(eachline("tracecompile.jl")) do line
     # Remove anonymous functions from compile trace
-    !startswith(line, '#') && !occursin(r"\#\d+\#\d+", line)
+    !startswith(line, '#') && !occursin(r"\#\d+\#\d+", line) && !occursin(r"\#\#printstyled\#", line)
 end |> join
 read("precompile_exec_head.jl", String) * compile_traces |> (b -> write("precompile_exec.jl", b))
 @info "compiling sysimage..."
