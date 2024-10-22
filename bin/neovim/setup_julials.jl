@@ -1,15 +1,9 @@
 #!/usr/bin/julia
 project_path = joinpath(homedir(), ".julia", "environments", "nvim-lspconfig")
 if !ispath(project_path)
-    try
-        mkdir(project_path)
-        @info "Created $(project_path)"
-        touch(joinpath(project_path, "tracecompile.jl"))
-    catch e
-        @error e
-        @error dump(e)
-        throw(e)
-    end
+    mkdir(project_path)
+    @info "Created $(project_path)"
+    touch(joinpath(project_path, "tracecompile.jl"))
 end
 cmd = `julia --project=$(project_path) $(@__DIR__)/add_dependencies.jl`
 @info cmd
