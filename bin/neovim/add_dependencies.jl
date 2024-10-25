@@ -24,6 +24,9 @@ open(out_path, "w") do io
     println(io, "using LanguageServer")
     println(io, "using " * join(pkg_ls_deps, ", "))
     println(io, "using " * join(pkg_extra, ", "))
+    if Sys.iswindows()
+        println(io, "import FileWatching")
+    end
 end
 @info "finished writing precompile head file"
 
