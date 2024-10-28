@@ -1,0 +1,23 @@
+cmap <tab> cmd-menu-complete
+cmap <backtab> cmd-menu-complete-back
+
+## https://github.com/gokcehan/lf/wiki/Integrations#eza
+#cmd on-select &{{
+#    lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+#}}
+#
+#cmd git_branch ${{
+#    git branch | fzf | xargs git checkout
+#    pwd_shell="$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')"
+#    lf -remote "send $id updir; cd \"$pwd_shell\""
+#}}
+#map gb :git_branch
+#map gp $clear; git pull --rebase || true; echo "press ENTER"; read ENTER
+#map gs $clear; git status; echo "press ENTER"; read ENTER
+#map gl $clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+#
+#cmd on-cd &{{
+#    fmt="$(STARSHIP_SHELL= starship prompt | sed 's/\\/\\\\/g;s/"/\\"/g')"
+#    lf -remote "send $id set promptfmt \"$fmt\""
+#}}
+

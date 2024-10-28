@@ -77,4 +77,7 @@ New-Item -ItemType SymbolicLink -Path ~\.config\wezterm\wezterm.lua -Target (Res
 # julia
 mkdir ~\.config\julia\config
 New-Item -ItemType SymbolicLink -Path ~\.julia\config\startup.jl -Target (Resolve-Path .\dotfiles\startup_windows.jl) -Force
+# lf
+mkdir $env:LOCALAPPDATA\lf
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\lf\lfrc -Target (Resolve-Path .\dotfiles\lf\lfrc) -Force
 
