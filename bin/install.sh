@@ -45,3 +45,6 @@ ln -sf $(pwd)/dotfiles/neovim/luasnippets/satysfi/math.lua ~/.config/nvim/luasni
 
 mkdir -p ~/.julia/config
 ln -sf $(pwd)/dotfiles/startup_linux.jl ~/.julia/config/startup.jl
+
+mkdir -p ~/.config/lf
+ln -sf $(pwd)/dotfiles/lf/lfrc ~/.config/lf/lfrc
