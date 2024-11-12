@@ -15,6 +15,7 @@
         nixpkgs.legacyPackages.x86_64-linux.curl
         nixpkgs.legacyPackages.x86_64-linux.neovim
         nixpkgs.legacyPackages.x86_64-linux.ripgrep
+        nixpkgs.legacyPackages.x86_64-linux.bat
         nixpkgs.legacyPackages.x86_64-linux.fzf
         nixpkgs.legacyPackages.x86_64-linux.starship
 
