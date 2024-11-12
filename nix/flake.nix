@@ -16,6 +16,7 @@
         nixpkgs.legacyPackages.x86_64-linux.neovim
         nixpkgs.legacyPackages.x86_64-linux.ripgrep
         nixpkgs.legacyPackages.x86_64-linux.fzf
+        nixpkgs.legacyPackages.x86_64-linux.starship
 
         nixpkgs.legacyPackages.x86_64-linux.clang-tools
       ];
