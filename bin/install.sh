@@ -48,3 +48,5 @@ ln -sf $(pwd)/dotfiles/startup_linux.jl ~/.julia/config/startup.jl
 
 mkdir -p ~/.config/lf
 ln -sf $(pwd)/dotfiles/lf/lfrc ~/.config/lf/lfrc
+
+ln -sf $(pwd)/dotfiles/bat/config "$(bat --config-file)"
