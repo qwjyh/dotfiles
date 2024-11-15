@@ -389,7 +389,7 @@ vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
 require('catppuccin').setup({
     transparent_background = true,
 })
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-latte"
 
 -----------------------------------------------------------
 vim.g.mapleader = ' '

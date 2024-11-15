@@ -44,7 +44,8 @@ return {
     --        }
     --    },
 
-    color_scheme = "iceberg-dark",
+    -- color_scheme = "iceberg-dark",
+    color_scheme = "catppuccin-latte",
     use_fancy_tab_bar = false,
     tab_bar_at_bottom = true,
     window_background_opacity = 0.85,
