@@ -53,7 +53,7 @@ return {
     font = wezterm.font_with_fallback {
         {
             family = 'Juisee HWNF',
-            weight = 'Bold',
+            weight = 'Regular',
             harfbuzz_features = {
                 'calt=0', -- disables ligature
                 'zero=1',
