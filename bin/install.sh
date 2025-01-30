@@ -45,6 +45,7 @@ ln -sf $(pwd)/dotfiles/neovim/luasnippets/satysfi/math.lua ~/.config/nvim/luasni
 
 mkdir -p ~/.julia/config
 ln -sf $(pwd)/dotfiles/startup_linux.jl ~/.julia/config/startup.jl
+curl -o ~/.julia/config/catppuccin.jl https://raw.githubusercontent.com/catppuccin/ohmyrepl/refs/heads/main/catppuccin.jl
 
 mkdir -p ~/.config/lf
 ln -sf $(pwd)/dotfiles/lf/lfrc ~/.config/lf/lfrc
