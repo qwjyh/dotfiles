@@ -493,6 +493,7 @@ vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = "lsp do
 vim.keymap.set('n', '<leader>flr', builtin.lsp_references, { desc = "lsp references for word" })
 vim.keymap.set('n', '<leader>fli', builtin.lsp_incoming_calls, { desc = "lsp incoming calls" })
 vim.keymap.set('n', '<leader>flo', builtin.lsp_outgoing_calls, { desc = "lsp outgoing calls" })
+vim.keymap.set('n', '<leader>fll', builtin.lsp_implementations, { desc = "lsp implementations" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
