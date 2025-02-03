@@ -139,7 +139,7 @@ function Enable-SshAgent {
   .OUTPUTS
     no outputs
   #>
-	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
+	sudo run pwsh -c "Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent"
 }
 # auto start ssh-agent and do ssh-add
 function Invoke-SshAdd {
