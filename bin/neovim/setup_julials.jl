@@ -5,7 +5,8 @@ if !ispath(project_path)
     @info "Created $(project_path)"
     touch(joinpath(project_path, "tracecompile.jl"))
 end
-cmd = `julia --project=$(project_path) $(@__DIR__)/add_dependencies.jl`
-@info cmd
-run(cmd)
+
+using Pkg
+Pkg.activate(project_path)
+include("$(@__DIR__)/add_dependencies.jl")
 
