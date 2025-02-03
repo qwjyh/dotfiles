@@ -11,12 +11,12 @@ Pkg.add("PackageCompiler")
 
 # add extra dependencies
 # these packages are manually collected
-pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates", "Downloads", "TOML"]
+pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates", "Downloads", "TOML", "JSONRPC", "SymbolServer"]
 Pkg.add(pkg_extra)
 @info "added dependencies"
 
 # Extra package to be executed in precompiled code
-pkg_precompiled = ["SymbolServer"]
+pkg_precompiled = []
 
 # save pkgs to be used for precompile functions with traced script
 out_path = joinpath(Pkg.project().path |> dirname, "precompile_exec_head.jl")
