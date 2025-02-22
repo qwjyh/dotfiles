@@ -766,6 +766,10 @@ lspconfig.tinymist.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     single_file_support = true,
+    -- offset_encoding = "utf-8",
+    settings = {
+        formatterMode = "typstyle",
+    },
 }
 
 lspconfig.rust_analyzer.setup {
