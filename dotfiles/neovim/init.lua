@@ -769,15 +769,21 @@ lspconfig.tinymist.setup {
 }
 
 lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
     capabilities = capabilities,
     settings = {
         ['rust-analyzer'] = {
+            cargo = {
+                features = "all",
+            },
             check = {
                 command = "clippy",
-            }
-        }
-    }
+            },
+        },
+    },
 }
 
 local lss = { "pyright", "texlab", --[[ "ccls", ]] "clangd", "ts_ls", --[["tailwindcss"]] "hls", "cmake",
