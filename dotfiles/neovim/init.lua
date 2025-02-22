@@ -498,6 +498,7 @@ vim.keymap.set('n', '<leader>fli', builtin.lsp_incoming_calls, { desc = "lsp inc
 vim.keymap.set('n', '<leader>flo', builtin.lsp_outgoing_calls, { desc = "lsp outgoing calls" })
 vim.keymap.set('n', '<leader>fll', builtin.lsp_implementations, { desc = "lsp implementations" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
+vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = "current buffer fuzzy find" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
 vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = "git commit" })
