@@ -226,14 +226,6 @@ require('lazy').setup({
         },
         -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
         config = function()
-            -- Setup treesitter
-            require('nvim-treesitter.configs').setup({
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = { 'org' },
-                },
-                ensure_installed = { 'org' },
-            })
 
             -- Setup orgmode
             require('orgmode').setup({
