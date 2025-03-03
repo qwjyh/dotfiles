@@ -125,14 +125,6 @@ require('lazy').setup({
     },
     {
         "andymass/vim-matchup",
-        config = function()
-            vim.g.matchup_matchparen_offscreen = { method = "popup" }
-            require 'nvim-treesitter.configs'.setup {
-                matchup = {
-                    enable = true,
-                }
-            }
-        end,
     },
     {
         'nvim-telescope/telescope.nvim',
