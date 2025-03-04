@@ -734,17 +734,6 @@ lspconfig.powershell_es.setup {
     bundle_path = vim.fn.has('win32') == 1 and win_pwsh_es_path or arch_pwsh_es_path,
     capabilities = capabilities,
 }
--- ccls
--- -- csharp
--- lspconfig.omnisharp.setup {
---     cmd = {'omnisharp'},
--- }
-
--- lspconfig.typst_lsp.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     single_file_support = true,
--- }
 
 lspconfig.tinymist.setup {
     on_attach = on_attach,
