@@ -423,7 +423,7 @@ require('gitsigns').setup {
         ---@param mode string|string[]
         ---@param l string
         ---@param r any
-        ---@param opts table?
+        ---@param opts vim.keymap.set.Opts?
         local function map(mode, l, r, opts)
             opts = opts or {}
             opts.buffer = bufnr
