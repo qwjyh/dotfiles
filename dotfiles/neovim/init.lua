@@ -756,12 +756,6 @@ lspconfig.powershell_es.setup {
 --     cmd = {'omnisharp'},
 -- }
 
--- lspconfig.typst_lsp.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     single_file_support = true,
--- }
-
 lspconfig.tinymist.setup {
     on_attach = on_attach,
     capabilities = capabilities,
