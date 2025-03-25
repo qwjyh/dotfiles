@@ -731,6 +731,15 @@ lspconfig.julials.setup {
             run(server)
         ]] }
 }
+-- JETLS
+require 'lspconfig.server_configurations.jetls'
+lspconfig.jetls.setup {
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    capabilities = capabilities,
+}
 -- SATySFi
 require 'lspconfig.server_configurations.satysfi_ls'
 lspconfig.satysfi_ls.setup {
