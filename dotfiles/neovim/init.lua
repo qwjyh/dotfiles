@@ -15,7 +15,18 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Installing plugins
 require('lazy').setup({
-    { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        config = function()
+            require("catppuccin").setup({
+                flavour = "macchiato",
+                integrations = {
+                    navic = true,
+                },
+            })
+        end
+    }, -- Color scheme
     {
         dir = "./lua/term_powershell.lua",
         cond = function()
@@ -182,6 +193,18 @@ require('lazy').setup({
                 desc = "Quickfix List (Trouble)",
             },
         },
+    },
+    {
+        'SmiteshP/nvim-navic',
+        -- event = 'BufReadPre',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+        },
+        config = function()
+            require 'nvim-navic'.setup {
+                highlight = true,
+            }
+        end
     },
     {
         'Julian/lean.nvim',
@@ -615,6 +638,7 @@ require 'nvim-treesitter.configs'.setup {
 -- LSP config
 
 local lspconfig = require 'lspconfig'
+local navic = require 'nvim-navic'
 
 -- Mapping for language server
 -- See `:help vim.diagnostic.* for documentation on any of the below functions
@@ -647,6 +671,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 -- cmp_nvim_lsp supports additional LSP completion capabilities
