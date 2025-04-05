@@ -16,6 +16,9 @@ modmap:
       Win_L:
         held: Win_L
         alone: Key_Chat
+  - name: left shift
+    remap:
+      Capslock: shift_l
 keymap:
   - name: ZenkakuHankaku to Esc
     remap:

@@ -669,6 +669,15 @@ lspconfig.julials.setup {
             run(server)
         ]] }
 }
+-- JETLS
+require 'lspconfig.server_configurations.jetls'
+lspconfig.jetls.setup {
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    capabilities = capabilities,
+}
 -- SATySFi
 require 'lspconfig.server_configurations.satysfi_ls'
 lspconfig.satysfi_ls.setup {
@@ -688,6 +697,7 @@ lspconfig.powershell_es.setup {
     bundle_path = vim.fn.has('win32') == 1 and win_pwsh_es_path or arch_pwsh_es_path,
     capabilities = capabilities,
 }
+
 
 lspconfig.tinymist.setup {
     on_attach = on_attach,
