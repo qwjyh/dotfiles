@@ -236,7 +236,7 @@ require('lazy').setup({
         config = function()
             -- Setup orgmode
             require('orgmode').setup({
-                org_agenda_files = '~/orgfiles/**/*',
+                org_agenda_files = require("local_settings").org_agenda_files,
                 org_default_notes_file = '~/orgfiles/refile.org',
                 org_todo_keywords = {
                     "TODO(t)",
