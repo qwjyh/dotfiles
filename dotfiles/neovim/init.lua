@@ -680,7 +680,10 @@ if julials_so_file then -- if sysimage doesn't exist, julials_so_file == nil
 end
 -- main
 lspconfig.julials.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
     capabilities = capabilities,
     cmd = { "julia", "--startup-file=no", "--history-file=no",
         -- julials_so_option[1], julials_so_option[2],
