@@ -44,11 +44,13 @@ return {
     --        }
     --    },
 
-    -- color_scheme = "iceberg-dark",
-    color_scheme = "catppuccin-latte",
+    color_scheme = "iceberg-dark",
+    -- color_scheme = "catppuccin-macchiato",
+    -- color_scheme = "catppuccin-latte",
+    -- color_scheme = "Everforest Dark (Gogh)",
     use_fancy_tab_bar = false,
     tab_bar_at_bottom = true,
-    window_background_opacity = 0.85,
+    window_background_opacity = 0.90,
     -- font = wezterm.font 'FirgeNerd Console'
     font = wezterm.font_with_fallback {
         {
