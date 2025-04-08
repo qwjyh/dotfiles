@@ -282,8 +282,9 @@ require('lazy').setup({
         end,
         config = function()
             require 'typst-preview'.setup {
-                -- Setting this true will enable printing debug information with print()
-                debug = false,
+                -- Setting this true will enable logging debug information to
+                -- `vim.fn.stdpath 'data' .. '/typst-preview/log.txt'`
+                debug = true,
 
                 -- Custom format string to open the output link provided with %s
                 -- Example: open_cmd = 'firefox %s -P typst-preview --class typst-preview'
@@ -305,8 +306,8 @@ require('lazy').setup({
                 -- Warning: Be aware that your version might be older than the one
                 -- required.
                 dependencies_bin = {
-                    ['tinymist'] = nil,
-                    ['websocat'] = nil
+                    ['tinymist'] = 'tinymist',
+                    ['websocat'] = nil,
                 },
 
                 -- A list of extra arguments (or nil) to be passed to previewer.
