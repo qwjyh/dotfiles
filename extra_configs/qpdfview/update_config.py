@@ -68,6 +68,8 @@ shortcut_config["General"]["findPrevious"] = "Ctrl+Shift+G, Shift+Return"
 shortcut_config["General"]["jumpToPage"] = "Ctrl+J, G"
 shortcut_config["General"]["nextPage"] = "Space, N"
 shortcut_config["General"]["previousPage"] = "Backspace, P"
+shortcut_config["General"]["zoomIn"] = "Ctrl+Up, Ctrl++"
+shortcut_config["General"]["zoomOut"] = "Ctrl+Down, Ctrl+-"
 
 with open(QPDFVIEW_CONFIG_SHORTCUTS, "w") as file:
     shortcut_config.write(file, space_around_delimiters=False)
