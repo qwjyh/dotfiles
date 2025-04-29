@@ -12,7 +12,7 @@ cd(project_path) do
     end |> join
     read("precompile_exec_head.jl", String) * compile_traces |> (b -> write("precompile_exec.jl", b))
     @info "compiling sysimage..."
-    create_sysimage(["LanguageServer"], sysimage_path = "sys-ls.so", precompile_execution_file = ["precompile_exec.jl"])'
+    create_sysimage(["LanguageServer"], sysimage_path = "sys-ls.so", precompile_execution_file = ["precompile_exec.jl"])
     @info "post precompile"
     run(`julia --project=. -J sys-ls.so -e 'using Pkg; Pkg.precompile()'`)
 end
