@@ -139,7 +139,7 @@ function Enable-SshAgent {
   .OUTPUTS
     no outputs
   #>
-	sudo Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent
+	sudo run pwsh -c "Set-Service -Name ssh-agent -StartupType Manual && Start-Service ssh-agent"
 }
 # auto start ssh-agent and do ssh-add
 function Invoke-SshAdd {
@@ -164,6 +164,8 @@ $env:LESS = "-i -M -R -S -W -z-4 -x4"
 $env:JL_SYSIMG_PATH = "$HOME/dotfiles/julia-sysimages"
 $env:JL_SYSIMG_PLT = "$HOME/dotfiles/julia-sysimages/sys-plotsmakie.so"
 $env:JL_SYSIMG_ETC = "$HOME/dotfiles/julia-sysimages/sys-etc.so"
+# yazi file
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 
 
 # ==============================================================
