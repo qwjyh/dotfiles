@@ -360,6 +360,33 @@ vim.cmd.colorscheme "catppuccin-mocha"
 -----------------------------------------------------------
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+local virt_lines_ns = vim.api.nvim_create_namespace 'on_diagnostic_jump'
+--- @param diagnostic? vim.Diagnostic
+--- @param bufnr integer
+local function on_jump(diagnostic, bufnr)
+    if not diagnostic then return end
+    vim.diagnostic.show(
+        virt_lines_ns,
+        bufnr,
+        { diagnostic },
+        { virtual_lines = { current_line = true }, virtual_text = false }
+    )
+end
+-- vim.diagnostic.config({
+--     jump = { on_jump = on_jump },
+-- })
+vim.keymap.set('n', ']d', function()
+    vim.diagnostic.jump({
+        count = 1,
+        float = true,
+    })
+end)
+vim.keymap.set('n', '[d', function()
+    vim.diagnostic.jump({
+        count = -1,
+        float = true,
+    })
+end)
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
