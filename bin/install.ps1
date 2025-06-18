@@ -57,16 +57,19 @@ New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\term_powershell.l
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lsp_config.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lsp_config.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\local_settings.lua -Target (Resolve-Path .\dotfiles\neovim\lua\local_settings.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_configurations\satysfi_ls.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lspconfig\server_configurations\satysfi_ls.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lspconfig\server_configurations\jetls.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lspconfig\server_configurations\jetls.lua) -Force
 mkdir $env:LOCALAPPDATA\nvim\after\ftplugin
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\satysfi.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\satysfi.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\tex.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\tex.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\typst.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\typst.lua)
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\org.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\org.lua)
 mkdir $env:LOCALAPPDATA\nvim\after\queries\satysfi
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/highlights.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\highlights.scm
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/indents.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\indents.scm
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/monaqa/tree-sitter-satysfi/master/queries/matchup.scm" -OutFile $env:LOCALAPPDATA\nvim\after\queries\satysfi\matchup.scm
 mkdir $env:LOCALAPPDATA\nvim\after\queries\julia
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\queries\julia\injections.scm -Target (Resolve-Path .\dotfiles\neovim\after\queries\julia\injections.scm)
+
 # pwsh
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target (Resolve-Path .\dotfiles\pwsh\powershell_profile.ps1) -Force
 New-Item -ItemType SymbolicLink -Path ~\.config\powershell\chezmoi_completion.ps1 -Target (Resolve-Path .\dotfiles\pwsh\chezmoi_completion.ps1) -Force
