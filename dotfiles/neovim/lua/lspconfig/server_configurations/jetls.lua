@@ -7,6 +7,7 @@ configs.jetls = {
     default_config = {
         cmd = {
             'julia',
+            '+beta',
             '--project=' .. vim.env.HOME .. '/work/julia/JETLS.jl',
             '--startup-file=no',
             '--history-file=no',

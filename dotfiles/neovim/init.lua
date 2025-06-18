@@ -669,6 +669,7 @@ lspconfig.julials.setup {
                     Base.load_path_expand("@v#.#"),
                 ))
             end
+            ENV["JULIA_DEBUG"] = "LanguageServer"
             @info "Running language server" VERSION pwd() project_path depot_path
             server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path)
             server.runlinter = true
