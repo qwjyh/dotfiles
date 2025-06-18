@@ -346,6 +346,7 @@ vim.o.errorbells = true
 vim.opt.undofile = true                -- Save undo history
 vim.o.completeopt = 'menuone,noselect' -- for better completion experience
 vim.o.termguicolors = true
+vim.o.exrc = true
 
 vim.keymap.set('n', 'H', '<cmd>tabp<cr>', { desc = 'tab previous' })
 vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
