@@ -13,6 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local local_settings = require("local_settings")
+
 -- Installing plugins
 require('lazy').setup({
     { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
@@ -206,7 +208,7 @@ require('lazy').setup({
         config = function()
             -- Setup orgmode
             require('orgmode').setup({
-                org_agenda_files = require("local_settings").org_agenda_files,
+                org_agenda_files = local_settings and local_settings.org_agenda_files or {},
                 org_default_notes_file = '~/orgfiles/refile.org',
                 org_todo_keywords = {
                     "TODO(t)",
