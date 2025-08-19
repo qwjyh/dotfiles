@@ -31,6 +31,16 @@ require('lazy').setup({
         end
     },
     {
+        dir = "./lua/pluto_nvim.lua",
+        config = function()
+            -- temp global for dev
+            pluto_nvim = require("pluto_nvim")
+            require("pluto_nvim").setup {}
+        end,
+        lazy = true,
+        ft = { 'julia' },
+    },
+    {
         'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
