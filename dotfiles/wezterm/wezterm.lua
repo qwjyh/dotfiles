@@ -59,7 +59,7 @@ return {
             harfbuzz_features = {
                 'calt=0', -- disables ligature
                 'zero=1',
-                'ss08=0',
+                -- 'ss08=0', -- '->'
                 ''
             },
         },
