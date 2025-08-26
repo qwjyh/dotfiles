@@ -58,5 +58,5 @@ ln -sf "$(pwd)/dotfiles/lf/lfrc" ~/.config/lf/lfrc
 ln -sf "$(pwd)/dotfiles/bat/config" "$(bat --config-file)"
 
 mkdir -p ~/.config/yazi/
-ln -s "$(pwd)/dotfiles/yazi/init.lua" ~/.config/yazi/init.lua
-ln -s "$(pwd)/dotfiles/yazi/yazi.toml" ~/.config/yazi/yazi.toml
+ln -sf "$(pwd)/dotfiles/yazi/init.lua" ~/.config/yazi/init.lua
+ln -sf "$(pwd)/dotfiles/yazi/yazi.toml" ~/.config/yazi/yazi.toml
