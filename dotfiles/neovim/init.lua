@@ -667,6 +667,7 @@ vim.lsp.enable({
     "verible",
     "svls",
     "yamlls",
+    "fish_lsp",
 })
 
 -- none-ls
