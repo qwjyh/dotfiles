@@ -8,6 +8,8 @@ local function with_desc(bufopts, desc)
     return vim.tbl_extend("error", bufopts, { desc = desc })
 end
 
+---@param client vim.lsp.Client
+---@param bufnr integer
 M.on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

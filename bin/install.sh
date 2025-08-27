@@ -29,9 +29,13 @@ ln -sf "$(pwd)/dotfiles/neovim/lua/term_powershell.lua" ~/.config/nvim/lua/term_
 ln -sf "$(pwd)/dotfiles/neovim/lua/lsp_config.lua" ~/.config/nvim/lua/lsp_config.lua
 ln -sf "$(pwd)/dotfiles/neovim/lua/pluto_nvim.lua" ~/.config/nvim/lua/pluto_nvim.lua
 ln -sf "$(pwd)/dotfiles/neovim/lua/local_settings.lua" ~/.config/nvim/lua/local_settings.lua
-mkdir -p ~/.config/nvim/lua/lspconfig/server_configurations
-ln -sf "$(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/satysfi_ls.lua" ~/.config/nvim/lua/lspconfig/server_configurations/satysfi_ls.lua
-ln -sf "$(pwd)/dotfiles/neovim/lua/lspconfig/server_configurations/jetls.lua" ~/.config/nvim/lua/lspconfig/server_configurations/jetls.lua
+mkdir -p ~/.config/nvim/after/lsp
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/lua_ls.lua" ~/.config/nvim/after/lsp/lua_ls.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/julials.lua" ~/.config/nvim/after/lsp/julials.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/powershell_es.lua" ~/.config/nvim/after/lsp/powershell_es.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/tinymist.lua" ~/.config/nvim/after/lsp/tinymist.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/satysfi_ls.lua" ~/.config/nvim/after/lsp/satysfi_ls.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/jetls.lua" ~/.config/nvim/after/lsp/jetls.lua
 mkdir -p ~/.config/nvim/after/ftplugin
 ln -sf "$(pwd)/dotfiles/neovim/after/ftplugin/satysfi.lua" ~/.config/nvim/after/ftplugin/satysfi.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/ftplugin/tex.lua" ~/.config/nvim/after/ftplugin/tex.lua
