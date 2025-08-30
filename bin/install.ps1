@@ -60,6 +60,7 @@ mkdir $env:LOCALAPPDATA\nvim\after\lsp
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\lua_ls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\lua_ls.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\julials.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\julials.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\powershell_es.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\powershell_es.lua)
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\rust_analyzer.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\rust_analyzer.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\tinymist.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\tinymist.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\satysfi_ls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\satysfi_ls.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\jetls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\jetls.lua)

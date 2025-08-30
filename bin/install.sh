@@ -33,6 +33,7 @@ mkdir -p ~/.config/nvim/after/lsp
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/lua_ls.lua" ~/.config/nvim/after/lsp/lua_ls.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/julials.lua" ~/.config/nvim/after/lsp/julials.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/powershell_es.lua" ~/.config/nvim/after/lsp/powershell_es.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/rust_analyzer.lua" ~/.config/nvim/after/lsp/rust_analyzer.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/tinymist.lua" ~/.config/nvim/after/lsp/tinymist.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/satysfi_ls.lua" ~/.config/nvim/after/lsp/satysfi_ls.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/jetls.lua" ~/.config/nvim/after/lsp/jetls.lua
