@@ -612,22 +612,14 @@ require 'nvim-treesitter.configs'.setup {
 -----------------------------------------------------------
 -- LSP config
 
-local lspconfig = require 'lspconfig'
-
 -- Mapping for language server
 -- See `:help vim.diagnostic.* for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = require("lsp_config").on_attach
-
--- cmp_nvim_lsp supports additional LSP completion capabilities
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 vim.lsp.config('*', {
+    -- cmp_nvim_lsp supports additional LSP completion capabilities
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 vim.lsp.config('satysfi_ls', {})
@@ -635,6 +627,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if client ~= nil then
+            -- Use an on_attach function to only map the following keys
+            -- after the language server attaches to the current buffer
             require("lsp_config").on_attach(client, ev.buf)
         end
     end
