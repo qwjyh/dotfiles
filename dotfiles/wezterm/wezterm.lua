@@ -53,8 +53,9 @@ return {
     window_background_opacity = 0.90,
     -- font = wezterm.font 'FirgeNerd Console'
     font = wezterm.font_with_fallback {
+        'Pending Mono NF',
         {
-            family = 'Juisee HWNF',
+            family = 'Juisee NF',
             weight = 'Regular',
             harfbuzz_features = {
                 'calt=0', -- disables ligature
