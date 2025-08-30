@@ -36,6 +36,7 @@ ln -sf "$(pwd)/dotfiles/neovim/after/lsp/powershell_es.lua" ~/.config/nvim/after
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/tinymist.lua" ~/.config/nvim/after/lsp/tinymist.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/satysfi_ls.lua" ~/.config/nvim/after/lsp/satysfi_ls.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/jetls.lua" ~/.config/nvim/after/lsp/jetls.lua
+ln -sf "$(pwd)/dotfiles/neovim/after/lsp/clangd.lua" ~/.config/nvim/after/lsp/clangd.lua
 mkdir -p ~/.config/nvim/after/ftplugin
 ln -sf "$(pwd)/dotfiles/neovim/after/ftplugin/satysfi.lua" ~/.config/nvim/after/ftplugin/satysfi.lua
 ln -sf "$(pwd)/dotfiles/neovim/after/ftplugin/tex.lua" ~/.config/nvim/after/ftplugin/tex.lua

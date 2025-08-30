@@ -63,6 +63,7 @@ New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\powershel
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\tinymist.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\tinymist.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\satysfi_ls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\satysfi_ls.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\jetls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\jetls.lua)
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\clangd.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\clangd.lua)
 mkdir $env:LOCALAPPDATA\nvim\after\ftplugin
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\satysfi.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\satysfi.lua)
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\ftplugin\tex.lua -Target (Resolve-Path .\dotfiles\neovim\after\ftplugin\tex.lua)
