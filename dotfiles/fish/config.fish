@@ -16,9 +16,10 @@ if status is-interactive
     # set -x SHELL bash
 
     # abbr (from 3.6, --universal is removed)
-    abbr -a -- l less
-    abbr -a -- ll 'eza -la --icons --git'
-    abbr -a -- qpv 'qpdfview --unique'
+    abbr --add -- l less
+    abbr --add -- ll 'eza -la --icons --git'
+    abbr --add -- qpv 'qpdfview --unique'
+    abbr --add -- lf yazi
 
     zoxide init fish | source
 
