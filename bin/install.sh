@@ -61,6 +61,7 @@ curl -o ~/.julia/config/catppuccin.jl https://raw.githubusercontent.com/catppucc
 mkdir -p ~/.config/lf
 ln -sf "$(pwd)/dotfiles/lf/lfrc" ~/.config/lf/lfrc
 
+mkdir -p ~/.config/bat
 ln -sf "$(pwd)/dotfiles/bat/config" "$(bat --config-file)"
 
 mkdir -p ~/.config/yazi/
