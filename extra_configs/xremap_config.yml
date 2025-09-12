@@ -11,11 +11,19 @@ modmap:
       KEY_MUHENKAN:
         held: KEY_Email
         alone: KEY_MUHENKAN
+        free_hold: true
   - name: Super xcape
     remap:
       Win_L:
         held: Win_L
         alone: Key_Chat
+        free_hold: true
+  - name: Map katakana_hiragana
+    remap:
+      KEY_KATAKANAHIRAGANA: KEY_SHOP
+  - name: left shift
+    remap:
+      Capslock: shift_l
 keymap:
   - name: ZenkakuHankaku to Esc
     remap:
@@ -30,3 +38,22 @@ keymap:
       Email-s: PageUp
       Email-d: PageDown
       Email-f: End
+    mode: default
+  - name: Turn on numpad mode
+    remap:
+      KEY_SHOP: { set_mode: Numpad }
+    mode: default
+  - name: Turn off numpad mode
+    remap:
+      KEY_SHOP: { set_mode: default }
+    mode: Numpad
+  - name: Numpad
+    remap:
+      m: KEY_0
+      j: KEY_1
+      k: KEY_2
+      l: KEY_3
+      u: KEY_4
+      i: KEY_5
+      o: KEY_6
+    mode: Numpad

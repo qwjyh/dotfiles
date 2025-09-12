@@ -16,14 +16,34 @@ if status is-interactive
     # set -x SHELL bash
 
     # abbr (from 3.6, --universal is removed)
-    abbr -a -- l less
-    abbr -a -- ll 'eza -la --icons --git'
-    abbr -a -- qpv 'qpdfview --unique'
+    abbr --add -- l less
+    abbr --add -- ll 'eza -la --icons --git'
+    abbr --add -- qpv 'qpdfview --unique'
+    abbr --add -- lf yazi
 
     zoxide init fish | source
 
     # opam
     #source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+    function rga-fzf
+        set RG_PREFIX 'rga --files-with-matches'
+        if test (count $argv) -gt 1
+            set RG_PREFIX "$RG_PREFIX $argv[1..-2]"
+        end
+        set -l file $file
+        set file (
+            FZF_DEFAULT_COMMAND="$RG_PREFIX '$argv[-1]'" \
+            fzf --sort \
+                --preview='test ! -z {} && \
+                    rga --pretty --context 5 {q} {}' \
+                --phony -q "$argv[-1]" \
+                --bind "change:reload:$RG_PREFIX {q}" \
+                --preview-window='50%:wrap'
+        ) && \
+        echo "opening $file" && \
+        open "$file"
+    end
 end
 
 # starship

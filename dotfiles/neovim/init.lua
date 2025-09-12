@@ -13,6 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local local_settings = require("local_settings")
+
 -- Installing plugins
 require('lazy').setup({
     { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
@@ -114,6 +116,14 @@ require('lazy').setup({
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
+            {
+                {
+                    "nvim-treesitter/nvim-treesitter-context",
+                    opts = {
+                        enable = true,
+                    },
+                }
+            },
         },
     },
     {
@@ -122,14 +132,6 @@ require('lazy').setup({
     },
     {
         "andymass/vim-matchup",
-        config = function()
-            vim.g.matchup_matchparen_offscreen = { method = "popup" }
-            require 'nvim-treesitter.configs'.setup {
-                matchup = {
-                    enable = true,
-                }
-            }
-        end,
     },
     {
         'nvim-telescope/telescope.nvim',
@@ -193,29 +195,7 @@ require('lazy').setup({
         -- see Julian/lean.nvim readme
         opts = {
             lsp = {
-                on_attach = function(client, bufnr)
-                    -- Enable completion triggered by <c-x><c-o>
-                    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-                    -- Mappings
-                    -- See `:help vim.lsp.*` for documentation on any of the below function
-                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-                    vim.keymap.set('n', 'g1', vim.lsp.buf.implementation, bufopts)
-                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-                    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-                    vim.keymap.set('n', '<space>wl', function()
-                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, bufopts)
-                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-                    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
-                    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-                end,
+                on_attach = require("lsp_config").on_attach,
             },
             mappings = true,
         },
@@ -231,18 +211,9 @@ require('lazy').setup({
         },
         -- event = 'VeryLazy', -- doesn't work with existing comp and treesitter
         config = function()
-            -- Setup treesitter
-            require('nvim-treesitter.configs').setup({
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = { 'org' },
-                },
-                ensure_installed = { 'org' },
-            })
-
             -- Setup orgmode
             require('orgmode').setup({
-                org_agenda_files = '~/orgfiles/**/*',
+                org_agenda_files = local_settings and local_settings.org_agenda_files or {},
                 org_default_notes_file = '~/orgfiles/refile.org',
                 org_todo_keywords = {
                     "TODO(t)",
@@ -288,8 +259,9 @@ require('lazy').setup({
         end,
         config = function()
             require 'typst-preview'.setup {
-                -- Setting this true will enable printing debug information with print()
-                debug = false,
+                -- Setting this true will enable logging debug information to
+                -- `vim.fn.stdpath 'data' .. '/typst-preview/log.txt'`
+                debug = true,
 
                 -- Custom format string to open the output link provided with %s
                 -- Example: open_cmd = 'firefox %s -P typst-preview --class typst-preview'
@@ -311,8 +283,8 @@ require('lazy').setup({
                 -- Warning: Be aware that your version might be older than the one
                 -- required.
                 dependencies_bin = {
-                    ['tinymist'] = nil,
-                    ['websocat'] = nil
+                    ['tinymist'] = 'tinymist',
+                    ['websocat'] = nil,
                 },
 
                 -- A list of extra arguments (or nil) to be passed to previewer.
@@ -381,6 +353,7 @@ vim.o.errorbells = true
 vim.opt.undofile = true                -- Save undo history
 vim.o.completeopt = 'menuone,noselect' -- for better completion experience
 vim.o.termguicolors = true
+vim.o.exrc = true
 
 vim.keymap.set('n', 'H', '<cmd>tabp<cr>', { desc = 'tab previous' })
 vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
@@ -389,11 +362,39 @@ vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
 require('catppuccin').setup({
     transparent_background = true,
 })
-vim.cmd.colorscheme "catppuccin-latte"
+vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.cmd.colorscheme "catppuccin-latte"
 
 -----------------------------------------------------------
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+local virt_lines_ns = vim.api.nvim_create_namespace 'on_diagnostic_jump'
+--- @param diagnostic? vim.Diagnostic
+--- @param bufnr integer
+local function on_jump(diagnostic, bufnr)
+    if not diagnostic then return end
+    vim.diagnostic.show(
+        virt_lines_ns,
+        bufnr,
+        { diagnostic },
+        { virtual_lines = { current_line = true }, virtual_text = false }
+    )
+end
+-- vim.diagnostic.config({
+--     jump = { on_jump = on_jump },
+-- })
+vim.keymap.set('n', ']d', function()
+    vim.diagnostic.jump({
+        count = 1,
+        float = true,
+    })
+end)
+vim.keymap.set('n', '[d', function()
+    vim.diagnostic.jump({
+        count = -1,
+        float = true,
+    })
+end)
 -- some terminalmode settings
 vim.keymap.set('t', '<C-w>h', '<C-\\><C-N><C-w>h',
     { noremap = true, desc = "Exit terminal-mode and move to left window." })
@@ -459,7 +460,7 @@ require('gitsigns').setup {
         ---@param mode string|string[]
         ---@param l string
         ---@param r any
-        ---@param opts table?
+        ---@param opts vim.keymap.set.Opts?
         local function map(mode, l, r, opts)
             opts = opts or {}
             opts.buffer = bufnr
@@ -495,6 +496,7 @@ vim.keymap.set('n', '<leader>fli', builtin.lsp_incoming_calls, { desc = "lsp inc
 vim.keymap.set('n', '<leader>flo', builtin.lsp_outgoing_calls, { desc = "lsp outgoing calls" })
 vim.keymap.set('n', '<leader>fll', builtin.lsp_implementations, { desc = "lsp implementations" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
+vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = "current buffer fuzzy find" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
 vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = "git commit" })
@@ -610,179 +612,57 @@ require 'nvim-treesitter.configs'.setup {
 -----------------------------------------------------------
 -- LSP config
 
-local lspconfig = require 'lspconfig'
-
 -- Mapping for language server
 -- See `:help vim.diagnostic.* for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings
-    -- See `:help vim.lsp.*` for documentation on any of the below function
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'g1', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
-
--- cmp_nvim_lsp supports additional LSP completion capabilities
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-
-
--- Lua
-lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                globals = { 'vim' },
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-}
--- Julia
--- use sysimage only if it exists
-local julials_so = vim.env.HOME .. "/.julia/environments/nvim-lspconfig/sys-ls.so"
-local julials_so_option = { "", "" }
-local julials_so_file = io.open(julials_so)
-if julials_so_file then -- if sysimage doesn't exist, julials_so_file == nil
-    julials_so_option = {
-        "-J", julials_so
-    }
-    julials_so_file:close()
-end
--- main
-lspconfig.julials.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { "julia", "--startup-file=no", "--history-file=no",
-        -- julials_so_option[1], julials_so_option[2],
-        -- use below 2 lines to collect script to be included in sysimage
-        -- '--trace-compile',
-        -- vim.env.HOME .. "/.julia/environments/nvim-lspconfig/tracecompile.jl",
-        "-t4",
-        "-e",
-        [[
-            # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
-            # with the regular load path as a fallback
-            ls_install_path = joinpath(
-                get(DEPOT_PATH, 1, joinpath(homedir(), ".julia")),
-                "environments", "nvim-lspconfig"
-            )
-            pushfirst!(LOAD_PATH, ls_install_path)
-            using LanguageServer
-            popfirst!(LOAD_PATH)
-            depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
-            project_path = let
-                dirname(something(
-                    ## 1. Finds an explicitly set project (JULIA_PROJECT)
-                    Base.load_path_expand((
-                        p = get(ENV, "JULIA_PROJECT", nothing);
-                        p === nothing ? nothing : isempty(p) ? nothing : p
-                    )),
-                    ## 2. Look for a Project.toml file in the current working directory,
-                    ##    or parent directories, with $HOME as an upper boundary
-                    Base.current_project(),
-                    ## 3. First entry in the load path
-                    get(Base.load_path(), 1, nothing),
-                    ## 4. Fallback to default global environment,
-                    ##    this is more or less unreachable
-                    Base.load_path_expand("@v#.#"),
-                ))
-            end
-            @info "Running language server" VERSION pwd() project_path depot_path
-            server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path)
-            server.runlinter = true
-            run(server)
-        ]] }
-}
--- SATySFi
-require 'lspconfig.server_configurations.satysfi_ls'
-lspconfig.satysfi_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    autostart = true,
-}
--- bash
-lspconfig.bashls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- pwsh
-local win_pwsh_es_path = '~/scoop/apps/powershell-editorservice/current'
-local arch_pwsh_es_path = "/opt/powershell-editor-services/"
-lspconfig.powershell_es.setup {
-    bundle_path = vim.fn.has('win32') == 1 and win_pwsh_es_path or arch_pwsh_es_path,
-    capabilities = capabilities,
-}
--- ccls
--- -- csharp
--- lspconfig.omnisharp.setup {
---     cmd = {'omnisharp'},
--- }
-
--- lspconfig.typst_lsp.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     single_file_support = true,
--- }
-
-lspconfig.tinymist.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    single_file_support = true,
-}
-
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        ['rust-analyzer'] = {
-            check = {
-                command = "clippy",
-            }
-        }
-    }
-}
-
-local lss = { "pyright", "texlab", --[[ "ccls", ]] "clangd", "ts_ls", --[["tailwindcss"]] "hls", "cmake",
-    "csharp_ls", "html", "r_language_server", "cssls", "jsonls", "sqls", "vhdl_ls", "ruff", "lemminx" }
-for _, ls in pairs(lss) do
-    lspconfig[ls].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-end
+vim.lsp.config('*', {
+    -- cmp_nvim_lsp supports additional LSP completion capabilities
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
+vim.lsp.config('satysfi_ls', {})
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client ~= nil then
+            -- Use an on_attach function to only map the following keys
+            -- after the language server attaches to the current buffer
+            require("lsp_config").on_attach(client, ev.buf)
+        end
+    end
+})
+vim.lsp.enable({
+    "lua_ls",
+    "julials",
+    "bashls",
+    "tinymist",
+    "rust_analyzer",
+    "jetls",
+    "satysfi_ls",
+    "pyright",
+    "texlab",
+    "clangd",
+    "ts_ls",
+    "hls",
+    "cmake",
+    "csharp_ls",
+    "html",
+    "r_language_server",
+    "cssls",
+    "jsonls",
+    "sqls",
+    "vhdl_ls",
+    "ruff",
+    "lemminx",
+    "nixd",
+    "nil_ls",
+    "verible",
+    "svls",
+    "yamlls",
+    "fish_lsp",
+})
 
 -- none-ls
 local null_ls = require('null-ls')

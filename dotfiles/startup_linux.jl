@@ -2,7 +2,7 @@ try
     using OhMyREPL
     enable_autocomplete_brackets(false)
     include("catppuccin.jl")
-    OhMyREPL.colorscheme!("CatppuccinLatte")
+    OhMyREPL.colorscheme!("CatppuccinMocha")
 catch e
     @warn "Failed to load OhMyREPL"
 end
