@@ -3,13 +3,14 @@ try
     enable_autocomplete_brackets(false)
     include("catppuccin.jl")
     OhMyREPL.colorscheme!("CatppuccinMocha")
-catch e
-    @warn "Failed to load OhMyREPL"
+    # OhMyREPL.colorscheme!("CatppuccinLatte")
+catch err
+    @warn "Failed to load OhMyREPL" err
 end
 try
     using Revise
-catch e
-    @warn "Failed to load Revise"
+catch err
+    @warn "Failed to load Revise" err
 end
 # try
 #     using InteractiveCodeSearch
