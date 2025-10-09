@@ -10,7 +10,7 @@ local root_files = { 'Project.toml', 'JuliaProject.toml' }
 return {
     cmd = {
         'julia',
-        '+beta', -- requires 1.12.beta or higher
+        -- '+beta', -- 1.12 released so this might not necessary
         '--project=' .. jetls_location,
         '--startup-file=no',
         '--history-file=no',
