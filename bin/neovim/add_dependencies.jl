@@ -11,7 +11,7 @@ Pkg.add("PackageCompiler")
 
 # add extra dependencies
 # these packages are manually collected
-pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates", "Downloads", "TOML", "JSONRPC", "SymbolServer", "CSTParser", "StaticLint", "JSON"]
+pkg_extra = ["Logging", "Sockets", "DataStructures", "Tar", "ArgTools", "Dates", "Downloads", "TOML", "JSONRPC", "SymbolServer", "CSTParser", "StaticLint", "JSON", "JuliaFormatter"]
 Pkg.add(pkg_extra)
 @info "added dependencies"
 
