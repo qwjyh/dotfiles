@@ -135,8 +135,27 @@ require('lazy').setup({
     },
     {
         'nvim-telescope/telescope.nvim',
+        opts = function()
+            vim.notify "called"
+            local actions = require("telescope.actions")
+            local open_with_trouble = require("trouble.sources.telescope").open
+            return {
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<C-h>"] = "which_key",
+                            ["<c-t>"] = open_with_trouble,
+                        },
+                        n = {
+                            ["<c-t>"] = open_with_trouble,
+                        },
+                    },
+                },
+            }
+        end,
         dependencies = {
-            'nvim-lua/plenary.nvim'
+            'nvim-lua/plenary.nvim',
+            'folke/trouble.nvim',
         },
     },
     {
