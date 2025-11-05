@@ -63,6 +63,8 @@ opam env --shell fish | source
 
 # key bindings
 bind \b backward-kill-word
+bind ctrl-\] forward-jump
+bind ctrl-alt-\] backward-jump
 
 # env
 set -x LESS '-i -r -M -R -S -W -z-4 -x4'
