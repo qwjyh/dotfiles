@@ -2,10 +2,12 @@ atreplinit() do repl
     if VERSION < v"1.13-DEV"
         try
             @eval using OhMyREPL
-            @eval enable_autocomplete_brackets(false)
-            @eval include((@__DIR__) * "/catppuccin.jl")
-            @eval OhMyREPL.colorscheme!("CatppuccinMocha")
-            # @eval OhMyREPL.colorscheme!("CatppuccinLatte")
+            @eval begin
+                enable_autocomplete_brackets(false)
+                include((@__DIR__) * "/catppuccin.jl")
+                OhMyREPL.colorscheme!("CatppuccinMocha")
+                # OhMyREPL.colorscheme!("CatppuccinLatte")
+            end
         catch err
             @warn "Failed to load OhMyREPL" err
         end
