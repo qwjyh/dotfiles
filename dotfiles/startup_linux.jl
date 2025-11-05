@@ -1,6 +1,15 @@
 atreplinit() do repl
+    try
+        @eval using Revise
+    catch err
+        @warn "Failed to load Revise" err
+    end
+end
+
+if isinteractive()
     if VERSION < v"1.13-DEV"
         try
+            @eval using Pkg
             @eval using OhMyREPL
             @eval begin
                 enable_autocomplete_brackets(false)
@@ -11,12 +20,6 @@ atreplinit() do repl
         catch err
             @warn "Failed to load OhMyREPL" err
         end
-    end
-
-    try
-        @eval using Revise
-    catch err
-        @warn "Failed to load Revise" err
     end
 end
 # try
