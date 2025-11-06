@@ -92,4 +92,9 @@ New-Item -ItemType SymbolicLink -Path ~\.julia\config\startup.jl -Target (Resolv
 # lf
 mkdir $env:LOCALAPPDATA\lf
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\lf\lfrc -Target (Resolve-Path .\dotfiles\lf\lfrc) -Force
-
+# yazi
+mkdir $env:APPDATA\yazi\config
+New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\init.lua -Target (Resolve-Path .\dotfiles\yazi\init.lua) -Force
+New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\yazi.toml -Target (Resolve-Path .\dotfiles\yazi\yazi.toml) -Force
+New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\package.toml -Target (Resolve-Path .\dotfiles\yazi\package.toml) -Force
+New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\keymap.toml -Target (Resolve-Path .\dotfiles\yazi\keymap.toml) -Force

@@ -1,0 +1,5 @@
+[mgr]
+prepend_keymap = [
+    { on = "Q", run = "quit", desc = "Exit yazi" },
+    { on = "q", run = "quit --no-cwd-file", desc = "Exit yazi without saving cwd file (no jump)" },
+]
