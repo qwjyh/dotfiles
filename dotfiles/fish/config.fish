@@ -39,6 +39,15 @@ if status is-interactive
     # opam
     #source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
+    function y --description "yazi with jump"
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+    end
+
     function rga-fzf
         set RG_PREFIX 'rga --files-with-matches'
         if test (count $argv) -gt 1
