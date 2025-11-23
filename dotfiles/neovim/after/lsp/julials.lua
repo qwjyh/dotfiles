@@ -12,7 +12,7 @@ end
 ---@type vim.lsp.Config
 return {
     on_attach = function(client, bufnr)
-        require("lsp_config").on_attach(client, bufnr)
+        require("lsp_config").on_attach_keymap(client, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
     cmd = { "julia", "--startup-file=no", "--history-file=no",

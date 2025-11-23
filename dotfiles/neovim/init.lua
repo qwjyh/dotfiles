@@ -214,7 +214,7 @@ require('lazy').setup({
         -- see Julian/lean.nvim readme
         opts = {
             lsp = {
-                on_attach = require("lsp_config").on_attach,
+                on_attach = require("lsp_config").on_attach_keymap,
             },
             mappings = true,
         },
@@ -222,6 +222,17 @@ require('lazy').setup({
         -- this currently disables all default settings in lean.nvim
         -- default lean.nvim config overwrites lspconfig
         -- TODO: migrate default settings from lean.nvim
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     {
         'nvim-orgmode/orgmode',
@@ -380,6 +391,11 @@ vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
 -- color scheme
 require('catppuccin').setup({
     transparent_background = true,
+    custom_highlights = function(colors)
+        return {
+            ["@lsp.type.variable"] = { link = "@variable" },
+        }
+    end,
 })
 vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "catppuccin-latte"
@@ -648,7 +664,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client ~= nil then
             -- Use an on_attach function to only map the following keys
             -- after the language server attaches to the current buffer
-            require("lsp_config").on_attach(client, ev.buf)
+            require("lsp_config").on_attach_keymap(client, ev.buf)
+            require("lsp_config").on_attach_codelens(client, ev.buf)
         end
     end
 })
