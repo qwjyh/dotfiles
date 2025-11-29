@@ -20,5 +20,6 @@ return {
     settings = {
         compileStatus = 'enable',
         formatterMode = 'typstyle',
+        ["lint.enabled"] = true,
     },
 }
