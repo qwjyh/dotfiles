@@ -53,7 +53,7 @@ return {
     window_background_opacity = 0.90,
     -- font = wezterm.font 'FirgeNerd Console'
     font = wezterm.font_with_fallback {
-        'Pending Mono NF',
+        -- 'Pending Mono HWNF',
         {
             family = 'Juisee NF',
             weight = 'Regular',
