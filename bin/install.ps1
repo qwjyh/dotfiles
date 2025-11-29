@@ -55,6 +55,7 @@ New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\init.lua -Target (Res
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lualine_setup.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lualine_setup.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\term_powershell.lua -Target (Resolve-Path .\dotfiles\neovim\lua\term_powershell.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\lsp_config.lua -Target (Resolve-Path .\dotfiles\neovim\lua\lsp_config.lua) -Force
+New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\tinymist_status.lua -Target (Resolve-Path .\dotfiles\neovim\lua\tinymist_status.lua) -Force
 New-Item -ItemType SymbolicLink -Path ~\AppData\Local\nvim\lua\local_settings.lua -Target (Resolve-Path .\dotfiles\neovim\lua\local_settings.lua) -Force
 mkdir $env:LOCALAPPDATA\nvim\after\lsp
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim\after\lsp\lua_ls.lua -Target (Resolve-Path .\dotfiles\neovim\after\lsp\lua_ls.lua)

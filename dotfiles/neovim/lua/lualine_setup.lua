@@ -32,6 +32,13 @@ require('lualine').setup {
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
         lualine_x = {
+            {
+                require("tinymist_status").show_status,
+                cond = function()
+                    return vim.bo.filetype == "typst"
+                end,
+                color = { fg = "silver" }
+            },
             'lsp_status',
             'filetype'
         },
