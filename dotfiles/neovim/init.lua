@@ -136,7 +136,6 @@ require('lazy').setup({
     {
         'nvim-telescope/telescope.nvim',
         opts = function()
-            vim.notify "called"
             local actions = require("telescope.actions")
             local open_with_trouble = require("trouble.sources.telescope").open
             return {
