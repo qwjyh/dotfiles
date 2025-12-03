@@ -19,18 +19,6 @@ local local_settings = require("local_settings")
 require('lazy').setup({
     { "catppuccin/nvim",       name = "catppuccin" }, -- Color scheme
     {
-        dir = "./lua/term_powershell.lua",
-        cond = function()
-            return vim.fn.has('win32') == 1
-        end,
-        event = "CmdlineEnter",
-        config = function()
-            require("term_powershell").setup {
-                pwsh = true
-            }
-        end
-    },
-    {
         'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
@@ -437,6 +425,8 @@ vim.keymap.set('t', '<C-w>j', '<C-\\><C-N><C-w>j',
 vim.keymap.set('t', '<C-w>k', '<C-\\><C-N><C-w>k', { noremap = true, desc = "Exit terminal-mode and move to up window." })
 vim.keymap.set('t', '<C-w>l', '<C-\\><C-N><C-w>l',
     { noremap = true, desc = "Exit terminal-mode and move to right window." })
+
+require("term_powershell").setup {}
 
 -----------------------------------------------------------
 -- comment setting for satysfi
