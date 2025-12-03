@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
 rev = "eaf6920"
-hash = "1a3396ccbc70b3c5f7d756eacc2b1f4a"
+hash = "27ca02f49fd236b5cc7bf03c243859fe"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
 rev = "eaf6920"
-hash = "a097eb6df2b41b1f5973d9a00a855e44"
+hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
 
 [flavor]
 deps = []
