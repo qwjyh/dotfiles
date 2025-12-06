@@ -1,6 +1,3 @@
----@type lsp.Handler
-vim.lsp.handlers["tinymist/compileStatus"] = require("tinymist_status").compile_status_handler
-
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -22,4 +19,7 @@ return {
         formatterMode = 'typstyle',
         ["lint.enabled"] = true,
     },
+    handlers = {
+        ["tinymist/compileStatus"] = require("tinymist_status").compile_status_handler,
+    }
 }
