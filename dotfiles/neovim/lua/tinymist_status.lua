@@ -54,6 +54,17 @@ M.show_status = function()
     end
     return status .. " " .. result.wordsCount.words .. " words"
 end
+M.show_status_color = function()
+    local result = M.storage[vim.fn.bufnr()]
+    if not result then
+        return "DiagnosticUnnecessary"
+    end
+    if result.status == "compileError" then
+        return "DiagnosticError"
+    else
+        return "DiagnosticUnnecessary"
+    end
+end
 
 ---@param bufnr integer
 M.show_status_detail = function(bufnr)

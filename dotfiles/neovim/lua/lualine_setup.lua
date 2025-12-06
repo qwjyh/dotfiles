@@ -37,7 +37,7 @@ require('lualine').setup {
                 cond = function()
                     return vim.bo.filetype == "typst"
                 end,
-                color = { fg = "silver" }
+                color = require("tinymist_status").show_status_color,
             },
             'lsp_status',
             'filetype'
