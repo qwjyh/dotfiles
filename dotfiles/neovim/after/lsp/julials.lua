@@ -11,10 +11,6 @@ end
 
 ---@type vim.lsp.Config
 return {
-    on_attach = function(client, bufnr)
-        require("lsp_config").on_attach_keymap(client, bufnr)
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end,
     cmd = { "julia", "--startup-file=no", "--history-file=no",
         julials_so_option[1], julials_so_option[2],
         -- use below 2 lines to collect script to be included in sysimage
