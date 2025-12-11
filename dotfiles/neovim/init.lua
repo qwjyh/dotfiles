@@ -200,9 +200,6 @@ require('lazy').setup({
 
         -- see Julian/lean.nvim readme
         opts = {
-            lsp = {
-                on_attach = require("lsp_config").on_attach_keymap,
-            },
             mappings = true,
         },
 
