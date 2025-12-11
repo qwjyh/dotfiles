@@ -514,9 +514,15 @@ require('lualine_setup')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', function() builtin.find_files { sort_lastused = true } end, { desc = "find files" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "grep" })
+vim.keymap.set('n', '<leader>frr', builtin.live_grep, { desc = "grep" })
+vim.keymap.set('n', '<leader>frn', function()
+    builtin.live_grep { additional_args = { '--no-ignore' } }
+end, { desc = "live rg but not using ignore files" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help tags" })
+vim.keymap.set('n', '<leader>fj', builtin.jumplist, { desc = "jumplist" })
 vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = "current buffer fuzzy find" })
+vim.keymap.set('n', '<leader>fa', builtin.resume, { desc = "resume previous telescope status" })
 vim.keymap.set('n', '<leader>flr', builtin.lsp_references, { desc = "lsp references for word" })
 vim.keymap.set('n', '<leader>fli', builtin.lsp_incoming_calls, { desc = "lsp incoming calls" })
 vim.keymap.set('n', '<leader>flo', builtin.lsp_outgoing_calls, { desc = "lsp outgoing calls" })
@@ -527,6 +533,7 @@ vim.keymap.set('n', '<leader>fc', builtin.git_commits, { desc = "git commit" })
 vim.keymap.set('n', '<leader>fgc', builtin.git_commits, { desc = "git commit" })
 vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = "git status" })
 vim.keymap.set('n', '<leader>fgs', builtin.git_status, { desc = "git status" })
+vim.keymap.set('n', '<leader>ft', builtin.treesitter, { desc = "list functions, variables, ... using treesitter" })
 
 -----------------------------------------------------------
 -- Treesitter
