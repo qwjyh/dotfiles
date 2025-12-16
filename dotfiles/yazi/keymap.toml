@@ -2,6 +2,27 @@
 prepend_keymap = [
     { on = "Q", run = "quit", desc = "Exit yazi" },
     { on = "q", run = "quit --no-cwd-file", desc = "Exit yazi without saving cwd file (no jump)" },
+    { on = [
+        "s",
+        "s",
+    ], run = 'search --via=fd', desc = "Search files by name via fd" },
+    { on = [
+        "s",
+        "i",
+    ], run = 'search --via=fd --args="--no-ignore-vcs"', desc = "Search files by name via fd not using ignore files" },
+    { on = [
+        "S",
+        "s",
+    ], run = 'search --via=rg', desc = "Search files by content via ripgrep" },
+    { on = [
+        "S",
+        "i",
+    ], run = 'search --via=rg --args="--no-ignore"', desc = "Search files by content via ripgrep not using ignore files" },
+    { on = [
+        "S",
+        "a",
+    ], run = 'search --via=rga --args="--no-ignore"', desc = "Search files by content via ripgrep-all not using ignore files" },
+]
 append_keymap = [
     { on = [
         "c",
