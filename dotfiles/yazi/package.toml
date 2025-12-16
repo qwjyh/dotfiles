@@ -8,5 +8,10 @@ use = "yazi-rs/plugins:types"
 rev = "eaf6920"
 hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
 
+[[plugin.deps]]
+use = "qwjyh/relative-path"
+rev = "5eb244a"
+hash = "8fc7bafab58f4710aaa877d55957e7cc"
+
 [flavor]
 deps = []

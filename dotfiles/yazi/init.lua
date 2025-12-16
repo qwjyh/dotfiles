@@ -8,3 +8,5 @@ th.git.deleted = ui.Style():fg("red"):bold()
 th.git.deleted_sign = "D"
 th.git.ignored_sign = "I"
 require("git"):setup()
+
+require("relative-path").setup { notify = true }
