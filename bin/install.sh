@@ -29,6 +29,7 @@ ln -sf "$(pwd)/dotfiles/neovim/lua/term_powershell.lua" ~/.config/nvim/lua/term_
 ln -sf "$(pwd)/dotfiles/neovim/lua/lsp_config.lua" ~/.config/nvim/lua/lsp_config.lua
 ln -sf "$(pwd)/dotfiles/neovim/lua/pluto_nvim.lua" ~/.config/nvim/lua/pluto_nvim.lua
 ln -sf "$(pwd)/dotfiles/neovim/lua/tinymist_status.lua" ~/.config/nvim/lua/tinymist_status.lua
+touch "$(pwd)/dotfies/neovim/lua/local_settings.lua"
 ln -sf "$(pwd)/dotfiles/neovim/lua/local_settings.lua" ~/.config/nvim/lua/local_settings.lua
 mkdir -p ~/.config/nvim/after/lsp
 ln -sf "$(pwd)/dotfiles/neovim/after/lsp/lua_ls.lua" ~/.config/nvim/after/lsp/lua_ls.lua
