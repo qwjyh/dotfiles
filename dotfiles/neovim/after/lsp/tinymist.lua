@@ -18,6 +18,9 @@ return {
         compileStatus = 'enable',
         formatterMode = 'typstyle',
         ["lint.enabled"] = true,
+        preview = {
+            partialRendering = true,
+        }
     },
     handlers = {
         ["tinymist/compileStatus"] = require("tinymist_status").compile_status_handler,
