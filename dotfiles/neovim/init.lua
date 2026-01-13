@@ -372,6 +372,10 @@ vim.o.exrc = true
 vim.keymap.set('n', 'H', '<cmd>tabp<cr>', { desc = 'tab previous' })
 vim.keymap.set('n', 'L', '<cmd>tabn<cr>', { desc = 'tab next' })
 
+-- disabled: this currently causes CursorHold loop
+-- will be fixed in https://github.com/neovim/neovim/pull/36221
+-- vim.cmd[[packadd nohlsearch]]
+
 -- color scheme
 require('catppuccin').setup({
     transparent_background = true,
