@@ -33,11 +33,11 @@ require('lualine').setup {
         lualine_c = { 'filename' },
         lualine_x = {
             {
-                require("tinymist_status").show_status,
+                require("tinymist-clientfeatures.tinymist_status").show_status,
                 cond = function()
                     return vim.bo.filetype == "typst"
                 end,
-                color = require("tinymist_status").show_status_color,
+                color = require("tinymist-clientfeatures.tinymist_status").show_status_color,
             },
             'lsp_status',
             'filetype'

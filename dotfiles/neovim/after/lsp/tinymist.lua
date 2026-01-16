@@ -23,6 +23,7 @@ return {
         }
     },
     handlers = {
-        ["tinymist/compileStatus"] = require("tinymist_status").compile_status_handler,
+        ["tinymist/compileStatus"] = require("tinymist-clientfeatures.tinymist_status").compile_status_handler,
+        -- ["tinymist/documentOutline"] = outline_handler,
     }
 }
