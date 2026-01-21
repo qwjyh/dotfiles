@@ -9,6 +9,11 @@ prepend_rules = [
         "edit",
         "reveal",
     ] },
+    { mime = "text/html", use = [
+        "open",
+        "edit",
+        "reveal",
+    ] },
 ]
 
 [[plugin.prepend_fetchers]]
