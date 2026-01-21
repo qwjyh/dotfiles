@@ -1,3 +1,16 @@
+[opener]
+inkscape = [{ run = "inkscape %s", orphan = true, desc = "Inkscape" }]
+
+[open]
+prepend_rules = [
+    { mime = "image/svg+xml", use = [
+        "open",
+        "inkscape",
+        "edit",
+        "reveal",
+    ] },
+]
+
 [[plugin.prepend_fetchers]]
 id = "git"
 url = "*"
