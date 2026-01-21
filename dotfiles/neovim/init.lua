@@ -137,14 +137,24 @@ require('lazy').setup({
                             ["<c-t>"] = open_with_trouble,
                         },
                     },
+                    extension = {
+                        fzf = {
+                            fuzzy = true,
+                            override_generic_sorter = true,
+                            override_file_sorter = true,
+                            case_mode = "smart_case",
+                        }
+                    },
                 },
             }
         end,
         dependencies = {
             'nvim-lua/plenary.nvim',
             'folke/trouble.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
         },
     },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     {
         'nvimtools/none-ls.nvim',
         dependencies = {
@@ -535,6 +545,8 @@ vim.keymap.set('n', '<leader>fgc', builtin.git_commits, { desc = "git commit" })
 vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = "git status" })
 vim.keymap.set('n', '<leader>fgs', builtin.git_status, { desc = "git status" })
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, { desc = "list functions, variables, ... using treesitter" })
+
+require("telescope").load_extension("fzf")
 
 -----------------------------------------------------------
 -- Treesitter
