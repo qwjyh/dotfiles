@@ -334,6 +334,14 @@ require('lazy').setup({
             }
         end
     },
+    {
+        "qwjyh/tinymist-clientfeatures.nvim",
+        -- dir = "~/work/tinymist-clientfeatures.nvim",
+        filetype = "typst",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        },
+    },
 })
 
 -----------------------------------------------------------
