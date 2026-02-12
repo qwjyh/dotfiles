@@ -1,5 +1,6 @@
 [opener]
 inkscape = [{ run = "inkscape %s", orphan = true, desc = "Inkscape" }]
+less = [{ run = "less %s", block = true, desc = "less" }]
 
 [open]
 prepend_rules = [
@@ -13,6 +14,11 @@ prepend_rules = [
         "open",
         "edit",
         "reveal",
+    ] },
+    { mime = "text/plain", use = [
+        "edit",
+        "reveal",
+        "less",
     ] },
 ]
 
