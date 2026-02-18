@@ -76,7 +76,7 @@ bind ctrl-\] forward-jump
 bind ctrl-alt-\] backward-jump
 
 # env
-set -x LESS '-i -r -M -R -S -W -z-4 -x4'
+set -x LESS '-i -M -R -S -W -z-4 -x4'
 set -x EDITOR /usr/bin/nvim
 # julia sysimage
 set -x JL_SYSIMG_PATH "$HOME/dotfiles/julia-sysimages"
