@@ -28,9 +28,10 @@ end
 
 local default_cmd = {
     'jetls',
+    'serve',
     '--threads=12,2',
     '--',
-    '--clientProcessId=' .. nvim_pid,
+    -- '--clientProcessId=' .. nvim_pid,
 }
 
 ---@diagnostic disable-next-line: unused-local
