@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "03cdd4b"
-hash = "36a484acf6a0a0219c543ccb4cee218f"
+rev = "1962818"
+hash = "26db011a778f261d730d4f5f8bf24b3f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "03cdd4b"
-hash = "a3564fe0d051557df2a191ca0b212c2d"
+rev = "1962818"
+hash = "4161cfa043b5ba3341d82c6869007b41"
 
 [[plugin.deps]]
 use = "qwjyh/relative-path"
-rev = "3460696"
-hash = "6a29ad4eceba0cfe4319c9a9fa089cf9"
+rev = "87dcc68"
+hash = "7a423e9b7e89803105442878eb0fe242"
 
 [flavor]
 deps = []
