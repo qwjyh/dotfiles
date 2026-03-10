@@ -170,6 +170,7 @@ Import-Module PSDates
 
 # less options
 $env:LESS = "-i -M -R -S -W -z-4 -x4"
+$env:LESSUTFCHARDEF="e000-f8ff:p,f0001-fffff:p"
 # julia sysimg
 $env:JL_SYSIMG_PATH = "$HOME/dotfiles/julia-sysimages"
 $env:JL_SYSIMG_PLT = "$HOME/dotfiles/julia-sysimages/sys-plotsmakie.so"
