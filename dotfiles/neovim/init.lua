@@ -101,22 +101,122 @@ require('lazy').setup({
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
+        branch = "main",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
             {
-                {
-                    "nvim-treesitter/nvim-treesitter-context",
-                    opts = {
-                        enable = true,
-                    },
-                }
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                branch = "main",
+                init = function()
+                    -- Disable entire built-in ftplugin mappings to avoid conflicts.
+                    -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+                    -- vim.g.no_plugin_maps = true
+
+                    -- vim.g.no_lua_maps = true
+                end,
+                config = function()
+                    -- select
+                    require("nvim-treesitter-textobjects").setup {
+                        select = {
+                            lookahead = true,
+                        },
+                    }
+                    local textobjects_select = require("nvim-treesitter-textobjects.select")
+                    vim.keymap.set({ "x", "o" }, "aa", function()
+                        textobjects_select.select_textobject("@parameter.outer", "textobjects")
+                    end, { desc = "ts textobjects parameter outer" })
+                    vim.keymap.set({ "x", "o" }, "ia", function()
+                        textobjects_select.select_textobject("@parameter.inner", "textobjects")
+                    end, { desc = "ts textobjects parameter inner" })
+                    vim.keymap.set({ "x", "o" }, "af", function()
+                        textobjects_select.select_textobject("@function.outer", "textobjects")
+                    end, { desc = "ts textobjects function outer" })
+                    vim.keymap.set({ "x", "o" }, "if", function()
+                        textobjects_select.select_textobject("@function.inner", "textobjects")
+                    end, { desc = "ts textobjects function inner" })
+                    vim.keymap.set({ "x", "o" }, "ac", function()
+                        textobjects_select.select_textobject("@class.outer", "textobjects")
+                    end, { desc = "ts textobjects class outer" })
+                    vim.keymap.set({ "x", "o" }, "ic", function()
+                        textobjects_select.select_textobject("@class.inner", "textobjects")
+                    end, { desc = "ts textobjects class inner" })
+
+                    -- swap
+                    vim.keymap.set("n", "<space>a", function()
+                        require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
+                    end, { desc = "ts textobjects swap next" })
+                    vim.keymap.set("n", "<space>A", function()
+                        require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer"
+                    end, { desc = "ts textobjects swap previous" })
+
+                    -- move
+                    require("nvim-treesitter-textobjects").setup {
+                        move = { set_jumps = true }
+                    }
+                    vim.keymap.set({ "n", "x", "o" }, "]m", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "]]", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+                    end)
+                    -- You can also pass a list to group multiple queries.
+                    vim.keymap.set({ "n", "x", "o" }, "]o", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" },
+                            "textobjects")
+                    end)
+                    -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
+                    vim.keymap.set({ "n", "x", "o" }, "]s", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "]z", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
+                    end)
+
+                    vim.keymap.set({ "n", "x", "o" }, "]M", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "][", function()
+                        require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+                    end)
+
+                    vim.keymap.set({ "n", "x", "o" }, "[m", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "[[", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+                    end)
+
+                    vim.keymap.set({ "n", "x", "o" }, "[M", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "[]", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+                    end)
+
+                    -- Go to either the start or the end, whichever is closer.
+                    -- Use if you want more granular movements
+                    vim.keymap.set({ "n", "x", "o" }, "]d", function()
+                        require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
+                    end)
+                    vim.keymap.set({ "n", "x", "o" }, "[d", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
+                    end)
+
+                    local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
+
+                    -- Repeat movement with ; and ,
+                    -- vim way: ; goes to the direction you were moving.
+                    vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+                    vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+                end,
+            },
+            {
+
+                "nvim-treesitter/nvim-treesitter-context",
+                opts = {
+                    enable = true,
+                },
             },
         },
-    },
-    {
-        "nvim-treesitter/playground",
-        lazy = true,
     },
     {
         "andymass/vim-matchup",
@@ -558,107 +658,51 @@ require("telescope").load_extension("fzf")
 
 -----------------------------------------------------------
 -- Treesitter
--- manually install parsers with `:TSInstall <language>`
 
--- satysfi (https://github.com/monaqa/tree-sitter-satysfi)
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.satysfi = {
-    install_info = {
-        url = "https://github.com/monaqa/tree-sitter-satysfi",
-        files = { "src/parser.c", "src/scanner.c" }
-    },
-    filetype = 'satysfi',
-}
+-- highlight
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+    callback = function(ctx)
+        pcall(vim.treesitter.start)
+    end
+})
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'TSUpdate',
+    callback = function()
+        require('nvim-treesitter.parsers').satysfi = {
+            install_info = {
+                url = "https://github.com/monaqa/tree-sitter-satysfi",
+                files = { "src/parser.c", "src/scanner.c" }
+            },
+            filetype = 'satysfi',
+        }
+    end
+})
 
--- setup
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        'c', 'cpp', 'lua', 'julia', 'satysfi',
-    },
-    sync_install = false,
-    auto_install = true, -- requires tree-sitter cli in local
-    ignore_install = {},
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'org' },
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-        },
-    },
-    indent = {
-        enable = false,
-    },
-    matchup = {
-        enable = true,
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ['aa'] = '@parameter.outer',
-                ['ia'] = '@parameter.inner',
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['ac'] = '@class.outer',
-                ['ic'] = '@class.inner',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer',
-            },
-        },
-        swap = {
-            enable = true,
-            swap_next = {
-                ['<space>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-                ['<space>A'] = '@parameter.inner',
-            },
-        },
-    },
-    playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25,
-        persist_queries = false,
-        keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?',
-        },
-    },
-}
+-- -- manually install parsers with `:TSInstall <language>`
+--
+-- -- satysfi (https://github.com/monaqa/tree-sitter-satysfi)
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- parser_config.satysfi = {
+--     install_info = {
+--         url = "https://github.com/monaqa/tree-sitter-satysfi",
+--         files = { "src/parser.c", "src/scanner.c" }
+--     },
+--     filetype = 'satysfi',
+-- }
+--
+-- -- setup
+-- require 'nvim-treesitter.configs'.setup {
+--     incremental_selection = {
+--         enable = true,
+--         keymaps = {
+--             init_selection = "gnn",
+--             node_incremental = "grn",
+--             scope_incremental = "grc",
+--             node_decremental = "grm",
+--         },
+--     },
+-- }
 
 
 -----------------------------------------------------------
