@@ -44,9 +44,9 @@ return {
     --        }
     --    },
 
-    color_scheme = "iceberg-dark",
-    -- color_scheme = "catppuccin-macchiato",
-    -- color_scheme = "catppuccin-latte",
+    -- color_scheme = "iceberg-dark",
+    color_scheme = "Catppuccin Mocha",
+    -- color_scheme = "Catppuccin Latte",
     -- color_scheme = "Everforest Dark (Gogh)",
     use_fancy_tab_bar = false,
     tab_bar_at_bottom = true,
