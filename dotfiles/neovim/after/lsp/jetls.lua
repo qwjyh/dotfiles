@@ -28,9 +28,9 @@ end
 
 local default_cmd = {
     'jetls',
-    'serve',
     '--threads=12,2',
     '--',
+    'serve',
     -- '--clientProcessId=' .. nvim_pid,
 }
 
