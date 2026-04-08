@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "1962818"
+rev = "43c6978"
 hash = "26db011a778f261d730d4f5f8bf24b3f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "1962818"
+rev = "43c6978"
 hash = "4161cfa043b5ba3341d82c6869007b41"
 
 [[plugin.deps]]
