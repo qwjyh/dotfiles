@@ -123,30 +123,30 @@ require('lazy').setup({
                     local textobjects_select = require("nvim-treesitter-textobjects.select")
                     vim.keymap.set({ "x", "o" }, "aa", function()
                         textobjects_select.select_textobject("@parameter.outer", "textobjects")
-                    end, { desc = "ts textobjects parameter outer" })
+                    end, { desc = "[ts textobjects] parameter outer" })
                     vim.keymap.set({ "x", "o" }, "ia", function()
                         textobjects_select.select_textobject("@parameter.inner", "textobjects")
-                    end, { desc = "ts textobjects parameter inner" })
+                    end, { desc = "[ts textobjects] parameter inner" })
                     vim.keymap.set({ "x", "o" }, "af", function()
                         textobjects_select.select_textobject("@function.outer", "textobjects")
-                    end, { desc = "ts textobjects function outer" })
+                    end, { desc = "[ts textobjects] function outer" })
                     vim.keymap.set({ "x", "o" }, "if", function()
                         textobjects_select.select_textobject("@function.inner", "textobjects")
-                    end, { desc = "ts textobjects function inner" })
+                    end, { desc = "[ts textobjects] function inner" })
                     vim.keymap.set({ "x", "o" }, "ac", function()
                         textobjects_select.select_textobject("@class.outer", "textobjects")
-                    end, { desc = "ts textobjects class outer" })
+                    end, { desc = "[ts textobjects] class outer" })
                     vim.keymap.set({ "x", "o" }, "ic", function()
                         textobjects_select.select_textobject("@class.inner", "textobjects")
-                    end, { desc = "ts textobjects class inner" })
+                    end, { desc = "[ts textobjects] class inner" })
 
                     -- swap
                     vim.keymap.set("n", "<space>a", function()
                         require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
-                    end, { desc = "ts textobjects swap next" })
+                    end, { desc = "[ts textobjects] swap next" })
                     vim.keymap.set("n", "<space>A", function()
                         require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer"
-                    end, { desc = "ts textobjects swap previous" })
+                    end, { desc = "[ts textobjects] swap previous" })
 
                     -- move
                     require("nvim-treesitter-textobjects").setup {
@@ -154,43 +154,52 @@ require('lazy').setup({
                     }
                     vim.keymap.set({ "n", "x", "o" }, "]m", function()
                         require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to next function start" })
                     vim.keymap.set({ "n", "x", "o" }, "]]", function()
                         require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to next class start" })
                     -- You can also pass a list to group multiple queries.
                     vim.keymap.set({ "n", "x", "o" }, "]o", function()
                         require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" },
                             "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to next loop" })
                     -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
                     vim.keymap.set({ "n", "x", "o" }, "]s", function()
                         require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
-                    end)
+                    end, { desc = "[ts textobjects] move to next local scope" })
                     vim.keymap.set({ "n", "x", "o" }, "]z", function()
                         require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
-                    end)
+                    end, { desc = "[ts textobjects] move to next fold" })
 
                     vim.keymap.set({ "n", "x", "o" }, "]M", function()
                         require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to next function end" })
                     vim.keymap.set({ "n", "x", "o" }, "][", function()
                         require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to next class end" })
 
                     vim.keymap.set({ "n", "x", "o" }, "[m", function()
                         require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to prev function start" })
                     vim.keymap.set({ "n", "x", "o" }, "[[", function()
                         require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to prev class start" })
 
                     vim.keymap.set({ "n", "x", "o" }, "[M", function()
                         require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to prev function end" })
                     vim.keymap.set({ "n", "x", "o" }, "[]", function()
                         require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
-                    end)
+                    end, { desc = "[ts textobjects] move to prev class end" })
+
+                    vim.keymap.set({ "n", "x", "o" }, "[o", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_start({ "@loop.inner", "@loop.outer" },
+                            "textobjects")
+                    end, { desc = "[ts textobjects] move to prev loop" })
+                    -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
+                    vim.keymap.set({ "n", "x", "o" }, "[s", function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_start("@local.scope", "locals")
+                    end, { desc = "[ts textobjects] move to prev local scope" })
 
                     -- Go to either the start or the end, whichever is closer.
                     -- Use if you want more granular movements
@@ -201,12 +210,16 @@ require('lazy').setup({
                         require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
                     end)
 
-                    local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
-
                     -- Repeat movement with ; and ,
+                    local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
                     -- vim way: ; goes to the direction you were moving.
                     vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
                     vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+                    -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+                    vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+                    vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+                    vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+                    vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
                 end,
             },
             {
