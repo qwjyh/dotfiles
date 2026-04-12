@@ -772,6 +772,7 @@ vim.lsp.enable({
     "svls",
     "yamlls",
     "fish_lsp",
+    "powershell_es",
     "taplo",
     "ty",
 })
