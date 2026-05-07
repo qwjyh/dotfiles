@@ -47,4 +47,12 @@ return {
     -- cmd_env = jetls_compiled_opts.cmd_env,
     filetypes = { 'julia' },
     root_markers = root_files,
+    on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    settings = {
+        code_lens = {
+            references = true,
+        },
+    },
 }
