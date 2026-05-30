@@ -13,6 +13,20 @@ local default_cmd = {
     -- '--clientProcessId=' .. nvim_pid,
 }
 
+---Determines if the file belongs to external package.
+---Return existing client's root dir for an external package, or nil for the other.
+---
+---Based on `rust_analyzer` lspconfig.
+---@param filename string
+---@return string?
+local function is_library(filename)
+    local user_home = vim.fs.normalize(vim.env.HOME)
+    local julia_home = os.getenv "JULIA_DEPOT_PATH" or user_home .. "/.julia"
+    if vim.fs.relpath(julia_home, filename) then
+        local clients = vim.lsp.get_clients { name = "jetls" }
+        return #clients > 0 and clients[#clients].config.root_dir or nil
+    end
+end
 
 ---@type vim.lsp.Config
 return {
@@ -20,7 +34,25 @@ return {
     -- cmd = jetls_compiled_opts.cmd,
     -- cmd_env = jetls_compiled_opts.cmd_env,
     filetypes = { 'julia' },
-    root_markers = root_files,
+    ---@param bufnr integer
+    ---@param on_dir fun(root_dir?: string)
+    root_dir = function(bufnr, on_dir)
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local reused_dir = is_library(filename)
+        if reused_dir then
+            on_dir(reused_dir)
+            return
+        end
+
+        local julia_project = os.getenv "JULIA_PROJECT"
+        if julia_project then
+            on_dir(julia_project)
+            return
+        end
+
+        --TODO: workspace?
+        on_dir(vim.fs.root(filename, root_files))
+    end,
     on_attach = function(client, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
