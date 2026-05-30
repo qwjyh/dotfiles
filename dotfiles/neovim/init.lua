@@ -295,6 +295,16 @@ require('lazy').setup({
                 desc = "Symbols (Trouble)",
             },
             {
+                "<space>cf",
+                "<cmd>Trouble symbols toggle focus=true win.type=float<cr>",
+                desc = "Symbols (Trouble) float",
+            },
+            {
+                "<space>cd",
+                "<cmd>Trouble symbols toggle focus=true preview.type=float<cr>",
+                desc = "Symbols (Trouble) float",
+            },
+            {
                 "<space>cl",
                 "<cmd>Trouble lsp toggle focus=false win.position=bottom<cr>",
                 desc = "LSP Definitions / references / ... (Trouble)",
