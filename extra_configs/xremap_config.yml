@@ -57,3 +57,8 @@ keymap:
       i: KEY_5
       o: KEY_6
     mode: Numpad
+experimental_map:
+  - chords:
+    - keys: [Super_L, Shift_L, F23]
+      actions: Ctrl_R
+      timeout: 30
