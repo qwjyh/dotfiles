@@ -8,18 +8,9 @@
 ;
 
 ; Henkan/Muhenkan + - -> en, em dash
-vk1D & vkBD::
-	Send {U+2013} ; en dash
-	return
-vk1C & vkBD::
-	Send {U+2014} ; em dash
-	return
+vk1D & vkBD::Send("{U+2013}") ; en dash
+vk1C & vkBD::Send("{U+2014}") ; em dash
 
 ; Henkan/Muhenkan + {Space} -> ZWSP, ZWJ
-vk1D & Space::
-	Send {U+200B} ; ZWSP
-	return
-vk1C & Space::
-	Send {U+200D} ; ZWJ
-	return
-
+vk1D & Space::Send("{U+200B}") ; ZWSP
+vk1C & Space::Send("{U+200D}") ; ZWJ
