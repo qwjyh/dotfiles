@@ -3,6 +3,9 @@
 [opener]
 inkscape = [{ run = "inkscape %s", orphan = true, desc = "Inkscape" }]
 less = [{ run = "less %s", block = true, desc = "less" }]
+mimeopen = [
+    { run = "mimeopen --ask %s", block = true, desc = "Open with mime-associated softwares" },
+]
 
 [open]
 prepend_rules = [
@@ -21,6 +24,11 @@ prepend_rules = [
         "edit",
         "reveal",
         "less",
+    ] },
+    { mime = "*", use = [
+        "open",
+        "reveal",
+        "mimeopen",
     ] },
 ]
 
