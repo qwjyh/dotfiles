@@ -69,4 +69,5 @@ return {
         'Unifont Regular',
         'Last Resort High-Efficiency',
     },
+    use_ime = true,
 }
