@@ -71,6 +71,7 @@ ln -sf "$(pwd)/dotfiles/yazi/init.lua" ~/.config/yazi/init.lua
 ln -sf "$(pwd)/dotfiles/yazi/yazi.toml" ~/.config/yazi/yazi.toml
 ln -sf "$(pwd)/dotfiles/yazi/package.toml" ~/.config/yazi/package.toml
 ln -sf "$(pwd)/dotfiles/yazi/keymap.toml" ~/.config/yazi/keymap.toml
+ln -sf "$(pwd)/dotfiles/yazi/theme.toml" ~/.config/yazi/theme.toml
 
 mkdir -p ~/.config/wezterm/
 ln -sf "$(pwd)/dotfiles/wezterm/wezterm.lua" ~/.config/wezterm/wezterm.lua

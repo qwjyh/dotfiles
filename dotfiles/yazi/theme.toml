@@ -1,0 +1,13 @@
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+[git]
+untracked = { fg = "lightgreen" }
+untracked_sign = " N"
+added_sign = "A "
+unstaged = { fg = "blue" }
+unstaged_sign = " M"
+deleted = { fg = "red", bold = true }
+deleted_sign = " D"
+ignored_sign = " I"
+staged = { fg = "blue" }
+staged_sign = "M "

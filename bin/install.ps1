@@ -100,3 +100,4 @@ New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\init.lua -Target 
 New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\yazi.toml -Target (Resolve-Path .\dotfiles\yazi\yazi.toml) -Force
 New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\package.toml -Target (Resolve-Path .\dotfiles\yazi\package.toml) -Force
 New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\keymap.toml -Target (Resolve-Path .\dotfiles\yazi\keymap.toml) -Force
+New-Item -ItemType SymbolicLink -Path $env:APPDATA\yazi\config\theme.toml -Target (Resolve-Path .\dotfiles\yazi\theme.toml) -Force

@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "43c6978"
-hash = "26db011a778f261d730d4f5f8bf24b3f"
+rev = "044c3cc"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "43c6978"
-hash = "4161cfa043b5ba3341d82c6869007b41"
+rev = "044c3cc"
+hash = "ff056b5acd05d915dc3a3936cb0cfd3e"
 
 [[plugin.deps]]
 use = "qwjyh/relative-path"
