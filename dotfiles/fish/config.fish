@@ -66,10 +66,6 @@ if status is-interactive
     end
 end
 
-# opam
-# source ~/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-opam env --shell fish | source
-
 # key bindings
 bind \b backward-kill-word
 bind ctrl-\] forward-jump
