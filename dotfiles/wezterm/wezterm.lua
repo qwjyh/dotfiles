@@ -33,6 +33,19 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     end
 end
 
+if string.find(wezterm.target_triple, "linux") then
+    wezterm.on('bell', function(window, pane)
+        local datetime = os.date('%Y-%m-%d %H:%M:%S')
+        wezterm.background_child_process {
+            'notify-send',
+            '--expire-time',
+            '20',
+            'bell',
+            'bell rung at ' .. datetime,
+        }
+    end)
+end
+
 return {
     default_prog = default_prog,
     launch_menu = launch_menu,
@@ -44,6 +57,9 @@ return {
     --        }
     --    },
 
+    colors = {
+        visual_bell = '#202020',
+    },
     -- color_scheme = "iceberg-dark",
     color_scheme = "Catppuccin Mocha",
     -- color_scheme = "Catppuccin Latte",
@@ -70,4 +86,10 @@ return {
         'Last Resort High-Efficiency',
     },
     use_ime = true,
+    visual_bell = {
+        fade_in_function = 'EaseIn',
+        fade_in_duration_ms = 150,
+        fade_out_function = 'EaseOut',
+        fade_out_duration_ms = 150,
+    },
 }
