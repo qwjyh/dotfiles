@@ -6,6 +6,7 @@ less = [{ run = "less %s", block = true, desc = "less" }]
 mimeopen = [
     { run = "mimeopen --ask %s", block = true, desc = "Open with mime-associated softwares" },
 ]
+thunar = [{ run = "thunar %s", desc = "Reveal with thunar", for = "linux" }]
 
 [open]
 prepend_rules = [
@@ -28,6 +29,7 @@ prepend_rules = [
     { mime = "*", use = [
         "open",
         "reveal",
+        "thunar",
         "mimeopen",
     ] },
 ]
