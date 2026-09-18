@@ -244,3 +244,6 @@ Import-Module WSLTabCompletion
 
 Get-ChildItem ~\.config\powershell\completions\ | % { . $_ }
 
+Get-ChildItem "$PROFILE\..\Completions\" | ForEach-Object {
+    . $_.FullName
+}
