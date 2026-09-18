@@ -37,18 +37,12 @@ vk1C & a::Send("{Blind}{Home}")
 vk1D & f::
 vk1C & f::Send("{Blind}{End}")
 
-vk1D & p::
-vk1C & p::Send("{Blind}{PgUp}")
+vk1D & s::
+vk1C & s::Send("{Blind}{PgUp}")
 
-vk1D & n::
-vk1C & n::Send("{Blind}{PgDn}")
-
-; Multi-Line Up/Down
-; (experimental)
-vk1D & u::
-vk1C & u::Send("{Blind}{Up 5}")
 vk1D & d::
-vk1C & d::Send("{Blind}{Down 5}")
+vk1C & d::Send("{Blind}{PgDn}")
+
 ; vk1D & v::
 ; vk1C & v::
 ; Send,{Blind}{Down}
