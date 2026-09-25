@@ -335,6 +335,11 @@ require('lazy').setup({
         opts = {
             mappings = true,
         },
+        ---@param plugin LazyPlugin
+        ---@param opts table
+        config = function(plugin, opts)
+            vim.g.lean_config = opts
+        end
 
         -- this currently disables all default settings in lean.nvim
         -- default lean.nvim config overwrites lspconfig
