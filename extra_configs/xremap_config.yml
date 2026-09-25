@@ -49,13 +49,16 @@ keymap:
     mode: Numpad
   - name: Numpad
     remap:
-      m: KEY_0
-      j: KEY_1
-      k: KEY_2
-      l: KEY_3
-      u: KEY_4
-      i: KEY_5
-      o: KEY_6
+      m: KEY_KP0
+      j: KEY_KP1
+      k: KEY_KP2
+      l: KEY_KP3
+      u: KEY_KP4
+      i: KEY_KP5
+      o: KEY_KP6
+      7: KEY_KP7
+      8: KEY_KP8
+      9: KEY_KP9
     mode: Numpad
 experimental_map:
   - chords:
