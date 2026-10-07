@@ -4,6 +4,18 @@
 if status is-interactive
     # starship
     starship init fish | source
+    # Manually removes CSI 0 J from starship's output
+    # To be removed once https://github.com/starship/starship/pull/7483 is merged.
+    functions -c fish_prompt __starship_fish_prompt
+    function fish_prompt
+        set -l lines (__starship_fish_prompt)
+        # CSI 0 J: \e[J
+        set lines[1] (string replace --regex '^\e\[J' '' -- $lines[1])
+        if test (count $lines) -gt 1
+            printf '%s\n' $lines[1..-2]
+        end
+        printf '%s' $lines[-1]
+    end
 
     # save fish log to my custom file
     set -gx my_fish_history "$HOME/my_fish_history.txt"
