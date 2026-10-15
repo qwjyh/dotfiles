@@ -33,7 +33,7 @@ M.on_attach_keymap = function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, with_desc(bufopts, "lsp rename"))
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, with_desc(bufopts, "lsp code_action"))
     vim.keymap.set('n', '<space>cc', vim.lsp.codelens.run, with_desc(bufopts, "lsp run codelens"))
-    vim.keymap.set('n', '<space>cC', vim.lsp.codelens.refresh, with_desc(bufopts, "lsp refresh codelens"))
+    vim.keymap.set('n', '<space>cC', vim.lsp.codelens.enable, with_desc(bufopts, "lsp refresh codelens"))
     vim.keymap.set('n', 'grf', vim.lsp.buf.references, with_desc(bufopts, "lsp references"))
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, with_desc(bufopts, "lsp format"))
 end
@@ -43,10 +43,10 @@ end
 ---@param bufnr any
 M.on_attach_codelens = function(client, bufnr)
     if client:supports_method("textDocument/codeLens") then
-        vim.lsp.codelens.refresh()
+        vim.lsp.codelens.enable()
         vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
             buffer = bufnr,
-            callback = vim.lsp.codelens.refresh,
+            callback = vim.lsp.codelens.enable,
             desc = "refresh codelens",
         })
     end
