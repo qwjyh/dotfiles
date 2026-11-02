@@ -1,0 +1,141 @@
+version = 1
+
+[envs.tree-sitter-cli]
+channels = ["conda-forge"]
+dependencies = { tree-sitter-cli = "*" }
+exposed = { tree-sitter = "tree-sitter" }
+
+[envs.yazi]
+channels = ["conda-forge"]
+dependencies = { yazi = "*" }
+exposed = { ya = "ya", yazi = "yazi" }
+
+[envs.nvim]
+channels = ["conda-forge"]
+dependencies = { nvim = "*" }
+exposed = { nvim = "nvim" }
+
+[envs.zoxide]
+channels = ["conda-forge"]
+dependencies = { zoxide = "*" }
+exposed = { zoxide = "zoxide" }
+
+[envs.ripgrep]
+channels = ["conda-forge"]
+dependencies = { ripgrep = "*" }
+exposed = { rg = "rg" }
+
+[envs.fzf]
+channels = ["conda-forge"]
+dependencies = { fzf = "*" }
+exposed = { fzf = "fzf" }
+
+[envs.starship]
+channels = ["conda-forge"]
+dependencies = { starship = "*" }
+exposed = { starship = "starship" }
+
+[envs.yaml-language-server]
+channels = ["conda-forge"]
+dependencies = { yaml-language-server = "*" }
+exposed = { yaml-language-server = "yaml-language-server" }
+
+[envs.cmake-language-server]
+channels = ["conda-forge"]
+dependencies = { cmake-language-server = "*" }
+exposed = { cmake-language-server = "cmake-language-server" }
+
+[envs.bear]
+channels = ["conda-forge"]
+dependencies = { bear = "*" }
+exposed = { bear = "bear" }
+
+[envs.btop]
+channels = ["conda-forge"]
+dependencies = { btop = "*" }
+exposed = { btop = "btop" }
+
+[envs.ty]
+channels = ["conda-forge"]
+dependencies = { ty = "*" }
+exposed = { ty = "ty" }
+
+[envs.fd-find]
+channels = ["conda-forge"]
+dependencies = { fd-find = "*" }
+exposed = { fd = "fd" }
+
+[envs.ripgrep-all]
+channels = ["conda-forge"]
+dependencies = { ripgrep-all = "*" }
+exposed = { rga = "rga", rga-fzf = "rga-fzf", rga-fzf-open = "rga-fzf-open", rga-preproc = "rga-preproc" }
+
+[envs.eza]
+channels = ["conda-forge"]
+dependencies = { eza = "*" }
+exposed = { eza = "eza" }
+
+[envs.lazygit]
+channels = ["conda-forge"]
+dependencies = { lazygit = "*" }
+exposed = { lazygit = "lazygit" }
+
+[envs.bash-language-server]
+channels = ["conda-forge"]
+dependencies = { bash-language-server = "*" }
+exposed = { bash-language-server = "bash-language-server" }
+
+[envs.exiftool]
+channels = ["conda-forge"]
+dependencies = { exiftool = "*" }
+exposed = { exiftool = "exiftool" }
+
+[envs.poppler]
+channels = ["conda-forge"]
+dependencies = { poppler = "*" }
+exposed = { pdfattach = "pdfattach", pdfdetach = "pdfdetach", pdffonts = "pdffonts", pdfimages = "pdfimages", pdfinfo = "pdfinfo", pdfseparate = "pdfseparate", pdfsig = "pdfsig", pdftocairo = "pdftocairo", pdftohtml = "pdftohtml", pdftoppm = "pdftoppm", pdftops = "pdftops", pdftotext = "pdftotext", pdfunite = "pdfunite" }
+
+[envs.difftastic]
+channels = ["conda-forge"]
+dependencies = { difftastic = "*" }
+exposed = { difft = "difft" }
+
+[envs.lua-language-server]
+channels = ["conda-forge"]
+dependencies = { lua-language-server = "*" }
+exposed = { lua-language-server = "lua-language-server" }
+
+[envs.gdu]
+channels = ["conda-forge"]
+dependencies = { gdu = "*" }
+exposed = { gdu = "gdu" }
+
+[envs.chafa]
+channels = ["conda-forge"]
+dependencies = { chafa = "*" }
+exposed = { chafa = "chafa" }
+
+[envs.tldr]
+channels = ["conda-forge"]
+dependencies = { tldr = "*" }
+exposed = { tldr = "tldr" }
+
+[envs.trash-cli]
+channels = ["conda-forge"]
+dependencies = { trash-cli = "*" }
+exposed = { trash = "trash", trash-empty = "trash-empty", trash-list = "trash-list", trash-put = "trash-put", trash-restore = "trash-restore", trash-rm = "trash-rm" }
+
+[envs.rclone]
+channels = ["conda-forge"]
+dependencies = { rclone = "*" }
+exposed = { rclone = "rclone" }
+
+[envs.fish]
+channels = ["conda-forge"]
+dependencies = { fish = "*" }
+exposed = { fish = "fish", fish_indent = "fish_indent", fish_key_reader = "fish_key_reader" }
+
+[envs.atuin]
+channels = ["conda-forge"]
+dependencies = { atuin = "*" }
+exposed = { atuin = "atuin" }
