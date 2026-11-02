@@ -39,16 +39,12 @@ M.on_attach_keymap = function(client, bufnr)
 end
 
 ---https://github.com/neovim/neovim/discussions/24791
+---`refresh` is not necessary anymore I think
 ---@param client vim.lsp.Client
 ---@param bufnr any
 M.on_attach_codelens = function(client, bufnr)
     if client:supports_method("textDocument/codeLens") then
         vim.lsp.codelens.enable()
-        vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-            buffer = bufnr,
-            callback = vim.lsp.codelens.enable,
-            desc = "refresh codelens",
-        })
     end
 end
 
