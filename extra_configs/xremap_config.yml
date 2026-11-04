@@ -58,6 +58,10 @@ keymap:
       9: KEY_KP9
       n: KEY_NUMLOCK
     mode: Numpad
+  - name: Play Pause
+    remap:
+      KEY_CALC: KEY_PLAYPAUSE
+    mode: Numpad
 experimental_map:
   - chords:
     - keys: [Super_L, Shift_L, F23]
