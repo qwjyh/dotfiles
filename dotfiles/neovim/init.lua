@@ -97,7 +97,7 @@ require('lazy').setup({
     },
     {
         'kdheepak/cmp-latex-symbols', -- latex math
-        ft = { 'julia', 'typst', },
+        ft = { 'julia', 'typst', 'org', 'markdown' },
     },
     {
         "nvim-treesitter/nvim-treesitter",
